@@ -1,0 +1,299 @@
+name: Issue To PR
+
+# 从投稿 Issue 自动导入图片或更新别名并生成 Pull Request。
+# 保持每一步职责明确，便于将此 workflow 直接复制到其他图片库仓库。
+
+on:
+  issues:
+    types:
+      - opened
+      - edited
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  import-images:
+    # 只处理图片投稿 Issue
+    if: contains(github.event.issue.body, '### Game') && contains(github.event.issue.body, '### Entities') && contains(github.event.issue.body, '### Images')
+    runs-on: ubuntu-latest
+
+    steps:
+      # 拉取完整历史，后续创建分支和推送 PR 都依赖完整仓库状态。
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 使用固定 Node 版本，避免 sharp 预编译包在不同 runner 环境表现不一致。
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # 将 webhook 的 issue payload 落盘，供 Node 脚本按本地文件方式读取。
+      - name: Persist issue payload
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            fs.mkdirSync('.tmp', { recursive: true });
+            fs.writeFileSync('.tmp/issue.json', JSON.stringify(context.payload.issue, null, 2));
+
+      # 仓库不提交 package.json，因此在 runner 临时目录安装运行时依赖。
+      - name: Install runtime dependencies in runner temp
+        run: npm install --prefix "$RUNNER_TEMP/image-index-runtime" sharp nanoid
+
+      # 执行导入主流程，输出本次新增条目列表供后续步骤复用。
+      - name: Import images from issue
+        env:
+          NODE_PATH: ${{ runner.temp }}/image-index-runtime/node_modules
+        run: node scripts/process-issue.js --issue .tmp/issue.json --output .tmp/result.json
+
+      # 检查是否存在重复图片，若有重复则先评论告知投稿者。
+      - name: Check duplicates and comment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          node -e "
+            const r = JSON.parse(require('fs').readFileSync('.tmp/result.json', 'utf8'));
+
+            if (r.duplicates && r.duplicates.length) {
+              const { execSync } = require('child_process');
+              const lines = [
+                '## ⚠️ 检测到重复图片',
+                '',
+                '以下图片与仓库中已有图片完全相同，已跳过导入：',
+                ''
+              ];
+              for (const d of r.duplicates) {
+                lines.push('- SHA256: \`' + d.hash.substring(0, 16) + '...\` → 重复于 \`' + d.duplicate_of + '\`');
+              }
+              const body = lines.join('\n');
+              execSync('gh issue comment ' + process.env.ISSUE_NUMBER + ' --body -', {
+                input: body,
+                stdio: 'inherit'
+              });
+            }
+          "
+
+      # 如果没有新增图片（全部重复），跳过 PR 创建。
+      - name: Skip if no new images
+        id: check_empty
+        run: |
+          node -e "
+            const r = JSON.parse(require('fs').readFileSync('.tmp/result.json', 'utf8'));
+            if (r.created.length === 0) {
+              require('fs').writeFileSync('.tmp/skip-pr', 'skip');
+            }
+          "
+
+      # 将生成的数据提交到独立分支，再创建 PR 交由维护者审阅。
+      - name: Create pull request
+        if: hashFiles('.tmp/skip-pr') == ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+        run: |
+          BRANCH="submission/issue-${ISSUE_NUMBER}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git add data meta entities
+          git commit -m "chore: import images from issue #${ISSUE_NUMBER}"
+          git push --set-upstream origin "$BRANCH"
+
+          node -e "
+            const r = JSON.parse(require('fs').readFileSync('.tmp/result.json', 'utf8'));
+            const lines = [
+              'Closes #${ISSUE_NUMBER}',
+              '',
+              'Imported from ${ISSUE_URL}',
+              '',
+              '## 导入结果',
+              '',
+              '- 新增图片: ' + r.created.length + ' 张'
+            ];
+            if (r.duplicates && r.duplicates.length) {
+              lines.push('- 重复跳过: ' + r.duplicates.length + ' 张');
+              for (const d of r.duplicates) {
+                lines.push('  - \`' + d.hash.substring(0, 16) + '...\` → 重复于 \`' + d.duplicate_of + '\`');
+              }
+            }
+            if (r.resolved_entities && r.resolved_entities.length) lines.push('- 已匹配角色: ' + r.resolved_entities.join(', '));
+            if (r.new_entities && r.new_entities.length) lines.push('- 新角色待审核: ' + r.new_entities.join(', '));
+            require('fs').writeFileSync('.tmp/pr-body.txt', lines.join('\n'));
+          "
+
+          if ! gh pr create \
+            --base "${{ github.event.repository.default_branch }}" \
+            --head "$BRANCH" \
+            --title "chore: import images from issue #${ISSUE_NUMBER}" \
+            --body-file .tmp/pr-body.txt; then
+            echo "::error::Please enable: Settings > Actions > General > Allow GitHub Actions to create and approve pull requests"
+
+            gh issue comment "$ISSUE_NUMBER" \
+              --body "⚠️ Repository configuration required.
+
+          Please enable:
+
+          **Settings → Actions → General**
+
+          ✓ Allow GitHub Actions to create and approve pull requests"
+
+            git push origin --delete "$BRANCH"
+            exit 1
+          fi
+
+      # 回写 Issue 评论，让投稿者能立刻看到系统已处理哪些图片。
+      - name: Comment back to issue
+        if: hashFiles('.tmp/skip-pr') == ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const result = JSON.parse(fs.readFileSync('.tmp/result.json', 'utf8'));
+            const lines = [
+              '## 投稿处理完成',
+              '',
+              `已生成 ${result.created.length} 张图片条目：`,
+              '',
+              ...result.created.map((id) => `- \`${id}\``)
+            ];
+            if (result.resolved_entities && result.resolved_entities.length) {
+              lines.push('', `已匹配角色：${result.resolved_entities.join('、')}`);
+            }
+            if (result.new_entities && result.new_entities.length) {
+              lines.push('', `⚠️ 检测到新角色名称，已自动创建占位文件，请等待维护者审核：${result.new_entities.join('、')}`);
+            }
+            const body = lines.join('\n');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body
+            });
+
+  update-aliases:
+    # 处理别名投稿 Issue
+    if: contains(github.event.issue.body, '### Entity') && contains(github.event.issue.body, '### Aliases') && !contains(github.event.issue.body, '### Images')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Persist issue payload
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            fs.mkdirSync('.tmp', { recursive: true });
+            fs.writeFileSync('.tmp/issue.json', JSON.stringify(context.payload.issue, null, 2));
+
+      - name: Process alias submission
+        run: node scripts/process-alias.js --issue .tmp/issue.json --output .tmp/result.json
+
+      - name: Create pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+        run: |
+          BRANCH="alias/issue-${ISSUE_NUMBER}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+
+          if ! git diff --quiet -- entities; then
+            git add entities
+            git commit -m "chore: update aliases from issue #${ISSUE_NUMBER}"
+            git push --set-upstream origin "$BRANCH"
+          else
+            exit 0
+          fi
+
+          node -e "
+            const r = JSON.parse(require('fs').readFileSync('.tmp/result.json', 'utf8'));
+            const lines = [
+              'Closes #${ISSUE_NUMBER}',
+              '',
+              'Imported from ${ISSUE_URL}',
+              '',
+              '## 别名更新结果',
+              '',
+              '- 角色: ' + r.entity_display_name + ' (' + r.canonical_id + ')',
+              '- 新增别名: ' + (r.added && r.added.length ? r.added.join(', ') : '无')
+            ];
+            if (r.skipped && r.skipped.length) lines.push('- 已跳过（已收录）: ' + r.skipped.join(', '));
+            require('fs').writeFileSync('.tmp/pr-body.txt', lines.join('\n'));
+          "
+
+          if ! gh pr create \
+            --base "${{ github.event.repository.default_branch }}" \
+            --head "$BRANCH" \
+            --title "chore: update aliases from issue #${ISSUE_NUMBER}" \
+            --body-file .tmp/pr-body.txt; then
+            echo "::error::Please enable: Settings > Actions > General > Allow GitHub Actions to create and approve pull requests"
+
+            gh issue comment "$ISSUE_NUMBER" \
+              --body "⚠️ Repository configuration required.
+
+          Please enable:
+
+          **Settings → Actions → General**
+
+          ✓ Allow GitHub Actions to create and approve pull requests"
+
+            git push origin --delete "$BRANCH"
+            exit 1
+          fi
+
+      - name: Comment back to issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const result = JSON.parse(fs.readFileSync('.tmp/result.json', 'utf8'));
+            const lines = [
+              '## 别名投稿处理完成',
+              ''
+            ];
+            if (result.unmatched && result.unmatched.length) {
+              lines.push(`⚠️ 未匹配到角色 "${result.unmatched.join('、')}"，请检查拼写。`);
+              lines.push('');
+            } else {
+              lines.push(`角色：${result.entity_display_name}（${result.canonical_id}）`);
+              lines.push('');
+              if (result.added && result.added.length) {
+                lines.push(`✅ 已新增别名：${result.added.join('、')}`);
+              }
+              if (result.skipped && result.skipped.length) {
+                lines.push(`⏭️ 已跳过（已收录）：${result.skipped.join('、')}`);
+              }
+              if (!(result.added && result.added.length)) {
+                lines.push('所有提交的别名均已被收录，无需更新。');
+              }
+            }
+            const body = lines.join('\n');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body
+            });

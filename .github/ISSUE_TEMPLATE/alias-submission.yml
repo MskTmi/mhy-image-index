@@ -1,0 +1,42 @@
+name: 昵称投稿
+description: 为已有角色添加别名或昵称
+title: "[Alias] 为角色添加别名"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        为已有角色补充别名，方便使用
+
+        - 输入角色名（显示名、别名、id 均可），系统自动匹配
+        - 已收录的别名会自动跳过，不会重复添加
+
+  - type: input
+    id: entity
+    attributes:
+      label: Entity
+      description: 填写角色的显示名、别名或编号（id），系统会自动匹配对应角色，如 芽衣、煮饭婆、Mei 均可
+      placeholder: 芽衣
+    validations:
+      required: true
+
+  - type: textarea
+    id: aliases
+    attributes:
+      label: Aliases
+      description: 填写要添加的别名，每行一个
+      placeholder: |
+        雷律
+        雷电女王
+      render: text
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: 提交确认
+      options:
+        - label: 我已将标题修改为概括本次提交的内容
+          required: true
+        - label: 我已确认 Entity 为已收录角色
+          required: true

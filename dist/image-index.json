@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-06-04T03:31:32.509Z",
+  "assets": {
+    "0dd6d465": {
+      "image": "data/0dd6d465.jpg",
+      "hash": "68a172274ff9df3151f57de92ad272d31034b744daa888ec30c6d86fe408da02",
+      "width": 1402,
+      "height": 1122,
+      "games": [
+        "bh3"
+      ],
+      "entities": [
+        "Kiana",
+        "Mei"
+      ],
+      "last_updated": "2026-06-04T03:31:32.518Z"
+    }
+  },
+  "games": {
+    "bh3": [
+      "0dd6d465"
+    ]
+  },
+  "entities": {
+    "Kiana": [
+      "0dd6d465"
+    ],
+    "Mei": [
+      "0dd6d465"
+    ]
+  }
+}

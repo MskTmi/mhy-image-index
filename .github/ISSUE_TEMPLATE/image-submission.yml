@@ -1,0 +1,61 @@
+name: 图片投稿
+description: 提交一个或多个图片条目
+title: "[Submission] 添加图片投稿"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请使用此模板提交图片投稿。
+
+        提交前请先确认：
+        - 请将标题从默认值修改为能概括本次投稿内容的标题，例如：[Submission] 添加 Kiana 与 Mei 合照
+        - Game 请填写统一使用的游戏标识，例如：bh3
+        - Entities 请每行填写一个角色名称，直接使用你平时的常用叫法即可
+
+  - type: input
+    id: game
+    attributes:
+      label: Game
+      description: 填写图片所属游戏的统一标识，跨游戏可用逗号或空格分隔，例如 bh3, hsr
+      placeholder: bh3
+    validations:
+      required: true
+
+  - type: textarea
+    id: entities
+    attributes:
+      label: Entities
+      description: 每行一个角色名称，支持多个；可直接填写常用昵称
+      placeholder: |
+        琪亚娜
+        芽衣
+      render: text
+    validations:
+      required: true
+
+  - type: upload
+    id: images
+    attributes:
+      label: Images
+      description: 上传一个或多个图片文件，支持直接拖拽到此区域
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: 可选，用于补充来源、版本或其他说明
+      placeholder: 可留空
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: 提交确认
+      options:
+        - label: 我已将 Issue 标题从默认值修改为能概括本次投稿内容的标题
+          required: true
+        - label: 我已确认 Game 填写正确，且与仓库使用的游戏标识一致
+          required: true
+        - label: 我已确认 Entities 按每行一个填写，没有混入多余说明文字
+          required: true

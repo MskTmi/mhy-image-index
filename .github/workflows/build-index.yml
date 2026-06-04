@@ -1,0 +1,50 @@
+name: Build Image Index
+
+# 在 metadata 变更后自动重建 dist 索引，确保仓库始终可直接消费。
+
+on:
+    push:
+        paths:
+            - "entities/**"
+            - "meta/**"
+            - "scripts/build-index.js"
+            - "scripts/entity-index.js"
+            - ".github/workflows/build-index.yml"
+    workflow_dispatch:
+
+permissions:
+    contents: write
+
+jobs:
+    build-index:
+        runs-on: ubuntu-latest
+
+        steps:
+            # 拉取仓库内容，供索引脚本扫描最新 metadata。
+            - name: Checkout repository
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            # 固定 Node 版本，避免不同 runtime 造成输出细节差异。
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+
+            # 重新生成聚合索引文件。
+            - name: Generate index
+              run: node scripts/build-index.js
+
+            # 只有 dist 真正变化时才提交，避免空提交污染历史。
+            - name: Commit index changes
+              run: |
+                  if git diff --quiet -- dist/image-index.json dist/entity-index.json dist/alias-map.json; then
+                    exit 0
+                  fi
+
+                  git config user.name "github-actions[bot]"
+                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  git add dist/image-index.json dist/entity-index.json dist/alias-map.json
+                  git commit -m "chore: update image indexes"
+                  git push
