@@ -16,7 +16,7 @@ body:
     id: game
     attributes:
       label: Game
-      description: 填写图片所属游戏的统一标识，跨游戏可用逗号或空格分隔，例如 bh3, hsr, Genshin ,zzz （崩坏3rd，崩坏：星穹铁道，原神，绝区零）
+      description: 填写图片所属游戏的统一标识，跨游戏可用逗号或空格分隔，例如 `bh3`, `hsr`, `Genshin` ,`zzz` （崩坏3rd，崩坏：星穹铁道，原神，绝区零）
       placeholder: bh3
     validations:
       required: true
