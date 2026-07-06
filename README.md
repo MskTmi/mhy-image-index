@@ -1,85 +1,94 @@
-# image-index-template
+# mhy-image-index
 
-基于 GitHub Repository 的图片索引仓库模板，提供一套轻量、可审阅、可追踪的图片收录流程：投稿者通过 Issue 提交图片或别名，工作流自动下载、压缩、生成 metadata、发起 PR，并在合并后重建聚合索引
-
-## 快速开始
-
-1. 点击右上角的 **Use this template** → **Create a new repository**
-2. 进入 **Settings → Actions → General**，确保以下选项已勾选：
-   - **Allow GitHub Actions to create and approve pull requests**
-3. 使用仓库内置的 Issue Form 提交第一批图片
-4. 等待工作流自动创建 Pull Request，审核并合并
-5. 合并后直接读取 `dist/` 下的 JSON 文件作为最终索引
-
-> 仓库内置的 `data/0dd6d465.jpg` 与 `meta/0dd6d465.json` 为示例文件，用于演示目录结构和 metadata 格式；正式使用时可保留或删除
+米哈游角色图片索引仓库收录崩坏3 / 原神 / 星穹铁道 / 绝区零等游戏的同人图片，提供轻量、可审阅、可追踪的图片收录流程
 
 ## 仓库结构
 
 ```txt
-data/        优化后的图片文件（.jpg）
-meta/        单图 metadata（.json）
-entities/    角色词典源文件（.json）
-dist/        聚合索引（自动生成）
-scripts/     构建与自动化脚本
-.github/     Issue 模板与 Actions 工作流
+data/              优化后的图片文件（.jpg）
+meta/              单图 metadata（.json）
+entities/          角色实体词典（.json），107 个实体
+dist/              聚合索引（自动生成）
+scripts/           构建与自动化脚本
+tools/             本地工具
+  ├── manual/      手动分类图片（按角色名创建子文件夹）
+  ├── inbox/       tag_image.py 待处理输入目录
+  ├── processed/   tag_image.py 处理归档
+  ├── process_tmp.py   手动分类图片导入脚本
+  ├── tag_image.py     WD14 自动识别 + 分类脚本
+  ├── download_models.py  下载 WD14 模型
+  └── entities_db.py     实体/标签映射
+.github/           Issue 模板与 Actions 工作流
 ```
 
-## 投稿与自动流程
+## 图片收录方式
 
-### 如何投稿
+### 方式一：手动分类（推荐）
 
-使用仓库内置的 Issue Form 提交，核心字段：
+适合已有人工筛选的图片
 
-- **Game**：游戏标识
-- **Entities**：每行一个角色名，直接填写常用称呼即可（如"琪亚娜""芽衣"），无需了解 canonical id 或别名系统
-- **Images**：上传一个或多个图片文件
-- **Notes**：可选补充说明
+1. 在 `tools/manual/` 下创建以角色名命名的文件夹（如 `tools/manual/流萤/`）
+2. 将对应图片放入文件夹
+3. 确保 `entities/` 中有对应实体（文件夹名匹配 `display_name` 或 `id`）
+4. 运行导入脚本：
 
-### 提交后发生了什么
+```bash
+python tools/process_tmp.py --dry-run    # 预览
+python tools/process_tmp.py              # 正式导入
+```
 
-1. 工作流将角色名通过 `alias-map.json` 解析为 canonical id
-2. 下载原图 → 压缩转 JPEG → 写入 `data/`
-3. 生成 `meta/` 文件
-4. 自动创建包含新增文件的 Pull Request
-5. PR 合并后自动重建 `dist/` 下的聚合索引
+支持多角色文件夹：
+- `菈乌玛×奈芙尔` → 同时标记两个角色
+- `仪玄 星见雅 叶瞬光` → 同时标记三个角色
 
-如果角色名尚未收录，维护者会在 PR 审核时补充角色词典。
+### 方式二：WD14 自动识别
 
-### 别名投稿
+适合批量未分类的图片，由 AI 自动识别角色并打标签
 
-可通过「别名投稿」Issue 模板为角色补充别名
+1. 将图片放入 `tools/inbox/`
+2. 运行识别脚本：
 
-- **Entity**：输入角色名（显示名、别名、id 均可），系统自动匹配
-- **Aliases**：每行一个别名
+```bash
+python tools/tag_image.py
+```
 
-提交后，系统会将新别名合并到 `entities/` 对应角色文件的 `aliases` 中，重复别名会自动跳过，PR 合并后 `alias-map.json` 也会自动更新。
+3. 识别结果自动归档到 `tools/processed/`：
+   - `recognized/` — 已成功导入 data/ + meta/
+   - `pending_review/` — 检测到角色但 entity 未登记
+   - `unrecognized/` — 未检测到角色，需人工分类
+   - `duplicate/` — 与已有图片重复
 
+### 方式三：Issue 投稿
+
+使用仓库内置的 Issue Form 在线提交工作流自动下载、压缩、生成 metadata、发起 PR，合并后重建索引
 
 ## 数据格式
 
 ### meta/*.json — 单图元数据
 
-每张图片一个文件，以随机生成的 8 位 ID 命名
-
 ```json
 {
   "id": "0dd6d465",
   "image": "data/0dd6d465.jpg",
+  "hash": "sha256...",
+  "width": 1920,
+  "height": 1080,
   "games": ["bh3"],
   "entities": ["Kiana", "Mei"]
 }
 ```
 
-| 字段       | 说明                                     |
-| ---------- | ---------------------------------------- |
-| `id`       | 图片唯一标识                             |
-| `image`    | 对应的图片文件路径                       |
-| `games`    | 所属游戏，数组（支持联动等多归属场景）   |
-| `entities` | 图中角色的 canonical id 列表，不包含别名 |
+| 字段       | 说明                                   |
+| ---------- | -------------------------------------- |
+| `id`       | 图片唯一标识（8 位随机字符）           |
+| `image`    | 对应的图片文件路径                     |
+| `hash`     | SHA-256 哈希，用于查重                 |
+| `width`    | 图片宽度                               |
+| `height`   | 图片高度                               |
+| `games`    | 所属游戏，数组（支持联动等多归属场景） |
+| `entities` | 图中角色的 canonical id 列表           |
 
-### entities/*.json — 角色词典
-
-每个角色一个文件，以 canonical id 命名。`aliases` 既用于 Issue 投稿时的名称解析，也开放给下游应用——例如看图识人小游戏中，玩家可以通过别名来识别角色
+### entities/*.json — 角色实体
 
 ```json
 {
@@ -167,7 +176,7 @@ scripts/     构建与自动化脚本
 
 基于这套图片索引仓库，你可以快速搭建以下应用，只需读取 `dist/` 下的 JSON 即可，无需自建后端：
 
-- **看图识人小游戏** — 随机展示图片，玩家输入角色名或别名作答。用 `alias-map.json` 统一判定（如"草履虫""琪亚娜"都匹配 Kiana），用 `entity-index.json` 获取提示
-- **角色图鉴 / 画廊** — 按游戏或角色筛选图片，生成图片墙。`image-index.json` 内置的倒排索引可直接按维度过滤，无需遍历
+- **看图识人小游戏** — 随机展示图片，玩家输入角色名或别名作答用 `alias-map.json` 统一判定（如"草履虫""琪亚娜"都匹配 Kiana），用 `entity-index.json` 获取提示
+- **角色图鉴 / 画廊** — 按游戏或角色筛选图片，生成图片墙`image-index.json` 内置的倒排索引可直接按维度过滤，无需遍历
 - **随机图片** — 按游戏、角色或随机返回图片，供 Bot、网页、小程序调用 
 - **社区 Bot 插件** — 在 QQ / Discord / Telegram Bot 中接入，用户发送"来张芽衣"即可返回对应角色的随机图片

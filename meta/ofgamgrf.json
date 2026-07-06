@@ -1,0 +1,13 @@
+{
+  "id": "ofgamgrf",
+  "image": "data/ofgamgrf.jpg",
+  "hash": "c94ab5280a1ea30a5a8a2bc30187c478b435fdd2acdf7de7877c1a8e20f14330",
+  "width": 2304,
+  "height": 1296,
+  "games": [
+    "genshin"
+  ],
+  "entities": [
+    "Linnea"
+  ]
+}

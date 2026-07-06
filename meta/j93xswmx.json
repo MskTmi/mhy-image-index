@@ -1,0 +1,14 @@
+{
+  "id": "j93xswmx",
+  "image": "data/j93xswmx.jpg",
+  "hash": "e37e19d52469f04a69097678a0877c1fdd16d1ede759399e031e514012103c18",
+  "width": 1258,
+  "height": 1080,
+  "games": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "Welt"
+  ]
+}

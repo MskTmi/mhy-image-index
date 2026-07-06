@@ -1,0 +1,13 @@
+{
+  "id": "kcuaoana",
+  "image": "data/kcuaoana.jpg",
+  "hash": "2e1e9e100c78e458dec311c2826f89d1d48c0a758b5f6f437fb35bd40b14ba85",
+  "width": 2708,
+  "height": 1500,
+  "games": [
+    "genshin"
+  ],
+  "entities": [
+    "Columbina"
+  ]
+}

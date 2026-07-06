@@ -1,0 +1,13 @@
+{
+  "id": "dhbkrura",
+  "image": "data/dhbkrura.jpg",
+  "hash": "0ef50e912c47a7ce461e8efa3528d694656c2c334e7391476421ceedb6da3079",
+  "width": 1920,
+  "height": 1080,
+  "games": [
+    "genshin"
+  ],
+  "entities": [
+    "Columbina"
+  ]
+}

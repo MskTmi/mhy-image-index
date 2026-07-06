@@ -1,4 +1,292 @@
 {
+  "Acheron": {
+    "display_name": "黄泉",
+    "games": [
+      "hsr"
+    ],
+    "aliases": [
+      "雷电黄泉"
+    ]
+  },
+  "Aglaea": {
+    "display_name": "阿格莱雅",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "Alice": {
+    "display_name": "艾莉丝",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "Anna": {
+    "display_name": "安娜",
+    "games": [
+      "bh3"
+    ],
+    "aliases": []
+  },
+  "Aria": {
+    "display_name": "阿莉雅",
+    "games": [
+      "zzz"
+    ],
+    "aliases": []
+  },
+  "BlackSwan": {
+    "display_name": "黑天鹅",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "Bronya": {
+    "display_name": "布洛妮娅",
+    "games": [
+      "bh3",
+      "hsr"
+    ],
+    "aliases": [
+      "板鸭"
+    ]
+  },
+  "Castorice": {
+    "display_name": "遐蝶",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "Chinatsu": {
+    "display_name": "千夏",
+    "games": [
+      "zzz"
+    ],
+    "aliases": []
+  },
+  "Cifera": {
+    "display_name": "刻律德菈",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "Cipher": {
+    "display_name": "赛飞儿",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "Cissia": {
+    "display_name": "希希亚",
+    "games": [
+      "zzz"
+    ],
+    "aliases": []
+  },
+  "Citlali": {
+    "display_name": "茜特拉莉",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "collei": {
+    "display_name": "柯莱",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "Columbina": {
+    "display_name": "哥伦比娅",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "Corin": {
+    "display_name": "可琳",
+    "games": [
+      "zzz"
+    ],
+    "aliases": []
+  },
+  "Cyrene": {
+    "display_name": "昔涟",
+    "games": [
+      "hsr"
+    ],
+    "aliases": [
+      "大昔涟",
+      "小昔涟"
+    ]
+  },
+  "Dahlia": {
+    "display_name": "大丽花",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "Eden": {
+    "display_name": "伊甸",
+    "games": [
+      "bh3"
+    ],
+    "aliases": []
+  },
+  "Elysia": {
+    "display_name": "爱莉希雅",
+    "games": [
+      "bh3"
+    ],
+    "aliases": [
+      "爱莉",
+      "粉色妖精小姐"
+    ]
+  },
+  "Escoffier": {
+    "display_name": "爱可菲",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "eula": {
+    "display_name": "优菈",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "Evanescia": {
+    "display_name": "绯樱",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "FatuiTeaParty": {
+    "display_name": "愚人众茶会组",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "Feixiao": {
+    "display_name": "飞霄",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "Firefly": {
+    "display_name": "流萤",
+    "games": [
+      "hsr"
+    ],
+    "aliases": [
+      "萨姆"
+    ]
+  },
+  "Fugue": {
+    "display_name": "忘归人",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "Furina": {
+    "display_name": "芙宁娜",
+    "games": [
+      "genshin"
+    ],
+    "aliases": [
+      "水神",
+      "芙芙"
+    ]
+  },
+  "Griseo": {
+    "display_name": "格蕾修",
+    "games": [
+      "bh3"
+    ],
+    "aliases": []
+  },
+  "Helia": {
+    "display_name": "赫莉娅",
+    "games": [
+      "bh3"
+    ],
+    "aliases": []
+  },
+  "Hibana": {
+    "display_name": "火花",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "homu": {
+    "display_name": "吼姆",
+    "games": [
+      "bh3"
+    ],
+    "aliases": []
+  },
+  "Hook": {
+    "display_name": "虎克",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "HoshimiMiyabi": {
+    "display_name": "星见雅",
+    "games": [
+      "zzz"
+    ],
+    "aliases": []
+  },
+  "HuTao": {
+    "display_name": "胡桃",
+    "games": [
+      "genshin"
+    ],
+    "aliases": [
+      "堂主"
+    ]
+  },
+  "Hyacinth": {
+    "display_name": "海瑟音",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "Kafka": {
+    "display_name": "卡芙卡",
+    "games": [
+      "hsr"
+    ],
+    "aliases": [
+      "妈妈"
+    ]
+  },
+  "keqing": {
+    "display_name": "刻晴",
+    "games": [
+      "genshin"
+    ],
+    "aliases": [
+      "璃月雷神"
+    ]
+  },
   "Kiana": {
     "display_name": "琪亚娜",
     "games": [
@@ -9,13 +297,389 @@
       "虫虫"
     ]
   },
+  "Lingsha": {
+    "display_name": "灵砂",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "Linnea": {
+    "display_name": "莉奈娅",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "lisa": {
+    "display_name": "丽莎",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "LiSushang": {
+    "display_name": "李素裳",
+    "games": [
+      "bh3"
+    ],
+    "aliases": []
+  },
+  "Llauma": {
+    "display_name": "菈乌玛",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "lumine": {
+    "display_name": "荧",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "March7th": {
+    "display_name": "三月七",
+    "games": [
+      "hsr"
+    ],
+    "aliases": [
+      "三月",
+      "开黑户"
+    ]
+  },
   "Mei": {
     "display_name": "芽衣",
     "games": [
       "bh3"
     ],
     "aliases": [
-      "煮饭婆"
+      "煮饭婆",
+      "雷电芽衣"
     ]
+  },
+  "Mualani": {
+    "display_name": "玛拉妮",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "Nahida": {
+    "display_name": "纳西妲",
+    "games": [
+      "genshin"
+    ],
+    "aliases": [
+      "小吉祥草王",
+      "草神"
+    ]
+  },
+  "NangongYu": {
+    "display_name": "南宫羽",
+    "games": [
+      "zzz"
+    ],
+    "aliases": []
+  },
+  "Nepher": {
+    "display_name": "奈芙尔",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "Niko": {
+    "display_name": "尼可",
+    "games": [
+      "genshin"
+    ],
+    "aliases": [
+      "Nicole Reeyn",
+      "魔女N"
+    ]
+  },
+  "Nome": {
+    "display_name": "诺姆",
+    "games": [
+      "bh3"
+    ],
+    "aliases": []
+  },
+  "Prune": {
+    "display_name": "布伦尼",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "RaidenShogun": {
+    "display_name": "雷电将军",
+    "games": [
+      "genshin"
+    ],
+    "aliases": [
+      "影",
+      "雷神"
+    ]
+  },
+  "Rappa": {
+    "display_name": "乱破",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "Raven": {
+    "display_name": "渡鸦",
+    "games": [
+      "bh3"
+    ],
+    "aliases": []
+  },
+  "Remielle": {
+    "display_name": "蕾米埃尔",
+    "games": [
+      "zzz"
+    ],
+    "aliases": []
+  },
+  "Robin": {
+    "display_name": "知更鸟",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "Ronova": {
+    "display_name": "若娜瓦",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "RuanMei": {
+    "display_name": "阮梅",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "Ryune": {
+    "display_name": "琉音",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "Sandrone": {
+    "display_name": "桑多涅",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "sangonomiya_kokomi": {
+    "display_name": "珊瑚宫心海",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "seele_vollerei": {
+    "display_name": "希儿·芙乐艾",
+    "games": [
+      "bh3"
+    ],
+    "aliases": []
+  },
+  "shenhe": {
+    "display_name": "申鹤",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "silver_wolf": {
+    "display_name": "银狼",
+    "games": [
+      "hsr"
+    ],
+    "aliases": [
+      "狼尊"
+    ]
+  },
+  "Skirk": {
+    "display_name": "丝柯克",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "Sparkle": {
+    "display_name": "花火",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "stelle": {
+    "display_name": "星",
+    "games": [
+      "hsr"
+    ],
+    "aliases": [
+      "女主",
+      "开拓者"
+    ]
+  },
+  "Sunna": {
+    "display_name": "苏娜",
+    "games": [
+      "zzz"
+    ],
+    "aliases": []
+  },
+  "TheHerta": {
+    "display_name": "大黑塔",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "Thelema": {
+    "display_name": "瑟莉姆",
+    "games": [
+      "bh3"
+    ],
+    "aliases": []
+  },
+  "TheresaLuna": {
+    "display_name": "月下誓约",
+    "games": [
+      "bh3"
+    ],
+    "aliases": [
+      "大月下",
+      "月下"
+    ]
+  },
+  "Topaz": {
+    "display_name": "托帕",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "Tribbie": {
+    "display_name": "缇宝",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "Varesa": {
+    "display_name": "瓦雷莎",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "Veliona": {
+    "display_name": "维琳娜",
+    "games": [
+      "bh3"
+    ],
+    "aliases": [
+      "黑希"
+    ]
+  },
+  "Vita": {
+    "display_name": "薇塔",
+    "games": [
+      "bh3"
+    ],
+    "aliases": []
+  },
+  "VivianBanshee": {
+    "display_name": "薇薇安·班希",
+    "games": [
+      "zzz"
+    ],
+    "aliases": []
+  },
+  "Voyanisa": {
+    "display_name": "沃雅妮莎",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "WanzhouLoli": {
+    "display_name": "挽昼(萝莉)",
+    "games": [
+      "zzz"
+    ],
+    "aliases": [
+      "萝莉版挽昼"
+    ]
+  },
+  "Welt": {
+    "display_name": "瓦尔特",
+    "games": [
+      "bh3",
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "yae_miko": {
+    "display_name": "八重神子",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "Yaoguang": {
+    "display_name": "尧光",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
+  },
+  "Yaoyao": {
+    "display_name": "瑶瑶",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "YeShunguang": {
+    "display_name": "叶瞬光",
+    "games": [
+      "zzz"
+    ],
+    "aliases": []
+  },
+  "Yixuan": {
+    "display_name": "仪玄",
+    "games": [
+      "zzz"
+    ],
+    "aliases": []
+  },
+  "yoimiya": {
+    "display_name": "宵宫",
+    "games": [
+      "genshin"
+    ],
+    "aliases": []
+  },
+  "Yunli": {
+    "display_name": "云璃",
+    "games": [
+      "hsr"
+    ],
+    "aliases": []
   }
 }

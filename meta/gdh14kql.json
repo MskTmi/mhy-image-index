@@ -1,0 +1,13 @@
+{
+  "id": "gdh14kql",
+  "image": "data/gdh14kql.jpg",
+  "hash": "2c4916f67b27fa1bd17a50f3c9ccc4eae2a69c3b06c993ca6b12a98d4cf5042b",
+  "width": 1080,
+  "height": 1560,
+  "games": [
+    "bh3"
+  ],
+  "entities": [
+    "Anna"
+  ]
+}

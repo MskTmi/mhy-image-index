@@ -1,0 +1,13 @@
+{
+  "id": "wvdc13vc",
+  "image": "data/wvdc13vc.jpg",
+  "hash": "ca40d495491a64d72a1f75e020ec31c2b77cd5b0f0b9ab1f1ecce4e1e8c3cc84",
+  "width": 2160,
+  "height": 1080,
+  "games": [
+    "hsr"
+  ],
+  "entities": [
+    "Aglaea"
+  ]
+}

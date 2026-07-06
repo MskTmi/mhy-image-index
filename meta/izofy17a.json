@@ -1,0 +1,13 @@
+{
+  "id": "izofy17a",
+  "image": "data/izofy17a.jpg",
+  "hash": "295d140855d79cd471db345f4e860c7667ccb0bfc69b9e9eeba27cf2952d8b70",
+  "width": 768,
+  "height": 1280,
+  "games": [
+    "genshin"
+  ],
+  "entities": [
+    "Niko"
+  ]
+}

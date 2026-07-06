@@ -1,0 +1,13 @@
+{
+  "id": "rpm7m4r2",
+  "image": "data/rpm7m4r2.jpg",
+  "hash": "533e40fd1e80916aab40e776c031c87b77644fb9bb9ec9bf8a925740a44a00af",
+  "width": 832,
+  "height": 1216,
+  "games": [
+    "hsr"
+  ],
+  "entities": [
+    "RuanMei"
+  ]
+}

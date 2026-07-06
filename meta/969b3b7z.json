@@ -1,0 +1,13 @@
+{
+  "id": "969b3b7z",
+  "image": "data/969b3b7z.jpg",
+  "hash": "91e4add1f71353f1f5a2a90eae29e89bc03e3bc50d632e154661fb393d9970e0",
+  "width": 1000,
+  "height": 2000,
+  "games": [
+    "hsr"
+  ],
+  "entities": [
+    "Cipher"
+  ]
+}

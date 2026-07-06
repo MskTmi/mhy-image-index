@@ -1,0 +1,13 @@
+{
+  "id": "8vire9nf",
+  "image": "data/8vire9nf.jpg",
+  "hash": "ff3bcfbb3fba22d71b82e2af17415a6468b35611706a416e914888fd29633502",
+  "width": 1080,
+  "height": 1620,
+  "games": [
+    "hsr"
+  ],
+  "entities": [
+    "silver_wolf"
+  ]
+}

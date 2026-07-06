@@ -1,0 +1,13 @@
+{
+  "id": "3plta4ch",
+  "image": "data/3plta4ch.jpg",
+  "hash": "fc8d4a2aa8c719e342db24bb43ddb388842b9f2a0bf2a488577bdbad408f6186",
+  "width": 768,
+  "height": 1280,
+  "games": [
+    "bh3"
+  ],
+  "entities": [
+    "Cyrene"
+  ]
+}

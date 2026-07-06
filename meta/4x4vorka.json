@@ -1,0 +1,13 @@
+{
+  "id": "4x4vorka",
+  "image": "data/4x4vorka.jpg",
+  "hash": "bbe50c287939dc2e9fc3904482e86b5c4fd96618a948ff308c11acfe4ebd3aab",
+  "width": 1080,
+  "height": 1919,
+  "games": [
+    "bh3"
+  ],
+  "entities": [
+    "Anna"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "snvkuask",
+  "image": "data/snvkuask.jpg",
+  "hash": "29760a6b1b08da9f2fa5baea22d7ad585809faa8aeecb250ca6bed69bf3139d3",
+  "width": 1600,
+  "height": 2795,
+  "games": [
+    "hsr"
+  ],
+  "entities": [
+    "Hook"
+  ]
+}

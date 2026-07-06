@@ -1,0 +1,13 @@
+{
+  "id": "em0omrux",
+  "image": "data/em0omrux.jpg",
+  "hash": "c0ecd93281567f58a28be80b5e015cfdc04999ce608732828797fa9c30321fde",
+  "width": 1080,
+  "height": 1578,
+  "games": [
+    "genshin"
+  ],
+  "entities": [
+    "HuTao"
+  ]
+}

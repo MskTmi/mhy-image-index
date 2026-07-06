@@ -1,0 +1,18 @@
+# 基础依赖
+dghs-imgutils>=0.19.0
+Pillow>=10.0.0
+huggingface_hub>=0.24,<2.0
+hf-xet>=1.0,<2.0
+
+# === GPU 推理（推荐）===
+# 有 NVIDIA 显卡时装这套，自动利用 GPU 加速
+onnxruntime-gpu>=1.17.0
+# CUDA 12 运行时（pip 版，无需装 CUDA Toolkit）
+# tag_image.py 启动时会自动发现这些 DLL
+nvidia-cublas-cu12
+nvidia-cudnn-cu12
+nvidia-cuda-runtime-cu12
+
+# === CPU 推理（备选）===
+# 无 NVIDIA 显卡时，把上面 onnxruntime-gpu 注释掉，改用：
+# onnxruntime>=1.17.0

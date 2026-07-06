@@ -1,0 +1,13 @@
+{
+  "id": "mcyk8god",
+  "image": "data/mcyk8god.jpg",
+  "hash": "6de82232d8da31cba93460cdf0f72673c65107cb79aa016b61ba3b5f26ff969e",
+  "width": 1080,
+  "height": 2859,
+  "games": [
+    "genshin"
+  ],
+  "entities": [
+    "shenhe"
+  ]
+}
