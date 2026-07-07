@@ -25,9 +25,11 @@
   "Anna": {
     "display_name": "安娜",
     "games": [
-      "bh3"
+      "genshin"
     ],
-    "aliases": []
+    "aliases": [
+      "至冬女皇"
+    ]
   },
   "Aria": {
     "display_name": "爱芮",
@@ -485,7 +487,9 @@
     "games": [
       "bh3"
     ],
-    "aliases": []
+    "aliases": [
+      "希儿"
+    ]
   },
   "shenhe": {
     "display_name": "申鹤",
