@@ -109,7 +109,9 @@
     "games": [
       "genshin"
     ],
-    "aliases": []
+    "aliases": [
+      "少女"
+    ]
   },
   "Corin": {
     "display_name": "可琳",
@@ -173,13 +175,6 @@
     ],
     "aliases": []
   },
-  "FatuiTeaParty": {
-    "display_name": "愚人众茶会组",
-    "games": [
-      "genshin"
-    ],
-    "aliases": []
-  },
   "Feixiao": {
     "display_name": "飞霄",
     "games": [
@@ -201,7 +196,10 @@
     "games": [
       "hsr"
     ],
-    "aliases": []
+    "aliases": [
+      "停云",
+      "王贵人"
+    ]
   },
   "Furina": {
     "display_name": "芙宁娜",
@@ -464,7 +462,7 @@
   "Ryune": {
     "display_name": "琉音",
     "games": [
-      "hsr"
+      "zzz"
     ],
     "aliases": []
   },
@@ -631,7 +629,7 @@
     "aliases": []
   },
   "Yaoguang": {
-    "display_name": "尧光",
+    "display_name": "爻光",
     "games": [
       "hsr"
     ],
