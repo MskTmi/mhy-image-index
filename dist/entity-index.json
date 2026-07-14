@@ -1,7 +1,7 @@
 {
   "Acheron": {
     "display_name": "黄泉",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": [
@@ -10,21 +10,21 @@
   },
   "Aglaea": {
     "display_name": "阿格莱雅",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "Alice": {
     "display_name": "艾莉丝",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "Anna": {
     "display_name": "安娜",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": [
@@ -33,21 +33,30 @@
   },
   "Aria": {
     "display_name": "爱芮",
-    "games": [
+    "sources": [
       "zzz"
     ],
     "aliases": []
   },
+  "BailuYouyun": {
+    "display_name": "白鹿游云",
+    "sources": [
+      "bh3"
+    ],
+    "aliases": [
+      "白鹿"
+    ]
+  },
   "BlackSwan": {
     "display_name": "黑天鹅",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "Bronya": {
     "display_name": "布洛妮娅",
-    "games": [
+    "sources": [
       "bh3",
       "hsr"
     ],
@@ -57,70 +66,72 @@
   },
   "Castorice": {
     "display_name": "遐蝶",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "Sunna": {
     "display_name": "千夏",
-    "games": [
+    "sources": [
       "zzz"
     ],
     "aliases": []
   },
   "Cifera": {
     "display_name": "刻律德菈",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "Cipher": {
     "display_name": "赛飞儿",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "Cissia": {
     "display_name": "希希芙",
-    "games": [
+    "sources": [
       "zzz"
     ],
     "aliases": []
   },
   "Citlali": {
     "display_name": "茜特拉莉",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "collei": {
     "display_name": "柯莱",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "Columbina": {
     "display_name": "哥伦比娅",
-    "games": [
+    "sources": [
       "genshin"
     ],
-    "aliases": []
+    "aliases": [
+      "少女"
+    ]
   },
   "Corin": {
     "display_name": "可琳",
-    "games": [
+    "sources": [
       "zzz"
     ],
     "aliases": []
   },
   "Cyrene": {
     "display_name": "昔涟",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": [
@@ -130,21 +141,21 @@
   },
   "Dahlia": {
     "display_name": "大丽花",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "Eden": {
     "display_name": "伊甸",
-    "games": [
+    "sources": [
       "bh3"
     ],
     "aliases": []
   },
   "Elysia": {
     "display_name": "爱莉希雅",
-    "games": [
+    "sources": [
       "bh3"
     ],
     "aliases": [
@@ -154,42 +165,35 @@
   },
   "Escoffier": {
     "display_name": "爱可菲",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "eula": {
     "display_name": "优菈",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "Evanescia": {
     "display_name": "绯英",
-    "games": [
+    "sources": [
       "hsr"
-    ],
-    "aliases": []
-  },
-  "FatuiTeaParty": {
-    "display_name": "愚人众茶会组",
-    "games": [
-      "genshin"
     ],
     "aliases": []
   },
   "Feixiao": {
     "display_name": "飞霄",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "Firefly": {
     "display_name": "流萤",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": [
@@ -198,14 +202,17 @@
   },
   "Fugue": {
     "display_name": "忘归人",
-    "games": [
+    "sources": [
       "hsr"
     ],
-    "aliases": []
+    "aliases": [
+      "停云",
+      "王贵人"
+    ]
   },
   "Furina": {
     "display_name": "芙宁娜",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": [
@@ -215,42 +222,42 @@
   },
   "Griseo": {
     "display_name": "格蕾修",
-    "games": [
+    "sources": [
       "bh3"
     ],
     "aliases": []
   },
   "Helia": {
     "display_name": "赫莉娅",
-    "games": [
+    "sources": [
       "bh3"
     ],
     "aliases": []
   },
   "Hibana": {
     "display_name": "火花",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "homu": {
     "display_name": "吼姆",
-    "games": [
+    "sources": [
       "bh3"
     ],
     "aliases": []
   },
   "HoshimiMiyabi": {
     "display_name": "星见雅",
-    "games": [
+    "sources": [
       "zzz"
     ],
     "aliases": []
   },
   "HuTao": {
     "display_name": "胡桃",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": [
@@ -259,14 +266,14 @@
   },
   "Hyacinth": {
     "display_name": "海瑟音",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "Kafka": {
     "display_name": "卡芙卡",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": [
@@ -275,7 +282,7 @@
   },
   "keqing": {
     "display_name": "刻晴",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": [
@@ -284,7 +291,7 @@
   },
   "Kiana": {
     "display_name": "琪亚娜",
-    "games": [
+    "sources": [
       "bh3"
     ],
     "aliases": [
@@ -294,49 +301,49 @@
   },
   "Lingsha": {
     "display_name": "灵砂",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "Linnea": {
     "display_name": "莉奈娅",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "lisa": {
     "display_name": "丽莎",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "LiSushang": {
     "display_name": "李素裳",
-    "games": [
+    "sources": [
       "bh3"
     ],
     "aliases": []
   },
   "Llauma": {
     "display_name": "菈乌玛",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "lumine": {
     "display_name": "荧",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "March7th": {
     "display_name": "三月七",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": [
@@ -346,7 +353,7 @@
   },
   "Mei": {
     "display_name": "芽衣",
-    "games": [
+    "sources": [
       "bh3"
     ],
     "aliases": [
@@ -356,14 +363,14 @@
   },
   "Mualani": {
     "display_name": "玛拉妮",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "Nahida": {
     "display_name": "纳西妲",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": [
@@ -373,21 +380,21 @@
   },
   "NangongYu": {
     "display_name": "南宫羽",
-    "games": [
+    "sources": [
       "zzz"
     ],
     "aliases": []
   },
   "Nepher": {
     "display_name": "奈芙尔",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "Niko": {
     "display_name": "尼可",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": [
@@ -397,21 +404,21 @@
   },
   "Nome": {
     "display_name": "诺姆",
-    "games": [
+    "sources": [
       "zzz"
     ],
     "aliases": []
   },
   "Prune": {
     "display_name": "布伦尼",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "RaidenShogun": {
     "display_name": "雷电将军",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": [
@@ -421,70 +428,70 @@
   },
   "Rappa": {
     "display_name": "乱破",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "Raven": {
     "display_name": "渡鸦",
-    "games": [
+    "sources": [
       "bh3"
     ],
     "aliases": []
   },
   "Remielle": {
     "display_name": "蕾米埃尔",
-    "games": [
+    "sources": [
       "zzz"
     ],
     "aliases": []
   },
   "Robin": {
     "display_name": "知更鸟",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "Ronova": {
     "display_name": "若娜瓦",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "RuanMei": {
     "display_name": "阮梅",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "Ryune": {
     "display_name": "琉音",
-    "games": [
-      "hsr"
+    "sources": [
+      "zzz"
     ],
     "aliases": []
   },
   "Sandrone": {
     "display_name": "桑多涅",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "sangonomiya_kokomi": {
     "display_name": "珊瑚宫心海",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "seele_vollerei": {
     "display_name": "希儿·芙乐艾",
-    "games": [
+    "sources": [
       "bh3"
     ],
     "aliases": [
@@ -493,14 +500,14 @@
   },
   "shenhe": {
     "display_name": "申鹤",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "silver_wolf": {
     "display_name": "银狼",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": [
@@ -509,21 +516,21 @@
   },
   "Skirk": {
     "display_name": "丝柯克",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "Sparkle": {
     "display_name": "花火",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "stelle": {
     "display_name": "星",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": [
@@ -533,21 +540,21 @@
   },
   "TheHerta": {
     "display_name": "大黑塔",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "Thelema": {
     "display_name": "瑟莉姆",
-    "games": [
+    "sources": [
       "bh3"
     ],
     "aliases": []
   },
   "TheresaLuna": {
     "display_name": "月下誓约",
-    "games": [
+    "sources": [
       "bh3"
     ],
     "aliases": [
@@ -557,28 +564,28 @@
   },
   "Topaz": {
     "display_name": "托帕",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "Tribbie": {
     "display_name": "缇宝",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "Varesa": {
     "display_name": "瓦雷莎",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "Veliona": {
     "display_name": "维琳娜",
-    "games": [
+    "sources": [
       "bh3"
     ],
     "aliases": [
@@ -587,28 +594,28 @@
   },
   "Vita": {
     "display_name": "薇塔",
-    "games": [
+    "sources": [
       "bh3"
     ],
     "aliases": []
   },
   "VivianBanshee": {
     "display_name": "薇薇安·班希",
-    "games": [
+    "sources": [
       "zzz"
     ],
     "aliases": []
   },
   "Voyanisa": {
     "display_name": "沃雅妮莎",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "WanzhouLoli": {
     "display_name": "挽昼(萝莉)",
-    "games": [
+    "sources": [
       "zzz"
     ],
     "aliases": [
@@ -617,7 +624,7 @@
   },
   "Welt": {
     "display_name": "瓦尔特",
-    "games": [
+    "sources": [
       "bh3",
       "hsr"
     ],
@@ -625,49 +632,49 @@
   },
   "yae_miko": {
     "display_name": "八重神子",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "Yaoguang": {
-    "display_name": "尧光",
-    "games": [
+    "display_name": "爻光",
+    "sources": [
       "hsr"
     ],
     "aliases": []
   },
   "Yaoyao": {
     "display_name": "瑶瑶",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "YeShunguang": {
     "display_name": "叶瞬光",
-    "games": [
+    "sources": [
       "zzz"
     ],
     "aliases": []
   },
   "Yixuan": {
     "display_name": "仪玄",
-    "games": [
+    "sources": [
       "zzz"
     ],
     "aliases": []
   },
   "yoimiya": {
     "display_name": "宵宫",
-    "games": [
+    "sources": [
       "genshin"
     ],
     "aliases": []
   },
   "Yunli": {
     "display_name": "云璃",
-    "games": [
+    "sources": [
       "hsr"
     ],
     "aliases": []

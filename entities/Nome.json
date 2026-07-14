@@ -1,7 +1,7 @@
 {
     "id": "Nome",
     "display_name": "诺姆",
-    "games": [
+    "sources": [
         "zzz"
     ],
     "aliases": []

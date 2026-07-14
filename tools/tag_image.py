@@ -1,35 +1,45 @@
-"""基于 imgutils / WD14 Tagger 的图片批量识别 + 分类工具。
+"""基于多源融合的图片批量识别 + 分类工具。
+
+识别流程（四层多源融合）：
+  1. WD14 Tagger   — 模型推理 danbooru character tag
+  2. 文件名解析     — 从文件名 token 提取角色名
+  3. 别名统一       — display_name / aliases / tag 统一映射
+  4. CLIP 二次验证  — 图文匹配（可选）
 
 用法:
     python tools/tag_image.py [--input <待分类图片目录>] [--repo <仓库根目录>]
         [--character-threshold 0.7] [--general-threshold 0.35]
         [--model SwinV2_v3] [--quality 92]
+        [--fusion-threshold 0.30] [--use-clip]
 
 默认在 tools 下维护两个固定文件夹构成工作流：
-    tools/inbox/        待处理：把要识别的图丢进来即可
-    tools/processed/   处理后归档，按结果分四个子目录：
+    tools/workspace/inbox/           待处理：把要识别的图丢进来即可
+    tools/workspace/processed/       处理后归档，按结果分四个子目录：
         recognized/     已成功写入 data/ 与 meta/ 的源图
-        pending_review/ WD 检测到角色但 entity 未登记，保留供人工筛选
-        unrecognized/   WD 未检测到任何角色 tag，留给人工分类
+        pending_review/ 检测到角色但 entity 未登记，保留供人工筛选
+        unrecognized/   所有检测器均未识别到角色，留给人工分类
         duplicate/      与仓库已有图重复、已跳过的源图
 
 跑完一轮后 inbox 会被清空，源图全部移入 processed/ 的对应子目录；
 命名冲突会自动追加后缀 `_1`、`_2`，不会覆盖既有文件。
 
-工具是游戏无关的：只要是 entities/ 里登记了 danbooru_tags 的角色都会被识别，
-游戏归属直接取自 entity 自身的 games 字段。
+工具与作品无关：只要 entities/ 里登记了对应角色，无论是游戏 / 动漫 / 影视 /
+VTuber / 舰船 都会被识别，作品归属直接取自 entity 自身的 sources 字段。
 """
 
 from __future__ import annotations
 
 import argparse
 import hashlib
+import io
 import json
 import os
+import re
 import shutil
 import sys
 import random
 import string
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional
 
@@ -50,11 +60,10 @@ if sys.platform == "win32":
 # 两个目录都被 .gitignore 排除，不污染全局环境，也不入库。
 _TOOLS_DIR = Path(__file__).resolve().parent
 _DEFAULT_HF_HOME = _TOOLS_DIR / ".hf-cache"
+LOGS_DIR = _TOOLS_DIR / "logs"
 os.environ.setdefault("HF_HOME", str(_DEFAULT_HF_HOME))
 os.environ.setdefault("HF_HUB_CACHE", str(_DEFAULT_HF_HOME / "hub"))
 os.environ.setdefault("HF_XET_CACHE", str(_DEFAULT_HF_HOME / "xet"))
-# hf-xet 后端通过 HTTP 代理做 HEAD 请求时容易拿到上游 308/空响应，
-# 进而触发 huggingface_hub FileMetadataError；默认禁用回传统 requests 路径。
 os.environ.setdefault("HF_HUB_DISABLE_XET", "1")
 
 # 自动发现 nvidia pip 包的 DLL 路径（nvidia-cublas-cu12 等），加到 PATH
@@ -79,6 +88,7 @@ def _setup_cuda_dll_path() -> None:
 _setup_cuda_dll_path()
 
 from entities_db import EntityLookup, load_entity_db
+from recognizer import Recognizer
 
 # ---- 自动创建实体 ----
 
@@ -102,11 +112,8 @@ def auto_create_entities(
 
 # ----------------------------------------------------------------
 
-# imgutils 默认通过 hf_hub_download 从 HuggingFace 拉模型。当本机走 HTTP 代理时，
-# huggingface_hub 1.22 做 HEAD 元数据请求会因代理丢失 X-Repo-Commit 头而失败。
-# 我们优先检测 tools/.hf-cache/<model>/ 下是否有 download_models.py 抓下来的本地
-# 模型文件，若有就 monkey-patch 掉 imgutils 三个内部加载函数让它们直接读本地路径，
-# 完全跳过 hf_hub。本地目录不存在或文件不全时回落到原始 hf_hub 路径（要求网络通）。
+# 优先检测 tools/.hf-cache/<model>/ 下本地模型文件，若有则直接读取，
+# 跳过 hf_hub 网络层。本地缺失时回落到 imgutils 默认路径。
 _LOCAL_CACHE_ROOT = _TOOLS_DIR / ".hf-cache"
 
 
@@ -258,8 +265,8 @@ DEFAULT_GENERAL_THRESHOLD = 0.35
 DEFAULT_QUALITY = 92
 
 # tools 下的固定工作目录名。INBOX 放待处理图，PROCESSED 下按结果分三类归档。
-INBOX_DIR_NAME = "inbox"
-PROCESSED_DIR_NAME = "processed"
+INBOX_DIR_NAME = "workspace/inbox"
+PROCESSED_DIR_NAME = "workspace/processed"
 PROCESSED_RECOGNIZED = "recognized"
 PROCESSED_UNRECOGNIZED = "unrecognized"
 PROCESSED_DUPLICATE = "duplicate"
@@ -273,8 +280,8 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     parser.add_argument(
         "--input",
         default=None,
-        help="待分类的图片所在目录（递归扫描），默认 tools/inbox；"
-        "处理后源图会被移动到 tools/processed/ 下归档。",
+        help="待分类的图片所在目录（递归扫描），默认 tools/workspace/inbox；"
+        "处理后源图会被移动到 tools/workspace/processed/ 下归档。",
     )
     parser.add_argument(
         "--repo",
@@ -285,6 +292,24 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     parser.add_argument("--character-threshold", type=float, default=DEFAULT_CHAR_THRESHOLD, help="character tag 置信度阈值")
     parser.add_argument("--general-threshold", type=float, default=DEFAULT_GENERAL_THRESHOLD, help="general tag 置信度阈值（识别只看 character，仅影响模型内部裁剪）")
     parser.add_argument("--quality", type=int, default=DEFAULT_QUALITY, help="写入 data/ 的 JPEG 质量 1-100")
+    parser.add_argument(
+        "--fusion-threshold",
+        type=float,
+        default=0.30,
+        help="多源融合后最低置信度（0.0~1.0），低于此值归档到 unrecognized",
+    )
+    parser.add_argument(
+        "--use-clip",
+        action="store_true",
+        help="启用 CLIP 二次验证（需 pip install open-clip-torch torch，首次运行自动下载模型 ~2GB）",
+    )
+    parser.add_argument(
+        "--no-compress",
+        dest="compress",
+        action="store_false",
+        help="禁用智能压缩，直接保存 JPEG（文件更大但颜色完全无损）",
+    )
+    parser.set_defaults(compress=True)
     parser.add_argument(
         "--dump-tags",
         action="store_true",
@@ -332,8 +357,13 @@ def load_existing_hashes(meta_dir: Path) -> Dict[str, str]:
     return hashes
 
 
-def optimize_to_jpeg(source: Path, dest: Path, quality: int) -> tuple[int, int, str]:
+def optimize_to_jpeg(source: Path, dest: Path, quality: int, compress: bool = False) -> tuple[int, int, str]:
     """把任意常见图片格式转 JPEG（按 EXIF 旋转，丢弃原始元数据）。
+
+    当 compress=True 时启用 TinyPNG 风格的智能压缩：
+      1. 对图片做自适应调色板量化（减少冗余颜色），尤其适合二次元图
+      2. 关闭色度子采样（subsampling="4:4:4"），保留线条/文字锐度
+      3. 量化可能轻微偏色，对写实照片会跳过量化保留原色
 
     返回 (width, height, sha256)，元数据从输出文件重新读取以保证 meta 里写的是
     压缩后文件的真实尺寸与哈希。
@@ -343,15 +373,39 @@ def optimize_to_jpeg(source: Path, dest: Path, quality: int) -> tuple[int, int, 
     dest.parent.mkdir(parents=True, exist_ok=True)
 
     with Image.open(source) as img:
-        # EXIF 自动旋转，再去掉 alpha 通道（JPEG 不带 alpha）
         img = img.convert("RGB")
-        img.save(dest, format="JPEG", quality=quality, optimize=True)
+        original_size = img.size
+
+        if compress:
+            # 智能压缩：对二次元风格的图做调色板量化，大幅减小体积
+            # 先分析图片复杂度 —— 颜色数较少的图更适合量化
+            # 对于超大图（>2000px），先缩放到合理尺寸再做量化
+            max_dim = max(img.size)
+            if max_dim > 3000:
+                ratio = 3000 / max_dim
+                new_size = (int(img.size[0] * ratio), int(img.size[1] * ratio))
+                img = img.resize(new_size, Image.LANCZOS)
+
+            # 自适应调色板量化：用中位切法把颜色压缩到 256 色
+            # 然后转回 RGB 保存 JPEG，Huffman 表优化 + 无子采样
+            try:
+                img = img.quantize(colors=256, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.FLOYDSTEINBERG)
+                img = img.convert("RGB")
+            except (ValueError, OSError):
+                pass  # 量化失败（极少见），直接保存原图
+
+            # 无子采样保留边缘/文字锐度；optimize 做 Huffman 表优化
+            img.save(dest, format="JPEG", quality=quality, optimize=True, subsampling="4:4:4")
+        else:
+            img.save(dest, format="JPEG", quality=quality, optimize=True)
 
     with Image.open(dest) as out:
         width, height = out.size
 
     with open(dest, "rb") as fp:
         digest = hashlib.sha256(fp.read()).hexdigest()
+
+    return width, height, digest
 
     return width, height, digest
 
@@ -381,14 +435,14 @@ def tag_image(image_path: Path, model_name: str, general_threshold: float, chara
     return chars
 
 
-def write_meta(meta_path: Path, *, uid: str, games: List[str], entities: List[str], sha: str, width: int, height: int) -> None:
+def write_meta(meta_path: Path, *, uid: str, sources: List[str], entities: List[str], sha: str, width: int, height: int) -> None:
     meta = {
         "id": uid,
         "image": f"data/{uid}.jpg",
         "hash": sha,
         "width": width,
         "height": height,
-        "games": games,
+        "sources": sources,
         "entities": entities,
     }
     meta_path.write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
@@ -413,11 +467,72 @@ def archive_source(src: Path, tools_dir: Path, input_root: Path, category: str) 
     return dest
 
 
+# 常见分词符号
+_NAME_SPLIT_RE = re.compile(r"[-_,.\s()（）]+")
+# 看起来像角色名的启发式规则：含中日韩字符 或 大驼峰英文单词
+_NAME_HINT_RE = re.compile(r"[\u4e00-\u9fff\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af]|[A-Z][a-z]+")
+# 明显不是角色名的常见词黑名单
+_NAME_BLACKLIST = {"ai", "ai生成", "png", "jpg", "jpeg", "webp", "美少女", "女の子", "女の子", "原创"}
+
+
+def _extract_name_hints(filename: str) -> list:
+    """从文件名中提取可能的角色名，用于提示用户创建 entity。"""
+    stem = Path(filename).stem
+    tokens = [t.strip() for t in _NAME_SPLIT_RE.split(stem) if t.strip()]
+    hints = []
+    for t in tokens:
+        low = t.lower()
+        if len(t) < 2 or low.isdigit() or (len(low) >= 2 and low[0] == 'p' and low[1:].isdigit()):
+            continue
+        if low in _NAME_BLACKLIST:
+            continue
+        if _NAME_HINT_RE.search(t):
+            hints.append(t)
+    # 优先：含中文的排前面（最像角色名），然后按长度降序
+    def _sort_key(s: str) -> tuple:
+        has_cjk = int(any('\u4e00' <= c <= '\u9fff' for c in s))
+        return (-has_cjk, -len(s), s.lower())
+    hints.sort(key=_sort_key)
+    return hints
+
+
 def main(argv: Optional[List[str]] = None) -> int:
     args = parse_args(argv)
     if not (1 <= args.quality <= 100):
         print("错误：--quality 必须在 1-100 之间。", file=sys.stderr)
         return 2
+
+    # ---- 日志：捕获 stdout 全部输出到日志文件 ----
+    log_buffer = io.StringIO()
+
+    class _TeeWriter:
+        """同时写入原始 stdout 和日志缓冲区。"""
+        def __init__(self, original, buffer):
+            self.original = original
+            self.buffer = buffer
+
+        def write(self, s: str) -> int:
+            self.original.write(s)
+            self.buffer.write(s)
+            return len(s)
+
+        def flush(self) -> None:
+            self.original.flush()
+
+        def isatty(self) -> bool:
+            return hasattr(self.original, "isatty") and self.original.isatty()
+
+    _orig_stdout = sys.stdout
+    sys.stdout = _TeeWriter(_orig_stdout, log_buffer)  # type: ignore[assignment]
+
+    try:
+        return _main_impl(args, log_buffer)
+    finally:
+        sys.stdout = _orig_stdout
+
+
+def _main_impl(args: argparse.Namespace, log_buffer: io.StringIO) -> int:
+    """主逻辑（在 stdout tee 的保护下运行）。"""
 
     # 启动前优先用 tools/.hf-cache/<model>/ 本地模型；找不到运行时会回落到 hf_hub。
     local_cache_dir = _LOCAL_CACHE_ROOT / args.model.lower()
@@ -462,7 +577,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     lookup = load_entity_db(entities_dir)
     if lookup.is_empty:
         print(
-            "警告：entities/ 中没有任何声明 danbooru_tags 的角色，所有图都会归档到 processed/unrecognized/。",
+            "警告：entities/ 中没有任何已登记角色，所有图都会归档到 processed/unrecognized/。",
             file=sys.stderr,
         )
 
@@ -518,86 +633,251 @@ def main(argv: Optional[List[str]] = None) -> int:
         print(f"汇总：{total_with_tags} 张有 tag，{total_no_tags} 张无 tag（阈值以上）")
         return 0
 
+    # ---- 多源融合识别模式 ----
+    recognizer = Recognizer(
+        entities_dir,
+        wd14_model=args.model,
+        wd14_char_threshold=args.character_threshold,
+        wd14_general_threshold=args.general_threshold,
+        use_clip=args.use_clip,
+        fusion_threshold=args.fusion_threshold,
+    )
+    print(f"[info] 模型: {args.model} | 融合阈值: {args.fusion_threshold} | CLIP: {'启用' if args.use_clip else '未启用'} | 压缩: {'启用' if args.compress else '关闭'}")
+    print(f"[info] 输入: {input_dir.relative_to(tools_dir)} ({len(images)} 张图)")
+    print()
+
     recognized = 0
     unrecognized = 0
     duplicates = 0
     pending_review = 0
     auto_created_entities: Dict[str, str] = {}  # entity_id -> danbooru tag，用于最终汇总
+    # 多实体阈值：主 entity 需 >= fusion_threshold，次要 entity >= secondary_threshold
+    secondary_threshold = max(args.fusion_threshold * 0.5, 0.15)
 
     for src in images:
+        # ---- 多源融合识别（返回所有候选角色，支持多实体） ----
         try:
-            chars = tag_image(src, args.model, args.general_threshold, args.character_threshold)
-        except Exception as exc:  # 模型跑挂了的图原样归档进 unrecognized 由人工处理
-            print(f"[X] {src.name} 标注失败：{exc}")
+            all_results = recognizer.recognize_with_alternatives(src, top_k=10)
+        except Exception as exc:
             dest = archive_source(src, tools_dir, input_dir, PROCESSED_UNRECOGNIZED)
-            print(f"    -> 已归档到 {dest.relative_to(tools_dir)}")
+            print(f"[X] {src.name}\n")
+            print(f"  error   : {exc}\n")
+            print(f"  ✓ archive   {dest.relative_to(tools_dir)}")
+            print()
             unrecognized += 1
             continue
 
-        if not chars:
-            print(f"[?] {src.name} 未识别到任何角色 tag")
-            dest = archive_source(src, tools_dir, input_dir, PROCESSED_UNRECOGNIZED)
-            print(f"    -> 已归档到 {dest.relative_to(tools_dir)}")
-            unrecognized += 1
-            continue
+        if not all_results:
+            # 尝试直接从 WD14 raw tags 获取未登记的 tag
+            try:
+                _, wd14_tags = recognizer.wd14.detect(src)
+            except Exception:
+                wd14_tags = {}
 
-        matched, unmatched = lookup.resolve(list(chars.keys()))
+            if wd14_tags:
+                unmatched = [t for t in wd14_tags if not recognizer.alias.resolve_tag(t)]
+                if unmatched:
+                    new_ids = auto_create_entities(unmatched, lookup, entities_dir)
+                    for eid in new_ids:
+                        auto_created_entities[eid] = eid
+                    if new_ids:
+                        recognizer.reload_entities()
+                        try:
+                            all_results = recognizer.recognize_with_alternatives(src, top_k=10)
+                        except Exception:
+                            all_results = []
 
-        # 有未被登记的 tag？自动创建占位 entity，再重新解析一次
-        if unmatched:
-            new_ids = auto_create_entities(unmatched, lookup, entities_dir)
-            for eid in new_ids:
-                auto_created_entities[eid] = eid  # id 自身就是 danbooru tag
-            if new_ids:
-                # 重新解析，新 entity 应该能命中 unmatched 中的 tag
-                matched, _ = lookup.resolve(list(chars.keys()))
+            if not all_results:
+                if wd14_tags:
+                    tags_str = ", ".join(
+                        f"{t}={wd14_tags[t]:.2f}"
+                        for t in sorted(wd14_tags, key=lambda t: wd14_tags[t], reverse=True)[:10]
+                    )
+                    dest = archive_source(src, tools_dir, input_dir, PROCESSED_PENDING)
+                    print(f"[~] {src.name}\n")
+                    print(f"  reason  : WD14 有 tag 但未命中任何 entity")
+                    print(f"  tags    : {tags_str}\n")
+                    print(f"  ✓ archive   {dest.relative_to(tools_dir)}")
+                    pending_review += 1
+                else:
+                    dest = archive_source(src, tools_dir, input_dir, PROCESSED_UNRECOGNIZED)
+                    print(f"[?] {src.name}\n")
+                    print(f"  reason  : 所有检测器均未识别到角色")
 
-        if not matched:
-            tags_str = ", ".join(f"{t}={chars[t]:.2f}" for t in sorted(chars, key=lambda t: chars[t], reverse=True)[:10])
-            print(f"[~] {src.name} 有角色 tag 但未命中任何 entity，保留待人工审核")
-            print(f"    tags: {tags_str}")
-            dest = archive_source(src, tools_dir, input_dir, PROCESSED_PENDING)
-            print(f"    -> 已归档到 {dest.relative_to(tools_dir)}")
-            pending_review += 1
-            continue
+                    # 从文件名提取可能的角色名，提示创建 entity
+                    name_hints = _extract_name_hints(src.name)
+                    if name_hints:
+                        hints_str = ", ".join(name_hints[:5])
+                        print(f"  suggest : 创建 entities/{{id}}.json  →  {hints_str}")
 
+                    print(f"\n  ✓ archive   {dest.relative_to(tools_dir)}")
+                    unrecognized += 1
+                continue
+
+        # ---- 筛选：主实体 + 次要实体 ----
+        primary = [r for r in all_results if r.confidence >= args.fusion_threshold]
+        secondary = [r for r in all_results if secondary_threshold <= r.confidence < args.fusion_threshold]
+        all_entities = primary + secondary
+
+        if not primary:
+            # 主实体不达标 → 检查 WD14 raw tags，自动创建 entity 后再试
+            try:
+                _, wd14_tags = recognizer.wd14.detect(src)
+            except Exception:
+                wd14_tags = {}
+
+            if wd14_tags:
+                unmatched = [t for t in wd14_tags if not recognizer.alias.resolve_tag(t)]
+                if unmatched:
+                    new_ids = auto_create_entities(unmatched, lookup, entities_dir)
+                    for eid in new_ids:
+                        auto_created_entities[eid] = eid
+                    if new_ids:
+                        recognizer.reload_entities()
+                        try:
+                            all_results = recognizer.recognize_with_alternatives(src, top_k=10)
+                            primary = [r for r in all_results if r.confidence >= args.fusion_threshold]
+                            secondary = [r for r in all_results if secondary_threshold <= r.confidence < args.fusion_threshold]
+                            all_entities = primary + secondary
+                        except Exception:
+                            pass
+
+            if not primary:
+                if all_entities:
+                    entity_list = ", ".join(
+                        f"{r.entity}({r.confidence:.2f})" for r in all_entities[:5]
+                    )
+                    dest = archive_source(src, tools_dir, input_dir, PROCESSED_PENDING)
+                    print(f"[~] {src.name}\n")
+                    print(f"  reason     : 融合置信度不足")
+                    print(f"  candidates : {entity_list}\n")
+                    print(f"  ✓ archive   {dest.relative_to(tools_dir)}")
+                    print()
+                    pending_review += 1
+                    continue
+                elif wd14_tags:
+                    tags_str = ", ".join(
+                        f"{t}={wd14_tags[t]:.2f}"
+                        for t in sorted(wd14_tags, key=lambda t: wd14_tags[t], reverse=True)[:10]
+                    )
+                    dest = archive_source(src, tools_dir, input_dir, PROCESSED_PENDING)
+                    print(f"[~] {src.name}\n")
+                    print(f"  reason  : WD14 有 tag 但多源融合未达标")
+                    print(f"  tags    : {tags_str}\n")
+                    print(f"  ✓ archive   {dest.relative_to(tools_dir)}")
+                    print()
+                    pending_review += 1
+                    continue
+                else:
+                    dest = archive_source(src, tools_dir, input_dir, PROCESSED_UNRECOGNIZED)
+                    print(f"[?] {src.name}\n")
+                    print(f"  reason  : 所有检测器均未识别到角色")
+
+                    name_hints = _extract_name_hints(src.name)
+                    if name_hints:
+                        hints_str = ", ".join(name_hints[:5])
+                        print(f"  suggest : 创建 entities/{{id}}.json  →  {hints_str}")
+
+                    print(f"\n  ✓ archive   {dest.relative_to(tools_dir)}")
+                    print()
+                    unrecognized += 1
+                    continue
+
+        # ---- 识别成功：写入 data/meta ----
         uid = generate_id(data_dir, meta_dir)
         dest_jpg = data_dir / f"{uid}.jpg"
         meta_path = meta_dir / f"{uid}.json"
 
-        width, height, sha = optimize_to_jpeg(src, dest_jpg, args.quality)
+        try:
+            src_size = src.stat().st_size
+            width, height, sha = optimize_to_jpeg(src, dest_jpg, args.quality, compress=args.compress)
+            dst_size = dest_jpg.stat().st_size
+        except ImportError as exc:
+            entity_list = ", ".join(
+                f"{r.entity}({recognizer.alias.get_display_name(r.entity)})" for r in all_entities
+            )
+            dest = archive_source(src, tools_dir, input_dir, PROCESSED_RECOGNIZED)
+            print(f"[!] {src.name}\n")
+            print(f"  error    : {exc}\n")
+            print(f"  entities : {entity_list}\n")
+            print(f"  ✓ archive   {dest.relative_to(tools_dir)} (未写入 data/meta)")
+            recognized += 1
+            print()
+            continue
 
         if sha in existing_hashes:
-            # 重复图：撤回刚写的 jpg，不污染仓库，源图归档到 duplicate
             dest_jpg.unlink(missing_ok=True)
             dest = archive_source(src, tools_dir, input_dir, PROCESSED_DUPLICATE)
-            print(f"[D] {src.name} 与已有图重复（{existing_hashes[sha]}）-> {dest.relative_to(tools_dir)}")
+            print(f"[D] {src.name}\n")
+            print(f"  duplicate : {existing_hashes[sha]}\n")
+            print(f"  ✓ archive   {dest.relative_to(tools_dir)}")
+            print()
             duplicates += 1
             continue
         existing_hashes[sha] = dest_jpg.relative_to(repo_root).as_posix()
 
-        games = lookup.games_for(matched)
-        write_meta(meta_path, uid=uid, games=games, entities=matched, sha=sha, width=width, height=height)
+        entity_ids = [r.entity for r in all_entities]
+        sources = lookup.sources_for(entity_ids)
+        write_meta(meta_path, uid=uid, sources=sources, entities=entity_ids, sha=sha, width=width, height=height)
 
         dest = archive_source(src, tools_dir, input_dir, PROCESSED_RECOGNIZED)
-        tags_str = ", ".join(f"{t}={chars[t]:.2f}" for t in chars)
-        print(f"[O] {src.name} -> meta/{uid}.json | entity={matched} games={games} | {tags_str}")
-        print(f"    -> 源图已归档到 {dest.relative_to(tools_dir)}")
-        recognized += 1
+        # ---- 格式化输出 ----
+        lines = [f"[O] {src.name}", ""]
+        indent = "  "
 
-    print(
-        f"\n汇总：识别 {recognized}，待审核 {pending_review}，未识别 {unrecognized}，重复跳过 {duplicates}。"
-        f"源图归档目录：{processed_root.relative_to(tools_dir)}/"
-    )
+        # entities 行（单/多实体统一）
+        entity_items = []
+        for r in all_entities:
+            display = recognizer.alias.get_display_name(r.entity)
+            entity_items.append(f"{r.entity} ({display}) [{r.confidence:.2f}]")
+        lines.append(f"{indent}entities : {entity_items[0]}")
+        for item in entity_items[1:]:
+            lines.append(f"{indent}           {item}")
+
+        # scores 行
+        if all_entities:
+            scores = all_entities[0].evidence_summary
+            if scores:
+                lines.append(f"")
+                lines.append(f"{indent}scores   : {scores}")
+
+        # compress 行
+        if args.compress and src_size > 0:
+            pct = (1 - dst_size / src_size) * 100
+            sign = "+" if dst_size > src_size else "-"
+            lines.append(f"")
+            lines.append(f"{indent}compress : {src_size/1024:.0f}KB → {dst_size/1024:.0f}KB ({sign}{abs(pct):.0f}%)")
+
+        # ✓ meta / archive
+        lines.append(f"")
+        lines.append(f"{indent}✓ meta      meta/{uid}.json")
+        lines.append(f"{indent}✓ archive   {dest.relative_to(tools_dir)}")
+
+        print("\n".join(lines))
+        recognized += 1
+        print()
+
+    print(f"\n── 汇总 ──")
+    print(f"  recognized     : {recognized}")
+    print(f"  pending_review : {pending_review}")
+    print(f"  unrecognized   : {unrecognized}")
+    print(f"  duplicate      : {duplicates}")
     if auto_created_entities:
-        print(f"\n自动创建了 {len(auto_created_entities)} 个占位实体（display_name / aliases 待填写）：")
+        print(f"\n── 自动创建实体 ──")
         for entity_id in sorted(auto_created_entities):
             entity_path = entities_dir / f"{entity_id}.json"
             print(f"  [NEW] {entity_path}")
-        print(
-            "\n请编辑这些文件填写 display_name（中文名）、aliases（别名）并修正 games 字段。\n"
-            "完成后运行 build-index.js 重建索引即可。"
-        )
+        print(f"\n  请编辑这些文件填写 display_name、aliases 并修正 sources 字段。")
+        print(f"  完成后运行 node scripts/build-index.js 重建索引。")
+
+    # 将完整运行日志写入文件
+    LOGS_DIR.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    log_path = LOGS_DIR / f"tag-image-{timestamp}.txt"
+    log_path.write_text(log_buffer.getvalue(), encoding="utf-8")
+    print(f"日志已保存到 {log_path.relative_to(Path(__file__).resolve().parent)}", file=sys.stderr)
+    print()
+
     return 0
 
 

@@ -58,7 +58,7 @@ function extractUrls(section) {
 
 function parseIssueBody(body) {
     // 优先解析模板分段；若 Images 分段缺失链接，则回退到全文抓取 URL。
-    const gameSection = extractSection(body, 'Game');
+    const sourceSection = extractSection(body, 'Source');
     const entitiesSection = extractSection(body, 'Entities') || extractSection(body, 'Entity');
     const imagesSection = extractSection(body, 'Images');
     const aliasesSection = extractSection(body, 'Aliases') || extractSection(body, 'Alias');
@@ -66,15 +66,15 @@ function parseIssueBody(body) {
 
     const imageUrls = extractUrls(imagesSection).length > 0 ? extractUrls(imagesSection) : extractUrls(body);
     const entities = Array.from(new Set(normalizeList(entitiesSection)));
-    const gamesText = gameSection.split(/\r?\n/).map((line) => line.trim()).find(Boolean) || '';
-    // 支持逗号（中英文）、空格、换行分隔多个游戏标识
-    const games = gamesText
+    const sourcesText = sourceSection.split(/\r?\n/).map((line) => line.trim()).find(Boolean) || '';
+    // 支持逗号（中英文）、空格、换行分隔多个作品标识
+    const sources = sourcesText
         .split(/[,，\s]+/)
         .map((item) => item.trim())
         .filter(Boolean);
 
-    if (games.length === 0 && !aliasesSection) {
-        throw new Error('Issue is missing the Game section.');
+    if (sources.length === 0 && !aliasesSection) {
+        throw new Error('Issue is missing the Source section.');
     }
 
     if (entities.length === 0) {
@@ -86,7 +86,7 @@ function parseIssueBody(body) {
     }
 
     return {
-        games,
+        sources,
         entities,
         imageUrls,
         aliases

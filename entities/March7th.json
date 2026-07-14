@@ -1,7 +1,7 @@
 {
   "id": "March7th",
   "display_name": "三月七",
-  "games": [
+  "sources": [
     "hsr"
   ],
   "aliases": [
@@ -9,3 +9,4 @@
     "三月"
   ]
 }
+

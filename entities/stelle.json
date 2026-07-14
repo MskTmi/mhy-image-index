@@ -1,7 +1,7 @@
 {
     "id": "stelle",
     "display_name": "星",
-    "games": [
+    "sources": [
         "hsr"
     ],
     "aliases": [

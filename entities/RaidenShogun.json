@@ -1,7 +1,7 @@
 {
   "id": "RaidenShogun",
   "display_name": "雷电将军",
-  "games": [
+  "sources": [
     "genshin"
   ],
   "aliases": [
@@ -9,3 +9,4 @@
     "影"
   ]
 }
+

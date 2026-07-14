@@ -1,7 +1,7 @@
 {
     "id": "Skirk",
     "display_name": "丝柯克",
-    "games": [
+    "sources": [
         "genshin"
     ],
     "aliases": []

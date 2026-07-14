@@ -1,7 +1,7 @@
 {
     "id": "Ronova",
     "display_name": "若娜瓦",
-    "games": [
+    "sources": [
         "genshin"
     ],
     "aliases": []

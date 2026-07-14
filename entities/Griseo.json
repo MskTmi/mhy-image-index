@@ -1,7 +1,7 @@
 {
     "id": "Griseo",
     "display_name": "格蕾修",
-    "games": [
+    "sources": [
         "bh3"
     ],
     "aliases": []

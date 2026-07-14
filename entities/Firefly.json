@@ -1,7 +1,7 @@
 {
   "id": "Firefly",
   "display_name": "流萤",
-  "games": [
+  "sources": [
     "hsr"
   ],
   "aliases": [
@@ -9,3 +9,4 @@
     "Firefly"
   ]
 }
+

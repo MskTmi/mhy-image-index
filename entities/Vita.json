@@ -1,7 +1,7 @@
 {
     "id": "Vita",
     "display_name": "薇塔",
-    "games": [
+    "sources": [
         "bh3"
     ],
     "aliases": []

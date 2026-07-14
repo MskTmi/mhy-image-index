@@ -106,14 +106,14 @@ async function findDuplicateByHash(hash) {
     return null;
 }
 
-async function writeMetadata({ id, games, entities, hash, width, height }) {
+async function writeMetadata({ id, sources, entities, hash, width, height }) {
     const metadata = {
         id,
         image: `data/${id}.jpg`,
         hash,
         width,
         height,
-        games,
+        sources,
         entities
     };
 
@@ -147,7 +147,7 @@ async function processIssue(issue) {
             const entityEntry = {
                 id: name,
                 display_name: name,
-                games: parsed.games,
+                sources: parsed.sources,
                 aliases: [],
                 last_updated: now
             };
@@ -195,7 +195,7 @@ async function processIssue(issue) {
 
             await writeMetadata({
                 id,
-                games: parsed.games,
+                sources: parsed.sources,
                 entities: canonicalEntities,
                 hash,
                 width,
@@ -210,7 +210,7 @@ async function processIssue(issue) {
 
     return {
         issue_number: issue.number,
-        games: parsed.games,
+        sources: parsed.sources,
         entities: canonicalEntities,
         created,
         duplicates,

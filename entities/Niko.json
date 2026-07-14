@@ -1,7 +1,7 @@
 {
     "id": "Niko",
     "display_name": "尼可",
-    "games": [
+    "sources": [
         "genshin"
     ],
     "aliases": [

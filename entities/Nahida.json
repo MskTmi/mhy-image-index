@@ -1,7 +1,7 @@
 {
   "id": "Nahida",
   "display_name": "纳西妲",
-  "games": [
+  "sources": [
     "genshin"
   ],
   "aliases": [
@@ -9,3 +9,4 @@
     "小吉祥草王"
   ]
 }
+

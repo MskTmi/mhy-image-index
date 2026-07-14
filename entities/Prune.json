@@ -1,7 +1,7 @@
 {
     "id": "Prune",
     "display_name": "布伦尼",
-    "games": [
+    "sources": [
         "genshin"
     ],
     "aliases": []

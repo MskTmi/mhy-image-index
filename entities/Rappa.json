@@ -1,7 +1,7 @@
 {
     "id": "Rappa",
     "display_name": "乱破",
-    "games": [
+    "sources": [
         "hsr"
     ],
     "aliases": []

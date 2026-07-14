@@ -1,7 +1,7 @@
 {
   "id": "eula",
   "display_name": "优菈",
-  "games": [
+  "sources": [
     "genshin"
   ],
   "aliases": []

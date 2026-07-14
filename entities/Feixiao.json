@@ -1,7 +1,7 @@
 {
     "id": "Feixiao",
     "display_name": "飞霄",
-    "games": [
+    "sources": [
         "hsr"
     ],
     "aliases": []

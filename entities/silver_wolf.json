@@ -1,7 +1,7 @@
 {
     "id": "silver_wolf",
     "display_name": "银狼",
-    "games": [
+    "sources": [
         "hsr"
     ],
     "aliases": [

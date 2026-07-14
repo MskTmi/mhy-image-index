@@ -1,10 +1,11 @@
 {
   "id": "Kafka",
   "display_name": "卡芙卡",
-  "games": [
+  "sources": [
     "hsr"
   ],
   "aliases": [
     "妈妈"
   ]
 }
+

@@ -1,7 +1,7 @@
 {
     "id": "Cipher",
     "display_name": "赛飞儿",
-    "games": [
+    "sources": [
         "hsr"
     ],
     "aliases": []

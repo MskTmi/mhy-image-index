@@ -1,7 +1,7 @@
 {
     "id": "Sandrone",
     "display_name": "桑多涅",
-    "games": [
+    "sources": [
         "genshin"
     ],
     "aliases": []

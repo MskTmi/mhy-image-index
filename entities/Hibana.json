@@ -1,7 +1,7 @@
 {
     "id": "Hibana",
     "display_name": "火花",
-    "games": [
+    "sources": [
         "hsr"
     ],
     "aliases": []

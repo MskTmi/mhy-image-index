@@ -1,7 +1,7 @@
 {
     "id": "BlackSwan",
     "display_name": "黑天鹅",
-    "games": [
+    "sources": [
         "hsr"
     ],
     "aliases": []

@@ -1,5 +1,5 @@
 {
-    "game_suffixes": {
+    "source_suffixes": {
         "genshin": [
             "genshin_impact"
         ],
@@ -24,6 +24,7 @@
         "bronya_rand": "Bronya",
         "raiden_mei": "Mei",
         "march_7th": "March7th",
-        "ei_(genshin_impact)": "RaidenShogun"
+        "ei_(genshin_impact)": "RaidenShogun",
+        "elysia_(honkai_impact)": "Elysia"
     }
 }

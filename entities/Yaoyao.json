@@ -1,7 +1,7 @@
 {
     "id": "Yaoyao",
     "display_name": "瑶瑶",
-    "games": [
+    "sources": [
         "genshin"
     ],
     "aliases": []

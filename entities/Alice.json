@@ -1,7 +1,7 @@
 {
     "id": "Alice",
     "display_name": "艾莉丝",
-    "games": [
+    "sources": [
         "genshin"
     ],
     "aliases": []

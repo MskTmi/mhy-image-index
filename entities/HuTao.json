@@ -1,10 +1,11 @@
 {
   "id": "HuTao",
   "display_name": "胡桃",
-  "games": [
+  "sources": [
     "genshin"
   ],
   "aliases": [
     "堂主"
   ]
 }
+

@@ -1,7 +1,7 @@
 {
     "id": "Raven",
     "display_name": "渡鸦",
-    "games": [
+    "sources": [
         "bh3"
     ],
     "aliases": []

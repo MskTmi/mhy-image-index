@@ -49,9 +49,9 @@ function buildAliasMap(entities) {
     return aliasMap;
 }
 
-function ensureGamesList(value, fileName, id) {
+function ensureSourcesList(value, fileName, id) {
     if (!Array.isArray(value) || value.length === 0) {
-        throw new Error(`${fileName}: games must be a non-empty array of strings.`);
+        throw new Error(`${fileName}: sources must be a non-empty array of strings.`);
     }
 
     const list = value
@@ -59,7 +59,7 @@ function ensureGamesList(value, fileName, id) {
         .filter(Boolean);
 
     if (list.length === 0) {
-        throw new Error(`${fileName}: games must contain at least one non-empty string.`);
+        throw new Error(`${fileName}: sources must contain at least one non-empty string.`);
     }
 
     return Array.from(new Set(list)).sort(compareText);
@@ -77,14 +77,14 @@ function normalizeEntityEntry(raw, fileName) {
     }
 
     const displayName = normalizeText(raw.display_name);
-    const games = ensureGamesList(raw.games, fileName, id);
+    const sources = ensureSourcesList(raw.sources, fileName, id);
     const aliases = ensureOptionalStringList(raw.aliases, 'aliases', id)
         .filter((alias) => alias !== id && alias !== displayName);
     return {
         id,
         entry: {
             display_name: displayName || id,
-            games,
+            sources,
             aliases
         }
     };

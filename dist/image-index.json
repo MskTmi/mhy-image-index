@@ -1,235 +1,275 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-07T02:12:14.657Z",
+  "generated_at": "2026-07-14T03:36:34.713Z",
   "assets": {
     "0dd6d465": {
       "image": "data/0dd6d465.jpg",
       "hash": "68a172274ff9df3151f57de92ad272d31034b744daa888ec30c6d86fe408da02",
       "width": 1402,
       "height": 1122,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Kiana",
         "Mei"
       ],
-      "last_updated": "2026-07-07T02:12:14.666Z"
+      "last_updated": "2026-07-14T03:36:34.776Z"
     },
     "0fz63o12": {
       "image": "data/0fz63o12.jpg",
       "hash": "0a544a47c7b086f1aea3afbddc9c09d0cbdc24c24d915716a96a43e66fdef342",
       "width": 1600,
       "height": 2828,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Castorice"
       ],
-      "last_updated": "2026-07-07T02:12:14.666Z"
+      "last_updated": "2026-07-14T03:36:34.776Z"
     },
     "0irnbry2": {
       "image": "data/0irnbry2.jpg",
       "hash": "af2b5a1a1b83a19afdf0223268cb01b9c2276b2dd23bf4666129ddbe43de13ca",
       "width": 1549,
       "height": 2662,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Columbina"
       ],
-      "last_updated": "2026-07-07T02:12:14.666Z"
+      "last_updated": "2026-07-14T03:36:34.777Z"
     },
     "0likrx3p": {
       "image": "data/0likrx3p.jpg",
       "hash": "34bda6713ab07b339301063195770357036d3e716ea6934d59226e9c74ac714a",
       "width": 1080,
       "height": 1579,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Lingsha"
       ],
-      "last_updated": "2026-07-07T02:12:14.667Z"
+      "last_updated": "2026-07-14T03:36:34.777Z"
     },
     "0ss2qkwb": {
       "image": "data/0ss2qkwb.jpg",
       "hash": "9bf3e04a860ac1097d4023a4e5a48e15cf2517fd7820f3c0f47374811773c043",
       "width": 1080,
       "height": 1783,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Anna"
       ],
-      "last_updated": "2026-07-07T02:12:14.667Z"
+      "last_updated": "2026-07-14T03:36:34.778Z"
     },
     "0tp3wfvd": {
       "image": "data/0tp3wfvd.jpg",
       "hash": "4999d26341891859b9d64c687b4262fbebcbf4fa06a04d3e853aa468318ff6b5",
       "width": 1024,
       "height": 1536,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Skirk"
       ],
-      "last_updated": "2026-07-07T02:12:14.667Z"
+      "last_updated": "2026-07-14T03:36:34.778Z"
+    },
+    "0vpd5m1m": {
+      "image": "data/0vpd5m1m.jpg",
+      "hash": "2e4fe1e4d6cfa72a9aa17ca63df92b44975216be9344d2ce2336cd5928bcb187",
+      "width": 2400,
+      "height": 1792,
+      "sources": [
+        "bh3"
+      ],
+      "entities": [
+        "Elysia"
+      ],
+      "last_updated": "2026-07-14T03:36:34.779Z"
     },
     "0yvk6p0e": {
       "image": "data/0yvk6p0e.jpg",
       "hash": "e38f3a6f50f13221f5f95562a53f9b8a1a17d34ec0e783b9ceb734cd12a5142c",
       "width": 2505,
       "height": 1500,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Fugue"
       ],
-      "last_updated": "2026-07-07T02:12:14.667Z"
+      "last_updated": "2026-07-14T03:36:34.779Z"
     },
     "16zrwvf8": {
       "image": "data/16zrwvf8.jpg",
       "hash": "1fd5c1c7c9221af9165f255b065f3cfe9c2dd80a8a3f5c2a64d914f17ad36a59",
       "width": 1600,
       "height": 2844,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Columbina"
       ],
-      "last_updated": "2026-07-07T02:12:14.667Z"
+      "last_updated": "2026-07-14T03:36:34.780Z"
     },
     "1a5st2h3": {
       "image": "data/1a5st2h3.jpg",
       "hash": "bda61e5d31aa214f889ba882e9b28223be75add5102b7b8dd0a73a604f32fa24",
       "width": 832,
       "height": 1216,
-      "games": [
+      "sources": [
         "zzz"
       ],
       "entities": [
         "VivianBanshee"
       ],
-      "last_updated": "2026-07-07T02:12:14.668Z"
+      "last_updated": "2026-07-14T03:36:34.780Z"
     },
     "1b8um5ry": {
       "image": "data/1b8um5ry.jpg",
       "hash": "a6a741e3cffc7b8c05801eb663d89ad17a901e88adfa33a2c05575dfff9093c0",
       "width": 1600,
       "height": 2844,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Firefly"
       ],
-      "last_updated": "2026-07-07T02:12:14.668Z"
+      "last_updated": "2026-07-14T03:36:34.781Z"
     },
     "1dmj4djl": {
       "image": "data/1dmj4djl.jpg",
       "hash": "396727db9f8064efb97522ff6b612ea933b9ec5ac6ae77dc2e17d0598501b50d",
       "width": 1080,
       "height": 1632,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Firefly"
       ],
-      "last_updated": "2026-07-07T02:12:14.668Z"
+      "last_updated": "2026-07-14T03:36:34.781Z"
+    },
+    "1n4wwzea": {
+      "image": "data/1n4wwzea.jpg",
+      "hash": "a0571209f14536c0cfdd8fdfba66e17cbe7fd19422d956a52fcb02ae2a4a00a4",
+      "width": 1265,
+      "height": 761,
+      "sources": [
+        "bh3",
+        "hsr"
+      ],
+      "entities": [
+        "Bronya"
+      ],
+      "last_updated": "2026-07-14T03:36:34.781Z"
     },
     "1yy0i36x": {
       "image": "data/1yy0i36x.jpg",
       "hash": "2d86af397d709cc0c51313647f75ddd53055e16b8aea58d7d050151d01f10bbc",
       "width": 2892,
       "height": 1600,
-      "games": [
+      "sources": [
         "zzz"
       ],
       "entities": [
         "Cissia"
       ],
-      "last_updated": "2026-07-07T02:12:14.668Z"
+      "last_updated": "2026-07-14T03:36:34.782Z"
     },
     "1z3gxjpe": {
       "image": "data/1z3gxjpe.jpg",
       "hash": "6a36ff402ffa8dbe1e6621c16757f1fc15411cf0858548156c10065dea56c42a",
       "width": 1920,
       "height": 1080,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Voyanisa"
       ],
-      "last_updated": "2026-07-07T02:12:14.669Z"
+      "last_updated": "2026-07-14T03:36:34.782Z"
     },
     "20da1p3a": {
       "image": "data/20da1p3a.jpg",
       "hash": "4db1467ae8efedfea17620262c4cf875df78fd2a48bd9d1d171f3f2e962b018e",
       "width": 1500,
       "height": 2520,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Skirk"
       ],
-      "last_updated": "2026-07-07T02:12:14.669Z"
+      "last_updated": "2026-07-14T03:36:34.783Z"
     },
     "220pm8dc": {
       "image": "data/220pm8dc.jpg",
       "hash": "2493c576669bdc5f0d22146ac07dc17d41af226d2bc22cccdbaa05d2b27bcd07",
       "width": 1600,
       "height": 2844,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Furina"
       ],
-      "last_updated": "2026-07-07T02:12:14.669Z"
+      "last_updated": "2026-07-14T03:36:34.783Z"
     },
     "26e22jid": {
       "image": "data/26e22jid.jpg",
       "hash": "29be286fab79d7e5d1b64f69cf14f473da73f0fd2b47d8d6da9b8cf69d3c0062",
       "width": 1600,
       "height": 2843,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Columbina"
       ],
-      "last_updated": "2026-07-07T02:12:14.669Z"
+      "last_updated": "2026-07-14T03:36:34.783Z"
     },
     "2fssiy3q": {
       "image": "data/2fssiy3q.jpg",
       "hash": "1a63d9e3e9d2e041942bf18aa3bccf8a55f324577299f52d8b6f6830cdc01b39",
       "width": 1080,
       "height": 1530,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Firefly"
       ],
-      "last_updated": "2026-07-07T02:12:14.669Z"
+      "last_updated": "2026-07-14T03:36:34.784Z"
+    },
+    "2hks3dbh": {
+      "image": "data/2hks3dbh.jpg",
+      "hash": "9250f26c3eb02c25727f07ebd9e004901c2568ff2c77b20fe2f1c1291f218570",
+      "width": 1920,
+      "height": 1080,
+      "sources": [
+        "bh3"
+      ],
+      "entities": [
+        "Kiana"
+      ],
+      "last_updated": "2026-07-14T03:36:34.784Z"
     },
     "2mtwzjyc": {
       "image": "data/2mtwzjyc.jpg",
       "hash": "791d1f3f54c430d509a169328811feef203b8546af8e0b75eb7fa067071935da",
       "width": 2782,
       "height": 1600,
-      "games": [
+      "sources": [
         "bh3",
         "hsr"
       ],
@@ -237,1048 +277,1140 @@
         "Bronya",
         "seele_vollerei"
       ],
-      "last_updated": "2026-07-07T02:12:14.670Z"
+      "last_updated": "2026-07-14T03:36:34.784Z"
     },
     "2ohj808c": {
       "image": "data/2ohj808c.jpg",
       "hash": "694ea43543b731e785aa1f7ca68b16cbd7f28c4bfbc4e892cb3e1d7a208b6b05",
       "width": 1080,
       "height": 1620,
-      "games": [
+      "sources": [
         "zzz"
       ],
       "entities": [
         "VivianBanshee"
       ],
-      "last_updated": "2026-07-07T02:12:14.670Z"
+      "last_updated": "2026-07-14T03:36:34.785Z"
     },
     "2qknyax2": {
       "image": "data/2qknyax2.jpg",
       "hash": "ad24ea77b1e15c1a544a04ca4e97cd9dcfd06ebc56dc2d683bdc6ed758fde8a2",
       "width": 1080,
       "height": 2160,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Nome"
       ],
-      "last_updated": "2026-07-07T02:12:14.670Z"
+      "last_updated": "2026-07-14T03:36:34.785Z"
     },
     "2sd3m0v1": {
       "image": "data/2sd3m0v1.jpg",
       "hash": "b1a4130fcd014c5125017deea815790fd9f4d836e4cd952ed74ff04992ca2658",
       "width": 1600,
       "height": 3259,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Evanescia"
       ],
-      "last_updated": "2026-07-07T02:12:14.670Z"
+      "last_updated": "2026-07-14T03:36:34.785Z"
     },
     "2w8fx8wn": {
       "image": "data/2w8fx8wn.jpg",
       "hash": "47bcbf727267ec8b6a0edc9ef3ba7cf97f23e84c33bae021fb34cef8cd3214b5",
       "width": 1672,
       "height": 941,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Tribbie"
       ],
-      "last_updated": "2026-07-07T02:12:14.670Z"
+      "last_updated": "2026-07-14T03:36:34.786Z"
+    },
+    "30xgolum": {
+      "image": "data/30xgolum.jpg",
+      "hash": "734afeb98f4e8cf82a355f84ca74f7b23719b02b3117d0e288e6a3029fb4e8ab",
+      "width": 1080,
+      "height": 1920,
+      "sources": [
+        "bh3"
+      ],
+      "entities": [
+        "Kiana"
+      ],
+      "last_updated": "2026-07-14T03:36:34.786Z"
     },
     "31jjhohc": {
       "image": "data/31jjhohc.jpg",
       "hash": "b95aa32e7289980151a6eec64d63bc74568c46bb11a2436654d29d62e7265262",
       "width": 1080,
       "height": 1565,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Anna"
       ],
-      "last_updated": "2026-07-07T02:12:14.670Z"
+      "last_updated": "2026-07-14T03:36:34.786Z"
     },
     "31w4z7i0": {
       "image": "data/31w4z7i0.jpg",
       "hash": "eb9f65c02fb44c58b8150cbbbec336c5eb87b34fe85eee530c4dcf1fdc1a4f66",
       "width": 2756,
       "height": 1500,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Kiana"
       ],
-      "last_updated": "2026-07-07T02:12:14.671Z"
+      "last_updated": "2026-07-14T03:36:34.787Z"
     },
     "33wwvnrj": {
       "image": "data/33wwvnrj.jpg",
       "hash": "a38ef3d0cc473a5877945e3ca3bc8b3d666d89fa1c167a5afe958665557f9448",
       "width": 864,
       "height": 1536,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Cyrene",
         "stelle"
       ],
-      "last_updated": "2026-07-07T02:12:14.671Z"
+      "last_updated": "2026-07-14T03:36:34.787Z"
     },
     "36i6cxhy": {
       "image": "data/36i6cxhy.jpg",
       "hash": "bee70c538d4adc9efc96630ed94e7ef1b4b2063ba37439c1258597bfd701505f",
       "width": 764,
       "height": 1200,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Griseo"
       ],
-      "last_updated": "2026-07-07T02:12:14.671Z"
+      "last_updated": "2026-07-14T03:36:34.787Z"
     },
     "37eyduha": {
       "image": "data/37eyduha.jpg",
       "hash": "e0ab1a9a9bad57930fc6539b97d1193f829a1b6b18b7ce8b15dcd3fd00232d89",
       "width": 1080,
       "height": 1920,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Griseo"
       ],
-      "last_updated": "2026-07-07T02:12:14.671Z"
+      "last_updated": "2026-07-14T03:36:34.788Z"
     },
     "3au2ield": {
       "image": "data/3au2ield.jpg",
       "hash": "f2493b7dfe7c6fa9438cf435ead2a1d49d750be88674bcbc52bf873ca7638956",
       "width": 1080,
       "height": 2408,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Sandrone"
       ],
-      "last_updated": "2026-07-07T02:12:14.671Z"
+      "last_updated": "2026-07-14T03:36:34.788Z"
     },
     "3lwwpbsv": {
       "image": "data/3lwwpbsv.jpg",
       "hash": "1a4147b1f796ea52be32517a2fe15e5da4a4f97dfc236c337bc0b0f5044603a4",
       "width": 1440,
       "height": 2560,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Aglaea"
       ],
-      "last_updated": "2026-07-07T02:12:14.671Z"
+      "last_updated": "2026-07-14T03:36:34.789Z"
     },
     "3plta4ch": {
       "image": "data/3plta4ch.jpg",
       "hash": "fc8d4a2aa8c719e342db24bb43ddb388842b9f2a0bf2a488577bdbad408f6186",
       "width": 768,
       "height": 1280,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Cyrene"
       ],
-      "last_updated": "2026-07-07T02:12:14.671Z"
+      "last_updated": "2026-07-14T03:36:34.789Z"
     },
     "3yn6qymt": {
       "image": "data/3yn6qymt.jpg",
       "hash": "765bcf07d172c82cead89dfaadc99a81adcaeb6b07b0d6bce279bfd71d871f06",
       "width": 1599,
       "height": 2844,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "stelle"
       ],
-      "last_updated": "2026-07-07T02:12:14.672Z"
+      "last_updated": "2026-07-14T03:36:34.789Z"
     },
     "3z80sni0": {
       "image": "data/3z80sni0.jpg",
       "hash": "d3c4233244420868ea108975ee24afff12e77cfd6c9cda874c3cd19130cd817b",
       "width": 1600,
       "height": 2844,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "TheHerta"
       ],
-      "last_updated": "2026-07-07T02:12:14.672Z"
+      "last_updated": "2026-07-14T03:36:34.790Z"
+    },
+    "3zct8g5u": {
+      "image": "data/3zct8g5u.jpg",
+      "hash": "0927303815cc2de066839f79c2348dae58fff3a137b9d9939c8df5db5b7493e2",
+      "width": 1080,
+      "height": 1920,
+      "sources": [
+        "genshin"
+      ],
+      "entities": [
+        "Skirk"
+      ],
+      "last_updated": "2026-07-14T03:36:34.790Z"
     },
     "40hb9hks": {
       "image": "data/40hb9hks.jpg",
       "hash": "818eac7f3443ef213cd2631bb2042c03e1f6adfa703ae6c806e664414d304e3b",
       "width": 1080,
       "height": 1662,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Firefly"
       ],
-      "last_updated": "2026-07-07T02:12:14.672Z"
+      "last_updated": "2026-07-14T03:36:34.790Z"
     },
     "44kpqnny": {
       "image": "data/44kpqnny.jpg",
       "hash": "70471d74f7ae7d46b172001cd737f5b1672bd197a912fd957b00a1243350e3c4",
       "width": 1216,
       "height": 3520,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Thelema"
       ],
-      "last_updated": "2026-07-07T02:12:14.672Z"
+      "last_updated": "2026-07-14T03:36:34.790Z"
     },
     "47lr6w4w": {
       "image": "data/47lr6w4w.jpg",
       "hash": "404c80a870b82d21b6910fa2ef2c0848f4ef9fcb2d819f2d16946c1d72732094",
       "width": 1600,
       "height": 2400,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "RaidenShogun"
       ],
-      "last_updated": "2026-07-07T02:12:14.672Z"
+      "last_updated": "2026-07-14T03:36:34.791Z"
     },
     "4k83drkv": {
       "image": "data/4k83drkv.jpg",
       "hash": "5ed7ab30433e745b305c0d2118ffd75900fdec6523e289dbe32f250f99589672",
       "width": 1600,
       "height": 2844,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "stelle"
       ],
-      "last_updated": "2026-07-07T02:12:14.672Z"
+      "last_updated": "2026-07-14T03:36:34.791Z"
     },
     "4rd3yrxv": {
       "image": "data/4rd3yrxv.jpg",
       "hash": "208fa97ef652763be1edd5f7e1b95ae87997043edb07868c674f97d9149585a5",
       "width": 1080,
       "height": 1578,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Lingsha"
       ],
-      "last_updated": "2026-07-07T02:12:14.673Z"
+      "last_updated": "2026-07-14T03:36:34.791Z"
     },
     "4tqybu6v": {
       "image": "data/4tqybu6v.jpg",
       "hash": "b771d7600c199d501ce78ae9689f22ba0bfec357364750eec955b3174b27ae60",
       "width": 1004,
       "height": 2162,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Columbina"
       ],
-      "last_updated": "2026-07-07T02:12:14.673Z"
+      "last_updated": "2026-07-14T03:36:34.791Z"
     },
     "4x4vorka": {
       "image": "data/4x4vorka.jpg",
       "hash": "bbe50c287939dc2e9fc3904482e86b5c4fd96618a948ff308c11acfe4ebd3aab",
       "width": 1080,
       "height": 1919,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Anna"
       ],
-      "last_updated": "2026-07-07T02:12:14.673Z"
+      "last_updated": "2026-07-14T03:36:34.792Z"
     },
     "58dahspl": {
       "image": "data/58dahspl.jpg",
       "hash": "e6d4a06632cd6aad2955b2b45a7294c9f301b6f162bb34822d1f70b80b59a68c",
       "width": 2140,
       "height": 1080,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "homu",
         "TheresaLuna"
       ],
-      "last_updated": "2026-07-07T02:12:14.673Z"
+      "last_updated": "2026-07-14T03:36:34.792Z"
     },
     "58gxk2vy": {
       "image": "data/58gxk2vy.jpg",
       "hash": "fd38c8d78c3652c35fb0ae2f578cb649781285880e69cf98eae2509a6bd1acea",
       "width": 1080,
       "height": 1919,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Kiana"
       ],
-      "last_updated": "2026-07-07T02:12:14.673Z"
+      "last_updated": "2026-07-14T03:36:34.792Z"
     },
     "59670f4m": {
       "image": "data/59670f4m.jpg",
       "hash": "627bf867e13a51ded14886a2026bbd1690fb54961c61296fd70c4b0c3f892050",
       "width": 832,
       "height": 1216,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Sparkle"
       ],
-      "last_updated": "2026-07-07T02:12:14.674Z"
+      "last_updated": "2026-07-14T03:36:34.792Z"
     },
     "5bvzev69": {
       "image": "data/5bvzev69.jpg",
       "hash": "11f472d0036a9c654a355fa7f01dc3c39b3c2a59bfbeafebbab93b630824c841",
       "width": 1080,
       "height": 1528,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Anna"
       ],
-      "last_updated": "2026-07-07T02:12:14.674Z"
+      "last_updated": "2026-07-14T03:36:34.792Z"
     },
     "5ddoimxd": {
       "image": "data/5ddoimxd.jpg",
       "hash": "fa4b1c6d88ed3ed351553d8c2b8d7f27eede790a116cd6bdd02f5384fb350847",
       "width": 1080,
       "height": 1825,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Llauma",
         "Nepher"
       ],
-      "last_updated": "2026-07-07T02:12:14.675Z"
+      "last_updated": "2026-07-14T03:36:34.793Z"
     },
     "5h8juzw4": {
       "image": "data/5h8juzw4.jpg",
       "hash": "c7f1c1d61e93cb2bab0d8c893ec54ed219cf13ad471a8bf591c1b028ee4336e6",
       "width": 1600,
       "height": 2774,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "BlackSwan"
       ],
-      "last_updated": "2026-07-07T02:12:14.675Z"
+      "last_updated": "2026-07-14T03:36:34.793Z"
     },
     "5imkm8vt": {
       "image": "data/5imkm8vt.jpg",
       "hash": "5033dfcf5dd0d0cc052ae6eb906fa64ef61847f52900cfa7d29d536a10b3d1a3",
       "width": 1198,
       "height": 2000,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Mualani"
       ],
-      "last_updated": "2026-07-07T02:12:14.675Z"
+      "last_updated": "2026-07-14T03:36:34.793Z"
+    },
+    "5kpvkh4s": {
+      "image": "data/5kpvkh4s.jpg",
+      "hash": "d47faca5549dda3ea9952b6afbad3ea06d28130313ce597f7f775478ee2c77d5",
+      "width": 1200,
+      "height": 896,
+      "sources": [
+        "bh3"
+      ],
+      "entities": [
+        "seele_vollerei"
+      ],
+      "last_updated": "2026-07-14T03:36:34.793Z"
     },
     "67df1x22": {
       "image": "data/67df1x22.jpg",
       "hash": "5996291142fb23b980aeede758ccfff8cd12228e4515a897caee6270ce7dfcfb",
       "width": 1440,
       "height": 2560,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Sandrone"
       ],
-      "last_updated": "2026-07-07T02:12:14.675Z"
+      "last_updated": "2026-07-14T03:36:34.794Z"
     },
     "69lxivnt": {
       "image": "data/69lxivnt.jpg",
       "hash": "6caaf8b2bb693f47b3a11934e504c02bca211748d14a5c08d32d91d95a9349cd",
       "width": 1600,
       "height": 2844,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Sparkle"
       ],
-      "last_updated": "2026-07-07T02:12:14.675Z"
+      "last_updated": "2026-07-14T03:36:34.794Z"
     },
     "6ffut37c": {
       "image": "data/6ffut37c.jpg",
       "hash": "6a5dfd728eeb7bba9be964b68eee83774cb7ea4100a28579375a0673bf5f75ec",
       "width": 1080,
       "height": 1578,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "TheHerta"
       ],
-      "last_updated": "2026-07-07T02:12:14.675Z"
+      "last_updated": "2026-07-14T03:36:34.794Z"
     },
     "6hqxlgvx": {
       "image": "data/6hqxlgvx.jpg",
       "hash": "627223a04d6826ed3bf94829cfa363845c254f592fd73bb8c5066167f1dcbbc3",
       "width": 1500,
       "height": 2250,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Furina"
       ],
-      "last_updated": "2026-07-07T02:12:14.676Z"
+      "last_updated": "2026-07-14T03:36:34.794Z"
     },
     "6oucx00d": {
       "image": "data/6oucx00d.jpg",
       "hash": "c1730605ff43b09eed2c9196c0d5db651d553a8c4d711db25533dcfb0419cfff",
       "width": 1080,
       "height": 1790,
-      "games": [
+      "sources": [
         "zzz"
       ],
       "entities": [
         "VivianBanshee"
       ],
-      "last_updated": "2026-07-07T02:12:14.676Z"
+      "last_updated": "2026-07-14T03:36:34.795Z"
     },
     "6ukuy7o6": {
       "image": "data/6ukuy7o6.jpg",
       "hash": "741c4b757a80789f58ddae0d3b1fa157b6c4712008f710fe522b19026df98029",
       "width": 1024,
       "height": 2048,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "yoimiya"
       ],
-      "last_updated": "2026-07-07T02:12:14.676Z"
+      "last_updated": "2026-07-14T03:36:34.795Z"
     },
     "6wsik3kq": {
       "image": "data/6wsik3kq.jpg",
       "hash": "4405739ac8328533811378ead2e457b420fa4f5a96c09109ac3839bff1a5e047",
       "width": 1080,
       "height": 1440,
-      "games": [
+      "sources": [
         "zzz"
       ],
       "entities": [
         "Corin"
       ],
-      "last_updated": "2026-07-07T02:12:14.676Z"
+      "last_updated": "2026-07-14T03:36:34.795Z"
     },
     "7188562k": {
       "image": "data/7188562k.jpg",
       "hash": "b65abb47e766d891bb95038425f78461f0c9252cd09356cf27be70869738fc0b",
       "width": 2095,
       "height": 1500,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Llauma"
       ],
-      "last_updated": "2026-07-07T02:12:14.676Z"
+      "last_updated": "2026-07-14T03:36:34.795Z"
     },
     "751jvmpz": {
       "image": "data/751jvmpz.jpg",
       "hash": "00ea80914adab4cf8a3292468542ed72b01a7a5926a391383923165a32f674c1",
       "width": 1080,
       "height": 1995,
-      "games": [
+      "sources": [
         "zzz"
       ],
       "entities": [
         "NangongYu",
         "Sunna"
       ],
-      "last_updated": "2026-07-07T02:12:14.677Z"
+      "last_updated": "2026-07-14T03:36:34.795Z"
     },
     "75rq3os1": {
       "image": "data/75rq3os1.jpg",
       "hash": "56993462d4eecf14f6aec70c86048d2fb9f27ddd5de775009b2b1374c3cf2fff",
       "width": 1500,
       "height": 1669,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Skirk"
       ],
-      "last_updated": "2026-07-07T02:12:14.677Z"
+      "last_updated": "2026-07-14T03:36:34.796Z"
     },
     "75ry12u4": {
       "image": "data/75ry12u4.jpg",
       "hash": "bea261f94ede8bb7901d60545be36e20edd01171a57c7ba2c0de442692c5a4b0",
       "width": 1500,
       "height": 1570,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Nahida",
         "Prune"
       ],
-      "last_updated": "2026-07-07T02:12:14.677Z"
+      "last_updated": "2026-07-14T03:36:34.796Z"
     },
     "78o6hmzo": {
       "image": "data/78o6hmzo.jpg",
       "hash": "613911f5c45ef9a60c630e7ccada85fb4c8b0f84fc4150552f2a496306d8ad3a",
       "width": 832,
       "height": 1216,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "yae_miko"
       ],
-      "last_updated": "2026-07-07T02:12:14.677Z"
+      "last_updated": "2026-07-14T03:36:34.796Z"
+    },
+    "7ge9p21r": {
+      "image": "data/7ge9p21r.jpg",
+      "hash": "ea9502ccc54712af69d2e5f4d1a7c7ef117bb6082934573c44cd4022bba1baf7",
+      "width": 2400,
+      "height": 1792,
+      "sources": [
+        "bh3"
+      ],
+      "entities": [
+        "Elysia"
+      ],
+      "last_updated": "2026-07-14T03:36:34.796Z"
     },
     "7mqhuq6c": {
       "image": "data/7mqhuq6c.jpg",
       "hash": "0b668f93c95d0df975f29df139d7b6a1350e00ca643c1e6db0dd83d9634d3687",
       "width": 1600,
       "height": 2057,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Firefly"
       ],
-      "last_updated": "2026-07-07T02:12:14.677Z"
+      "last_updated": "2026-07-14T03:36:34.797Z"
     },
     "7ra6qst7": {
       "image": "data/7ra6qst7.jpg",
       "hash": "d65b6c67ac48e901c8697a45d059fde471ffb7e9857b2cc51b6cdc6f52ec8247",
       "width": 1052,
       "height": 2151,
-      "games": [
+      "sources": [
         "zzz"
       ],
       "entities": [
         "WanzhouLoli"
       ],
-      "last_updated": "2026-07-07T02:12:14.677Z"
+      "last_updated": "2026-07-14T03:36:34.797Z"
     },
     "8cb7mdkb": {
       "image": "data/8cb7mdkb.jpg",
       "hash": "74462a15c5543657fc361710499cbcde9543d29a1a3df476de5a434e00eed13f",
       "width": 1500,
       "height": 2125,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Linnea"
       ],
-      "last_updated": "2026-07-07T02:12:14.678Z"
+      "last_updated": "2026-07-14T03:36:34.797Z"
     },
     "8h4odhww": {
       "image": "data/8h4odhww.jpg",
       "hash": "fe2bfbdef1be29e67bd91ac6792489619cb6e94a216e9c920a88a5ea5f3428fe",
       "width": 1080,
       "height": 1899,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Elysia"
       ],
-      "last_updated": "2026-07-07T02:12:14.678Z"
+      "last_updated": "2026-07-14T03:36:34.797Z"
     },
     "8qy6glbj": {
       "image": "data/8qy6glbj.jpg",
       "hash": "285a17195f64941550e5d7eda790cd17d3948864cf11e5f6dcf149e7245104c2",
       "width": 1080,
       "height": 1863,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Firefly"
       ],
-      "last_updated": "2026-07-07T02:12:14.678Z"
+      "last_updated": "2026-07-14T03:36:34.798Z"
     },
     "8vire9nf": {
       "image": "data/8vire9nf.jpg",
       "hash": "ff3bcfbb3fba22d71b82e2af17415a6468b35611706a416e914888fd29633502",
       "width": 1080,
       "height": 1620,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "silver_wolf"
       ],
-      "last_updated": "2026-07-07T02:12:14.678Z"
+      "last_updated": "2026-07-14T03:36:34.798Z"
     },
     "92ppgkx2": {
       "image": "data/92ppgkx2.jpg",
       "hash": "610c3d933b726c6d29017e2ba5a1c6d8440c73b0219e5e6235adb9f514514b75",
       "width": 1080,
       "height": 2160,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Skirk"
       ],
-      "last_updated": "2026-07-07T02:12:14.678Z"
+      "last_updated": "2026-07-14T03:36:34.798Z"
     },
     "95c1d4gb": {
       "image": "data/95c1d4gb.jpg",
       "hash": "6869cf706ff52645fdc58a4a4c21ef1bf439fc5c7e6c761a8aa331c13c7f66c3",
       "width": 822,
       "height": 1200,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "LiSushang"
       ],
-      "last_updated": "2026-07-07T02:12:14.678Z"
+      "last_updated": "2026-07-14T03:36:34.798Z"
     },
     "969b3b7z": {
       "image": "data/969b3b7z.jpg",
       "hash": "91e4add1f71353f1f5a2a90eae29e89bc03e3bc50d632e154661fb393d9970e0",
       "width": 1000,
       "height": 2000,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Cipher"
       ],
-      "last_updated": "2026-07-07T02:12:14.679Z"
+      "last_updated": "2026-07-14T03:36:34.799Z"
     },
     "9j5oa5s1": {
       "image": "data/9j5oa5s1.jpg",
       "hash": "8810c10c36ef389c4433d1fb9a7887a4a653541634d3abebd380863f2272f7d2",
       "width": 1080,
       "height": 1920,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
-        "FatuiTeaParty"
+        "Columbina",
+        "Sandrone"
       ],
-      "last_updated": "2026-07-07T02:12:14.679Z"
+      "last_updated": "2026-07-14T03:36:34.799Z"
     },
     "9k75cild": {
       "image": "data/9k75cild.jpg",
       "hash": "92f07099417f9db21c71546bca23ab110662148fdac2b89c2962402b3c614ea7",
       "width": 1600,
       "height": 2844,
-      "games": [
+      "sources": [
         "zzz"
       ],
       "entities": [
         "Yixuan"
       ],
-      "last_updated": "2026-07-07T02:12:14.679Z"
+      "last_updated": "2026-07-14T03:36:34.799Z"
     },
     "9wovy4kj": {
       "image": "data/9wovy4kj.jpg",
       "hash": "a5006e8e642fd2b3e60dc16b640001a8cb4ad29f5d61fda5f3067e4529926142",
       "width": 1600,
       "height": 2844,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Nahida"
       ],
-      "last_updated": "2026-07-07T02:12:14.679Z"
+      "last_updated": "2026-07-14T03:36:34.799Z"
     },
     "9zu4xj9q": {
       "image": "data/9zu4xj9q.jpg",
       "hash": "732a876b455bccc015db14699de01b3f4eb1ed1d193dfad7f7ad46a093a6da22",
       "width": 1014,
       "height": 984,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "yae_miko"
       ],
-      "last_updated": "2026-07-07T02:12:14.679Z"
+      "last_updated": "2026-07-14T03:36:34.800Z"
+    },
+    "a3tcok7c": {
+      "image": "data/a3tcok7c.jpg",
+      "hash": "9be8114cc8d07bdb55de618bbf540f66a03f12c2c1fbafee5b84546a149509ec",
+      "width": 720,
+      "height": 1280,
+      "sources": [
+        "bh3"
+      ],
+      "entities": [
+        "Griseo"
+      ],
+      "last_updated": "2026-07-14T03:36:34.800Z"
     },
     "abcm7jgi": {
       "image": "data/abcm7jgi.jpg",
       "hash": "bcce9b7301a59a19b658db17a6c448423b4a7674905c4e8c1500e5da694df77a",
       "width": 768,
       "height": 1344,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Firefly"
       ],
-      "last_updated": "2026-07-07T02:12:14.679Z"
+      "last_updated": "2026-07-14T03:36:34.800Z"
     },
     "abt7nc3i": {
       "image": "data/abt7nc3i.jpg",
       "hash": "a4ef880c63805c6a9467b1dd8862622e05c26e9a887f9aedc242dc6c30166a21",
       "width": 853,
       "height": 1280,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "BlackSwan"
       ],
-      "last_updated": "2026-07-07T02:12:14.679Z"
+      "last_updated": "2026-07-14T03:36:34.800Z"
     },
     "b0e77tfl": {
       "image": "data/b0e77tfl.jpg",
       "hash": "645a540e4e623e958196fa667ecc234b4051ea4492cc3cd2e4c1b12dc93da527",
       "width": 1500,
       "height": 1938,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Raven"
       ],
-      "last_updated": "2026-07-07T02:12:14.680Z"
+      "last_updated": "2026-07-14T03:36:34.801Z"
     },
     "b44v0fwy": {
       "image": "data/b44v0fwy.jpg",
       "hash": "80887b3d20515543408a2d3c2296741c84fe4282a3c38cafff36e213a89b1576",
       "width": 1080,
       "height": 1745,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "shenhe"
       ],
-      "last_updated": "2026-07-07T02:12:14.680Z"
+      "last_updated": "2026-07-14T03:36:34.801Z"
     },
     "bf5jtigo": {
       "image": "data/bf5jtigo.jpg",
       "hash": "35d8d6d1e1bafca4bd6afeb3617c12c10abd584febc40b530e98e91886c402ef",
       "width": 1600,
       "height": 2844,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Robin"
       ],
-      "last_updated": "2026-07-07T02:12:14.680Z"
+      "last_updated": "2026-07-14T03:36:34.801Z"
     },
     "bp5po8yk": {
       "image": "data/bp5po8yk.jpg",
       "hash": "333ac4f813c2afc8a07223fdc0512277f81a626bd3ba8d96170f6c58dba05384",
       "width": 1080,
       "height": 1697,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Firefly",
         "stelle"
       ],
-      "last_updated": "2026-07-07T02:12:14.680Z"
+      "last_updated": "2026-07-14T03:36:34.801Z"
     },
     "bqrk0cc6": {
       "image": "data/bqrk0cc6.jpg",
       "hash": "35c3fc28c6341d98290134531e27016284febe20a0aab986f0b4f4c84f3b7a96",
       "width": 1080,
       "height": 1920,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Griseo"
       ],
-      "last_updated": "2026-07-07T02:12:14.680Z"
+      "last_updated": "2026-07-14T03:36:34.802Z"
     },
     "brvnud1m": {
       "image": "data/brvnud1m.jpg",
       "hash": "fd0a3e6755974ceace6560be3aef86d0e599c39bc96eafc3487a8d94d7abdf1e",
       "width": 1080,
       "height": 1563,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Anna"
       ],
-      "last_updated": "2026-07-07T02:12:14.680Z"
+      "last_updated": "2026-07-14T03:36:34.802Z"
     },
     "btq0dh1l": {
       "image": "data/btq0dh1l.jpg",
       "hash": "3601c5081b2c1e3cc4ac1c6d18bf997df9849543d41b8d90c9905ebf18aa1cec",
       "width": 1080,
       "height": 1800,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Acheron"
       ],
-      "last_updated": "2026-07-07T02:12:14.680Z"
+      "last_updated": "2026-07-14T03:36:34.802Z"
     },
     "cg5dkdql": {
       "image": "data/cg5dkdql.jpg",
       "hash": "e7605a78de875df3f2e061fa0264f8eeb48f54473716f598799acea1ee61ffc4",
       "width": 1080,
       "height": 1577,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Cifera"
       ],
-      "last_updated": "2026-07-07T02:12:14.681Z"
+      "last_updated": "2026-07-14T03:36:34.802Z"
     },
     "ck5jybvw": {
       "image": "data/ck5jybvw.jpg",
       "hash": "967626b8a32528bd6c10809b561ee93c369c5990d63cdf84c4c016e6b4d764b3",
       "width": 1300,
       "height": 1650,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Skirk"
       ],
-      "last_updated": "2026-07-07T02:12:14.681Z"
+      "last_updated": "2026-07-14T03:36:34.803Z"
     },
     "d4z8obex": {
       "image": "data/d4z8obex.jpg",
       "hash": "746ccac1e56a878066da2e5cc74f8ab1d654d0126216e14a3f919b2e5dbb4e67",
       "width": 832,
       "height": 1216,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "shenhe"
       ],
-      "last_updated": "2026-07-07T02:12:14.681Z"
+      "last_updated": "2026-07-14T03:36:34.803Z"
+    },
+    "d5u3ravi": {
+      "image": "data/d5u3ravi.jpg",
+      "hash": "ca3cc777492d2d3fd7bc7f1450902dd5ad58d80a1c464668c1dd90fcdc2b5bdf",
+      "width": 2052,
+      "height": 3000,
+      "sources": [
+        "bh3"
+      ],
+      "entities": [
+        "Elysia"
+      ],
+      "last_updated": "2026-07-14T03:36:34.803Z"
     },
     "dgezd894": {
       "image": "data/dgezd894.jpg",
       "hash": "bd6ec72523eb9014cc62303e78d597ffeb7a6352450175fcc92eae01efb7a2f3",
       "width": 1500,
       "height": 2250,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "silver_wolf"
       ],
-      "last_updated": "2026-07-07T02:12:14.681Z"
+      "last_updated": "2026-07-14T03:36:34.803Z"
     },
     "dhbkrura": {
       "image": "data/dhbkrura.jpg",
       "hash": "0ef50e912c47a7ce461e8efa3528d694656c2c334e7391476421ceedb6da3079",
       "width": 1920,
       "height": 1080,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Columbina"
       ],
-      "last_updated": "2026-07-07T02:12:14.681Z"
+      "last_updated": "2026-07-14T03:36:34.803Z"
     },
     "dhed7np3": {
       "image": "data/dhed7np3.jpg",
       "hash": "87bcfe322b7fb4ec0e808d536dba71a5a90e2ba9c995bf949f63ccb4c73ee150",
       "width": 1600,
       "height": 2515,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Columbina"
       ],
-      "last_updated": "2026-07-07T02:12:14.681Z"
+      "last_updated": "2026-07-14T03:36:34.804Z"
     },
     "di2nfii0": {
       "image": "data/di2nfii0.jpg",
       "hash": "bbec63f97002d9689335f7b320b1711befbe3b01b67c82f7045edda4c2429cf1",
       "width": 1620,
       "height": 1080,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Cyrene"
       ],
-      "last_updated": "2026-07-07T02:12:14.681Z"
+      "last_updated": "2026-07-14T03:36:34.804Z"
     },
     "djp4iugq": {
       "image": "data/djp4iugq.jpg",
       "hash": "680c7df11a5ad6cd90a6cfc00ddb3cc8841210788a0a13f26d70d10be0315cbe",
       "width": 2338,
       "height": 1500,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Vita"
       ],
-      "last_updated": "2026-07-07T02:12:14.682Z"
+      "last_updated": "2026-07-14T03:36:34.804Z"
     },
     "dpwmp6hb": {
       "image": "data/dpwmp6hb.jpg",
       "hash": "1289f6b1dcde87ba6ae90a298afe45ac3c5d73151ed2becf5e42604682f179c3",
       "width": 1536,
       "height": 2304,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Kiana"
       ],
-      "last_updated": "2026-07-07T02:12:14.682Z"
+      "last_updated": "2026-07-14T03:36:34.804Z"
     },
     "dujpicm1": {
       "image": "data/dujpicm1.jpg",
       "hash": "1eb3cd231dce7c1a1b8b84613cace0e981d24e009df4e79844cbba00b602c3cc",
       "width": 1080,
       "height": 1669,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Elysia"
       ],
-      "last_updated": "2026-07-07T02:12:14.682Z"
+      "last_updated": "2026-07-14T03:36:34.805Z"
+    },
+    "dupnnput": {
+      "image": "data/dupnnput.jpg",
+      "hash": "1f5396661c0a30a5ab856a4b6c5f9bc9f165dab57169f44ab3a1538046717676",
+      "width": 2400,
+      "height": 1792,
+      "sources": [
+        "bh3"
+      ],
+      "entities": [
+        "Elysia"
+      ],
+      "last_updated": "2026-07-14T03:36:34.805Z"
     },
     "e0lz7a0n": {
       "image": "data/e0lz7a0n.jpg",
       "hash": "df893682ff94b74bae0d83aca242a76180229ab0b247210aeed405a594a9863f",
       "width": 1080,
       "height": 1620,
-      "games": [
+      "sources": [
         "zzz"
       ],
       "entities": [
         "HoshimiMiyabi"
       ],
-      "last_updated": "2026-07-07T02:12:14.682Z"
+      "last_updated": "2026-07-14T03:36:34.805Z"
     },
     "ebaldhlb": {
       "image": "data/ebaldhlb.jpg",
       "hash": "cd5e65c67f3ee606eabf45920b147ff76835917dcc3fe0fbea13bf1a5a26622b",
       "width": 832,
       "height": 1216,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Firefly",
         "stelle"
       ],
-      "last_updated": "2026-07-07T02:12:14.683Z"
+      "last_updated": "2026-07-14T03:36:34.806Z"
     },
     "em0omrux": {
       "image": "data/em0omrux.jpg",
       "hash": "c0ecd93281567f58a28be80b5e015cfdc04999ce608732828797fa9c30321fde",
       "width": 1080,
       "height": 1578,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "HuTao"
       ],
-      "last_updated": "2026-07-07T02:12:14.683Z"
+      "last_updated": "2026-07-14T03:36:34.806Z"
     },
     "ewdk0zjz": {
       "image": "data/ewdk0zjz.jpg",
       "hash": "413cf395df2a11caad09d24512f676f707ce6b0861d8960690a8550186465cf5",
       "width": 832,
       "height": 1216,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Cyrene"
       ],
-      "last_updated": "2026-07-07T02:12:14.683Z"
+      "last_updated": "2026-07-14T03:36:34.806Z"
     },
     "ewmn0pz5": {
       "image": "data/ewmn0pz5.jpg",
       "hash": "b8240182ee24e0350d5aae41467083424c477a13b808c41a2ac06dba2890d724",
       "width": 1499,
       "height": 2312,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Columbina"
       ],
-      "last_updated": "2026-07-07T02:12:14.683Z"
+      "last_updated": "2026-07-14T03:36:34.806Z"
     },
     "ewoyns5v": {
       "image": "data/ewoyns5v.jpg",
       "hash": "1f794001c330fa6d91ff90b2553d268391b29262bb87d9765c8b478a087f2320",
       "width": 1080,
       "height": 1385,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "lumine"
       ],
-      "last_updated": "2026-07-07T02:12:14.683Z"
+      "last_updated": "2026-07-14T03:36:34.807Z"
     },
     "f2x3z8ga": {
       "image": "data/f2x3z8ga.jpg",
       "hash": "53bfcae7a30a0f9841f0654cbf3a11b76ad1309275fb8dbe7019e1d04079d37b",
       "width": 1600,
       "height": 2844,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Firefly"
       ],
-      "last_updated": "2026-07-07T02:12:14.683Z"
+      "last_updated": "2026-07-14T03:36:34.807Z"
     },
     "f3k95jqx": {
       "image": "data/f3k95jqx.jpg",
       "hash": "93d66e9cd9d30df5d448a3a0a6af48c61276140bcc329747713a36facb9a94e4",
       "width": 2368,
       "height": 1500,
-      "games": [
+      "sources": [
         "zzz"
       ],
       "entities": [
@@ -1286,549 +1418,614 @@
         "NangongYu",
         "Sunna"
       ],
-      "last_updated": "2026-07-07T02:12:14.683Z"
+      "last_updated": "2026-07-14T03:36:34.807Z"
+    },
+    "f650bqcs": {
+      "image": "data/f650bqcs.jpg",
+      "hash": "9b7f945471dc497f87c27b988ec3ee4b66d2c86aa288d776f79c17c954b98fd0",
+      "width": 2708,
+      "height": 1500,
+      "sources": [
+        "genshin"
+      ],
+      "entities": [
+        "Columbina"
+      ],
+      "last_updated": "2026-07-14T03:36:34.807Z"
     },
     "fff5bzjp": {
       "image": "data/fff5bzjp.jpg",
       "hash": "316cb4bda945a961e3ccae41f36537c43fc88abbb3cdc0a68f7c9a00e6905224",
       "width": 1080,
       "height": 2516,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Veliona"
       ],
-      "last_updated": "2026-07-07T02:12:14.684Z"
+      "last_updated": "2026-07-14T03:36:34.808Z"
     },
     "ffv335nf": {
       "image": "data/ffv335nf.jpg",
       "hash": "85f79a0f1f04e2c0fdf07c9a492d2ad3891793db4ccabe18cbd851854051a762",
       "width": 672,
       "height": 1200,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Cyrene"
       ],
-      "last_updated": "2026-07-07T02:12:14.684Z"
+      "last_updated": "2026-07-14T03:36:34.808Z"
     },
     "fiwdn4eu": {
       "image": "data/fiwdn4eu.jpg",
       "hash": "54deff37db37511aa14325aaa086f31de28428048c72cca4d10b7b7c86191ebe",
       "width": 1500,
       "height": 2625,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "seele_vollerei"
       ],
-      "last_updated": "2026-07-07T02:12:14.684Z"
+      "last_updated": "2026-07-14T03:36:34.808Z"
     },
     "fk1fds5p": {
       "image": "data/fk1fds5p.jpg",
       "hash": "93c6c5d37d1370dc6f42bff002b00216d55d41b25daa9f729121c31725f37b34",
       "width": 1600,
       "height": 2844,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Firefly"
       ],
-      "last_updated": "2026-07-07T02:12:14.684Z"
+      "last_updated": "2026-07-14T03:36:34.808Z"
     },
     "g6zdgyhv": {
       "image": "data/g6zdgyhv.jpg",
       "hash": "267fea1331680af5739a3d63a625d986951a5119cb29d01da3dd6b805a223bdf",
       "width": 1080,
       "height": 1588,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Anna"
       ],
-      "last_updated": "2026-07-07T02:12:14.684Z"
+      "last_updated": "2026-07-14T03:36:34.809Z"
     },
     "g82yf5m9": {
       "image": "data/g82yf5m9.jpg",
       "hash": "d3ac38ff7d7e96632bbdc1b2fe785055dd03eac1a37ab17e95d43d932653e7be",
       "width": 1500,
       "height": 2750,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "RuanMei"
       ],
-      "last_updated": "2026-07-07T02:12:14.684Z"
+      "last_updated": "2026-07-14T03:36:34.809Z"
     },
     "gdh14kql": {
       "image": "data/gdh14kql.jpg",
       "hash": "2c4916f67b27fa1bd17a50f3c9ccc4eae2a69c3b06c993ca6b12a98d4cf5042b",
       "width": 1080,
       "height": 1560,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Anna"
       ],
-      "last_updated": "2026-07-07T02:12:14.684Z"
+      "last_updated": "2026-07-14T03:36:34.809Z"
     },
     "gel4d9rx": {
       "image": "data/gel4d9rx.jpg",
       "hash": "b6b72fc159d2af79a9a84293a1b8d6ff89df61ea4125327bf0bea7d85b3f150a",
       "width": 1080,
       "height": 1655,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Remielle"
       ],
-      "last_updated": "2026-07-07T02:12:14.685Z"
+      "last_updated": "2026-07-14T03:36:34.809Z"
     },
     "ghw9veep": {
       "image": "data/ghw9veep.jpg",
       "hash": "e393db7a14a0aff3909aa581301c66298d1e854c1e15e2c9c826ab67c28b1939",
       "width": 977,
       "height": 1403,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Yunli"
       ],
-      "last_updated": "2026-07-07T02:12:14.685Z"
+      "last_updated": "2026-07-14T03:36:34.809Z"
     },
     "gjq0acab": {
       "image": "data/gjq0acab.jpg",
       "hash": "e9c6051b5551db2d53386bb0eb9d39246b97677d1b65fbe3d31b89620d849f01",
       "width": 1600,
       "height": 3728,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Hibana"
       ],
-      "last_updated": "2026-07-07T02:12:14.685Z"
+      "last_updated": "2026-07-14T03:36:34.810Z"
     },
     "gm26j1gi": {
       "image": "data/gm26j1gi.jpg",
       "hash": "988bf0afcb61b8d4e87e0834eb3b0930ebac6c679c8d29cb17870577a2f9d7ff",
       "width": 1599,
       "height": 2844,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Yaoguang"
       ],
-      "last_updated": "2026-07-07T02:12:14.685Z"
+      "last_updated": "2026-07-14T03:36:34.810Z"
     },
     "gyw9cez2": {
       "image": "data/gyw9cez2.jpg",
       "hash": "a77dc46527c86f19dafcb72c5c8a3e0ba406360c6279c1a2ab2270b54d75e880",
       "width": 1518,
       "height": 2572,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Yaoguang"
       ],
-      "last_updated": "2026-07-07T02:12:14.685Z"
+      "last_updated": "2026-07-14T03:36:34.810Z"
     },
     "h09pqxco": {
       "image": "data/h09pqxco.jpg",
       "hash": "bd2603a0be38aa953e042e28a7156e543f2964bcce7e7359827d9638e8616c86",
       "width": 832,
       "height": 1216,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Feixiao"
       ],
-      "last_updated": "2026-07-07T02:12:14.685Z"
+      "last_updated": "2026-07-14T03:36:34.810Z"
     },
     "h59u90l4": {
       "image": "data/h59u90l4.jpg",
       "hash": "0547a72e365acc02b8f2c599ffe2d60a1bfd9f2ec8939563fe44cf515e689547",
       "width": 1376,
       "height": 1984,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Elysia"
       ],
-      "last_updated": "2026-07-07T02:12:14.686Z"
+      "last_updated": "2026-07-14T03:36:34.811Z"
     },
     "i3300dsa": {
       "image": "data/i3300dsa.jpg",
       "hash": "bda6ae92f6fe373bfd1d6f4973ab6a51abc6f5659882bb5aee619525b0d64905",
       "width": 1024,
       "height": 1536,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Cyrene"
       ],
-      "last_updated": "2026-07-07T02:12:14.686Z"
+      "last_updated": "2026-07-14T03:36:34.811Z"
     },
     "ilr9m0vj": {
       "image": "data/ilr9m0vj.jpg",
       "hash": "5a5157dc422567c2012b1bb0e2348afaddc659dfc1c161217dc743e30a21d81e",
       "width": 790,
       "height": 1188,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "keqing"
       ],
-      "last_updated": "2026-07-07T02:12:14.686Z"
+      "last_updated": "2026-07-14T03:36:34.811Z"
     },
     "iq43mz63": {
       "image": "data/iq43mz63.jpg",
       "hash": "98014a95201a890264120e207d807c14bcdd751bd2c7a6a35bcb654b28f5f612",
       "width": 1080,
       "height": 1620,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Firefly"
       ],
-      "last_updated": "2026-07-07T02:12:14.686Z"
+      "last_updated": "2026-07-14T03:36:34.811Z"
     },
     "iwnpmyjv": {
       "image": "data/iwnpmyjv.jpg",
       "hash": "df60cb074ebac331b241f4fab91e0f2f464247b414f3d7ad2198cbcd84583e9a",
       "width": 1500,
       "height": 2500,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Varesa"
       ],
-      "last_updated": "2026-07-07T02:12:14.686Z"
+      "last_updated": "2026-07-14T03:36:34.811Z"
+    },
+    "ixpzpldg": {
+      "image": "data/ixpzpldg.jpg",
+      "hash": "ac9736119f99f9f944ffef6f848b665cf6f522093f511e617dbc789082479130",
+      "width": 1440,
+      "height": 2160,
+      "sources": [
+        "bh3"
+      ],
+      "entities": [
+        "Elysia"
+      ],
+      "last_updated": "2026-07-14T03:36:34.812Z"
     },
     "izofy17a": {
       "image": "data/izofy17a.jpg",
       "hash": "295d140855d79cd471db345f4e860c7667ccb0bfc69b9e9eeba27cf2952d8b70",
       "width": 768,
       "height": 1280,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Niko"
       ],
-      "last_updated": "2026-07-07T02:12:14.686Z"
+      "last_updated": "2026-07-14T03:36:34.812Z"
     },
     "j4kjynng": {
       "image": "data/j4kjynng.jpg",
       "hash": "f507b06d201ec465a82b8bcc82e6d361ad84101c3c083a6ce8ef2c6f72c78ec0",
       "width": 1080,
       "height": 1620,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Robin"
       ],
-      "last_updated": "2026-07-07T02:12:14.686Z"
+      "last_updated": "2026-07-14T03:36:34.812Z"
     },
     "j5ppuro8": {
       "image": "data/j5ppuro8.jpg",
       "hash": "3055e9d07f4d3557f282e8de1c2618e90697dca0c6f08e1a150c1182133a537e",
       "width": 1080,
       "height": 1527,
-      "games": [
+      "sources": [
         "zzz"
       ],
       "entities": [
         "Sunna"
       ],
-      "last_updated": "2026-07-07T02:12:14.687Z"
+      "last_updated": "2026-07-14T03:36:34.813Z"
     },
     "j93xswmx": {
       "image": "data/j93xswmx.jpg",
       "hash": "e37e19d52469f04a69097678a0877c1fdd16d1ede759399e031e514012103c18",
       "width": 1258,
       "height": 1080,
-      "games": [
+      "sources": [
         "bh3",
         "hsr"
       ],
       "entities": [
         "Welt"
       ],
-      "last_updated": "2026-07-07T02:12:14.687Z"
+      "last_updated": "2026-07-14T03:36:34.813Z"
     },
     "je4vp5ak": {
       "image": "data/je4vp5ak.jpg",
       "hash": "d2b1a9e705699b1201e917778691469c374c8136e50698d93d40261930b82bfc",
       "width": 1080,
       "height": 1920,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Skirk"
       ],
-      "last_updated": "2026-07-07T02:12:14.687Z"
+      "last_updated": "2026-07-14T03:36:34.813Z"
     },
     "jj6ikm25": {
       "image": "data/jj6ikm25.jpg",
       "hash": "c5c76a59216dd43a72a9edc97cdc544a518a7db2f985e6514664db9a4aa3207e",
       "width": 1600,
       "height": 2780,
-      "games": [
+      "sources": [
         "zzz"
       ],
       "entities": [
         "Remielle"
       ],
-      "last_updated": "2026-07-07T02:12:14.687Z"
+      "last_updated": "2026-07-14T03:36:34.813Z"
     },
     "kcuaoana": {
       "image": "data/kcuaoana.jpg",
       "hash": "2e1e9e100c78e458dec311c2826f89d1d48c0a758b5f6f437fb35bd40b14ba85",
       "width": 2708,
       "height": 1500,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Columbina"
       ],
-      "last_updated": "2026-07-07T02:12:14.687Z"
+      "last_updated": "2026-07-14T03:36:34.813Z"
     },
     "kf6my0y9": {
       "image": "data/kf6my0y9.jpg",
       "hash": "1d05aa4fd79ff9917f649f4276d27689ee3aa8fbf50a130bfce61dd3e341d391",
       "width": 1080,
       "height": 1485,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Firefly"
       ],
-      "last_updated": "2026-07-07T02:12:14.687Z"
+      "last_updated": "2026-07-14T03:36:34.814Z"
     },
     "kq9v7lxl": {
       "image": "data/kq9v7lxl.jpg",
       "hash": "686545eb21410eb57dffc527f24e30531ffa1f11c27e93f5fdcf14d2948b13b4",
       "width": 863,
       "height": 1500,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Rappa"
       ],
-      "last_updated": "2026-07-07T02:12:14.687Z"
+      "last_updated": "2026-07-14T03:36:34.814Z"
     },
     "kqcfkjcz": {
       "image": "data/kqcfkjcz.jpg",
       "hash": "f00a04d2e00c20039bd9f580f3138b0d6ee1023fc8fe7f5107f9d3cd1d217024",
       "width": 1080,
       "height": 2277,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Escoffier"
       ],
-      "last_updated": "2026-07-07T02:12:14.688Z"
+      "last_updated": "2026-07-14T03:36:34.814Z"
     },
     "ks327qf6": {
       "image": "data/ks327qf6.jpg",
       "hash": "452c4151f95c09323c18f5dec092e675c79f175f56b5c6df946f49e308990fd1",
       "width": 960,
       "height": 960,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Eden",
         "Elysia"
       ],
-      "last_updated": "2026-07-07T02:12:14.688Z"
+      "last_updated": "2026-07-14T03:36:34.814Z"
     },
     "kvyvmlm9": {
       "image": "data/kvyvmlm9.jpg",
       "hash": "74bc844ecc344c9faf1d8b7178ef5992a28673802e9eba405ba3a8849a4aaa89",
       "width": 1500,
       "height": 1945,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Cyrene"
       ],
-      "last_updated": "2026-07-07T02:12:14.688Z"
+      "last_updated": "2026-07-14T03:36:34.815Z"
     },
     "l0rhujcc": {
       "image": "data/l0rhujcc.jpg",
       "hash": "15050bd6abecd2e7a06b54f982c260469d445457b21b97028ff6b321744a6d73",
       "width": 1224,
       "height": 2048,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Yaoguang"
       ],
-      "last_updated": "2026-07-07T02:12:14.688Z"
+      "last_updated": "2026-07-14T03:36:34.815Z"
     },
     "l4m7ampj": {
       "image": "data/l4m7ampj.jpg",
       "hash": "816cd853e79349b889b23e2e2b3fe18c709d9f31e3b3026c313c15bb447e2067",
       "width": 1024,
       "height": 1536,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Yaoyao"
       ],
-      "last_updated": "2026-07-07T02:12:14.688Z"
+      "last_updated": "2026-07-14T03:36:34.815Z"
     },
     "lbufhf7i": {
       "image": "data/lbufhf7i.jpg",
       "hash": "3a6e92889244e2c914c3ec031f2f4abdc48224c2e5b19cb61b79167b430727c0",
       "width": 1600,
       "height": 2844,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Cyrene"
       ],
-      "last_updated": "2026-07-07T02:12:14.688Z"
+      "last_updated": "2026-07-14T03:36:34.815Z"
+    },
+    "lo6ej4ai": {
+      "image": "data/lo6ej4ai.jpg",
+      "hash": "1be547414caac8dfdcce4bd2cb9ca2c5ba86fc380016d75bbcf2f0effcc76400",
+      "width": 1924,
+      "height": 3000,
+      "sources": [
+        "bh3"
+      ],
+      "entities": [
+        "Griseo"
+      ],
+      "last_updated": "2026-07-14T03:36:34.815Z"
     },
     "lo8va2rt": {
       "image": "data/lo8va2rt.jpg",
       "hash": "73adcb5fb68913425a61e40099e8e453dbb782bf6341c9c7bccaffd122780be3",
       "width": 832,
       "height": 1216,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Rappa"
       ],
-      "last_updated": "2026-07-07T02:12:14.689Z"
+      "last_updated": "2026-07-14T03:36:34.816Z"
     },
     "lw23eyuy": {
       "image": "data/lw23eyuy.jpg",
       "hash": "937599464407b10923f9bbea97d260ea503dd2d3715c8f618d6fd0a7b9f5edd1",
       "width": 600,
       "height": 800,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Skirk"
       ],
-      "last_updated": "2026-07-07T02:12:14.689Z"
+      "last_updated": "2026-07-14T03:36:34.816Z"
     },
     "lw7rmd8z": {
       "image": "data/lw7rmd8z.jpg",
       "hash": "45928ce2b19d2d2f53255831c1d57c24223aab83e39a77b660640a3fe47135f4",
       "width": 690,
       "height": 1124,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Furina"
       ],
-      "last_updated": "2026-07-07T02:12:14.689Z"
+      "last_updated": "2026-07-14T03:36:34.816Z"
+    },
+    "m2ie3t7y": {
+      "image": "data/m2ie3t7y.jpg",
+      "hash": "36602846923a713c87d9d3fee80b72da2fd0897939c3bf5854fbb2e1d29cd090",
+      "width": 1242,
+      "height": 1740,
+      "sources": [
+        "bh3"
+      ],
+      "entities": [
+        "Kiana"
+      ],
+      "last_updated": "2026-07-14T03:36:34.816Z"
     },
     "m72aj74m": {
       "image": "data/m72aj74m.jpg",
       "hash": "b1e3e454767e10eedaeda3d365e133ee93f6590d1839aa8934aa9e9650e901fc",
       "width": 1080,
       "height": 1620,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Firefly"
       ],
-      "last_updated": "2026-07-07T02:12:14.689Z"
+      "last_updated": "2026-07-14T03:36:34.817Z"
     },
     "mcyk8god": {
       "image": "data/mcyk8god.jpg",
       "hash": "6de82232d8da31cba93460cdf0f72673c65107cb79aa016b61ba3b5f26ff969e",
       "width": 1080,
       "height": 2859,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "shenhe"
       ],
-      "last_updated": "2026-07-07T02:12:14.689Z"
+      "last_updated": "2026-07-14T03:36:34.817Z"
     },
     "mkifvbpl": {
       "image": "data/mkifvbpl.jpg",
       "hash": "c0f7c2a7831065e62fa9e1aee47b1288cf1735c92231c9ff88917d5aac9592ae",
       "width": 832,
       "height": 1216,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "stelle"
       ],
-      "last_updated": "2026-07-07T02:12:14.689Z"
+      "last_updated": "2026-07-14T03:36:34.817Z"
     },
     "my3h8tyi": {
       "image": "data/my3h8tyi.jpg",
       "hash": "36a2d0cd3b285947c92157c4d90520fa3a4f8684ef1a2d4ee21b73757099cf92",
       "width": 905,
       "height": 1280,
-      "games": [
+      "sources": [
         "zzz"
       ],
       "entities": [
         "Sunna"
       ],
-      "last_updated": "2026-07-07T02:12:14.690Z"
+      "last_updated": "2026-07-14T03:36:34.817Z"
     },
     "noj4870t": {
       "image": "data/noj4870t.jpg",
       "hash": "70dc993e5e3f6bb247000c30bc97a46cd3a6899ce1cc4b935cbabfbfbc4d4c08",
       "width": 1571,
       "height": 2297,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Tribbie"
       ],
-      "last_updated": "2026-07-07T02:12:14.690Z"
+      "last_updated": "2026-07-14T03:36:34.817Z"
+    },
+    "nx5138tn": {
+      "image": "data/nx5138tn.jpg",
+      "hash": "b1f15a9c18ed2fd57893f26fc9f6ff1aee3ac687c18d228d05c669d433c07c58",
+      "width": 1080,
+      "height": 1920,
+      "sources": [
+        "bh3"
+      ],
+      "entities": [
+        "Kiana"
+      ],
+      "last_updated": "2026-07-14T03:36:34.818Z"
     },
     "nxgsmpnt": {
       "image": "data/nxgsmpnt.jpg",
       "hash": "62841878d60f36f6d4f437fbbc4f97e723869516c6a21a9008cf606433546918",
       "width": 960,
       "height": 1440,
-      "games": [
+      "sources": [
         "zzz"
       ],
       "entities": [
@@ -1836,875 +2033,918 @@
         "YeShunguang",
         "Yixuan"
       ],
-      "last_updated": "2026-07-07T02:12:14.690Z"
+      "last_updated": "2026-07-14T03:36:34.818Z"
     },
     "nxlfjfvx": {
       "image": "data/nxlfjfvx.jpg",
       "hash": "c5ecfe8833937f21d1d96a2825b4f0c9c509f43e0919b5dba5b9352480d1367d",
       "width": 1200,
       "height": 799,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Alice"
       ],
-      "last_updated": "2026-07-07T02:12:14.690Z"
+      "last_updated": "2026-07-14T03:36:34.818Z"
     },
     "o894t343": {
       "image": "data/o894t343.jpg",
       "hash": "5023c7437324e3b6ee851e95764b6dbcd2ee30a46f532c0d35fa31ef1e0efb79",
       "width": 1600,
       "height": 2572,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Escoffier"
       ],
-      "last_updated": "2026-07-07T02:12:14.690Z"
+      "last_updated": "2026-07-14T03:36:34.818Z"
     },
     "ob1qmsyw": {
       "image": "data/ob1qmsyw.jpg",
       "hash": "bf9146ad214160ff7f6db4b36542f3bdb6fff0df3687b7b8de518828b67d0bb8",
       "width": 1294,
       "height": 2300,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Aglaea"
       ],
-      "last_updated": "2026-07-07T02:12:14.690Z"
+      "last_updated": "2026-07-14T03:36:34.819Z"
     },
     "od5v0a9a": {
       "image": "data/od5v0a9a.jpg",
       "hash": "1f875d11d8623f3876c434e6b012e0b0bc3ae7700c980a23f474c6a5469f7028",
       "width": 1439,
       "height": 2500,
-      "games": [
+      "sources": [
         "zzz"
       ],
       "entities": [
         "Yixuan"
       ],
-      "last_updated": "2026-07-07T02:12:14.690Z"
+      "last_updated": "2026-07-14T03:36:34.819Z"
     },
     "odjaya63": {
       "image": "data/odjaya63.jpg",
       "hash": "6a37729b73e2779dc4e3189903b0b79793e0ad7760712dc5e0e4cf6b853daf23",
       "width": 1080,
       "height": 2126,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Niko"
       ],
-      "last_updated": "2026-07-07T02:12:14.691Z"
+      "last_updated": "2026-07-14T03:36:34.819Z"
     },
     "of7ab2bh": {
       "image": "data/of7ab2bh.jpg",
       "hash": "59ec56687ccd9ac44745c63263614380c83f29189f22433ccf93016d8d3804c1",
       "width": 1080,
       "height": 1579,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Lingsha"
       ],
-      "last_updated": "2026-07-07T02:12:14.691Z"
+      "last_updated": "2026-07-14T03:36:34.819Z"
     },
     "ofgamgrf": {
       "image": "data/ofgamgrf.jpg",
       "hash": "c94ab5280a1ea30a5a8a2bc30187c478b435fdd2acdf7de7877c1a8e20f14330",
       "width": 2304,
       "height": 1296,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Linnea"
       ],
-      "last_updated": "2026-07-07T02:12:14.691Z"
+      "last_updated": "2026-07-14T03:36:34.819Z"
     },
     "p435kjgm": {
       "image": "data/p435kjgm.jpg",
       "hash": "461b12d0929fe9802a87fb05c4c5d1a046dd846c9bdcc6290cb3d73f3265cbce",
       "width": 1242,
       "height": 1740,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Kiana"
       ],
-      "last_updated": "2026-07-07T02:12:14.691Z"
+      "last_updated": "2026-07-14T03:36:34.820Z"
     },
     "pm820d6w": {
       "image": "data/pm820d6w.jpg",
       "hash": "d0d62a2284e6d6d221919c4cfa056298e9b5350070e4b178a29f13959e725414",
       "width": 775,
       "height": 1382,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "sangonomiya_kokomi"
       ],
-      "last_updated": "2026-07-07T02:12:14.691Z"
+      "last_updated": "2026-07-14T03:36:34.820Z"
     },
     "pp940xkh": {
       "image": "data/pp940xkh.jpg",
       "hash": "819665b0cddc33d4f31f2b029895c46e2f4b934530344e3837f387c3290c5075",
       "width": 1500,
       "height": 2800,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Hyacinth"
       ],
-      "last_updated": "2026-07-07T02:12:14.691Z"
+      "last_updated": "2026-07-14T03:36:34.820Z"
     },
     "ppdbyrn9": {
       "image": "data/ppdbyrn9.jpg",
       "hash": "c752ae1cf59956f91faa638633f4069a4fa15adf7a3c60741235d01d2888675a",
       "width": 1920,
       "height": 1080,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Voyanisa"
       ],
-      "last_updated": "2026-07-07T02:12:14.692Z"
+      "last_updated": "2026-07-14T03:36:34.820Z"
     },
     "pqo16v9u": {
       "image": "data/pqo16v9u.jpg",
       "hash": "aafb41df4c2d0c13b5f6f2b7d70fefeb457bc2c143b886f318aed06a4da5ac58",
       "width": 852,
       "height": 2048,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Cyrene"
       ],
-      "last_updated": "2026-07-07T02:12:14.692Z"
+      "last_updated": "2026-07-14T03:36:34.821Z"
     },
     "pqwka6i8": {
       "image": "data/pqwka6i8.jpg",
       "hash": "84caca1c5f6976d2b9c1b7b1de6b6c49b357b8b9bc8de46ba6c069efd26f3b83",
       "width": 1440,
       "height": 2560,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Fugue"
       ],
-      "last_updated": "2026-07-07T02:12:14.692Z"
+      "last_updated": "2026-07-14T03:36:34.821Z"
     },
     "pti13vsu": {
       "image": "data/pti13vsu.jpg",
       "hash": "6664e63d1664d26826974e93b7efd4b1aebc4fa612ff5074a3d61baf3accee03",
       "width": 1080,
       "height": 1818,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Hibana"
       ],
-      "last_updated": "2026-07-07T02:12:14.692Z"
+      "last_updated": "2026-07-14T03:36:34.821Z"
     },
     "q1n7wgg0": {
       "image": "data/q1n7wgg0.jpg",
       "hash": "aa3e234213202f61ad77772c642c50c9fc207317cf6e96780ee25d746672eefa",
       "width": 800,
       "height": 1280,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Evanescia"
       ],
-      "last_updated": "2026-07-07T02:12:14.692Z"
+      "last_updated": "2026-07-14T03:36:34.821Z"
     },
     "qgqvifez": {
       "image": "data/qgqvifez.jpg",
       "hash": "5c3bdee5095d208ddb442fb98fb59d30d883f4981cb10f6a73487cb8942def18",
       "width": 1080,
       "height": 2516,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Ryune"
       ],
-      "last_updated": "2026-07-07T02:12:14.693Z"
+      "last_updated": "2026-07-14T03:36:34.821Z"
     },
     "qik9i787": {
       "image": "data/qik9i787.jpg",
       "hash": "540235eede361ee541f1b5d382b9aa0577da8e0c987960e17c36716d5a89919a",
       "width": 1080,
       "height": 2408,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Dahlia"
       ],
-      "last_updated": "2026-07-07T02:12:14.693Z"
+      "last_updated": "2026-07-14T03:36:34.822Z"
     },
     "qthy8uft": {
       "image": "data/qthy8uft.jpg",
       "hash": "37a2096d774f0d2470648185f682dc08360f91f646f7f57e2c16fafaaf2fd900",
       "width": 1440,
       "height": 2560,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Robin"
       ],
-      "last_updated": "2026-07-07T02:12:14.693Z"
+      "last_updated": "2026-07-14T03:36:34.822Z"
+    },
+    "r7wnj7c7": {
+      "image": "data/r7wnj7c7.jpg",
+      "hash": "36436f9148bf283d187b055bfd5b4da6a8e8d92793af6bd980038455cd8c0bab",
+      "width": 1080,
+      "height": 1920,
+      "sources": [
+        "bh3"
+      ],
+      "entities": [
+        "Kiana"
+      ],
+      "last_updated": "2026-07-14T03:36:34.822Z"
     },
     "ran0v4e1": {
       "image": "data/ran0v4e1.jpg",
       "hash": "49e7c0da6e2b87be6bb78dbf00c7ed702bd0aeac221455ab2be12f7b8716b80e",
       "width": 887,
       "height": 1774,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Anna"
       ],
-      "last_updated": "2026-07-07T02:12:14.693Z"
+      "last_updated": "2026-07-14T03:36:34.822Z"
     },
     "rcp7bo8j": {
       "image": "data/rcp7bo8j.jpg",
       "hash": "14d12ad6e3897c463f7d924685f93611c1dcb92a286da7015299ab06d34f157e",
       "width": 800,
       "height": 1169,
-      "games": [
+      "sources": [
         "zzz"
       ],
       "entities": [
         "HoshimiMiyabi"
       ],
-      "last_updated": "2026-07-07T02:12:14.693Z"
+      "last_updated": "2026-07-14T03:36:34.823Z"
     },
     "rpm7m4r2": {
       "image": "data/rpm7m4r2.jpg",
       "hash": "533e40fd1e80916aab40e776c031c87b77644fb9bb9ec9bf8a925740a44a00af",
       "width": 832,
       "height": 1216,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "RuanMei"
       ],
-      "last_updated": "2026-07-07T02:12:14.693Z"
+      "last_updated": "2026-07-14T03:36:34.823Z"
     },
     "rqrrgujz": {
       "image": "data/rqrrgujz.jpg",
       "hash": "8dd3ddf760abdd91e071756e7ad765242f18a9f30c84ceb60c8daa6b651db0d6",
       "width": 1600,
       "height": 2844,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Kafka"
       ],
-      "last_updated": "2026-07-07T02:12:14.694Z"
+      "last_updated": "2026-07-14T03:36:34.823Z"
     },
     "rwbsmd3c": {
       "image": "data/rwbsmd3c.jpg",
       "hash": "bccdab40001d66f611091e2435172dba28c5688686fb4654daf9d3dd4aff9241",
       "width": 1600,
       "height": 2844,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "TheresaLuna"
       ],
-      "last_updated": "2026-07-07T02:12:14.694Z"
+      "last_updated": "2026-07-14T03:36:34.823Z"
     },
     "smhb7lq0": {
       "image": "data/smhb7lq0.jpg",
       "hash": "65d5bbc35a558d989d3cf326104957cd0100a5dd073883cd3fb81d8b48e5cc6f",
       "width": 1440,
       "height": 2560,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Castorice"
       ],
-      "last_updated": "2026-07-07T02:12:14.694Z"
+      "last_updated": "2026-07-14T03:36:34.823Z"
     },
     "snvkuask": {
       "image": "data/snvkuask.jpg",
       "hash": "29760a6b1b08da9f2fa5baea22d7ad585809faa8aeecb250ca6bed69bf3139d3",
       "width": 1600,
       "height": 2795,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Nome"
       ],
-      "last_updated": "2026-07-07T02:12:14.694Z"
+      "last_updated": "2026-07-14T03:36:34.824Z"
     },
     "spy5dja5": {
       "image": "data/spy5dja5.jpg",
       "hash": "df08789a73a05fc4796c7416db42694b5c1f6fb942fd571612480c34824dd6a5",
       "width": 1024,
       "height": 1536,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Topaz"
       ],
-      "last_updated": "2026-07-07T02:12:14.694Z"
+      "last_updated": "2026-07-14T03:36:34.824Z"
     },
     "sqjbmojx": {
       "image": "data/sqjbmojx.jpg",
       "hash": "1ed2a7c02441bd37203caddc05e450c84ba104d152d67d4faea9a9a855e8622a",
       "width": 1080,
       "height": 2145,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Castorice"
       ],
-      "last_updated": "2026-07-07T02:12:14.694Z"
+      "last_updated": "2026-07-14T03:36:34.824Z"
     },
     "srbxacn2": {
       "image": "data/srbxacn2.jpg",
       "hash": "2053149a17653abcb857dc156e133dd311b3c6856bdcf75bc90bb877b7c910b9",
       "width": 979,
       "height": 2048,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "RuanMei"
       ],
-      "last_updated": "2026-07-07T02:12:14.695Z"
+      "last_updated": "2026-07-14T03:36:34.824Z"
     },
     "t27rn8f9": {
       "image": "data/t27rn8f9.jpg",
       "hash": "61d6767c6285a50f478829e102386ec4f2c72ca39f996affa9f5a6a15efbe7c6",
       "width": 960,
       "height": 1920,
-      "games": [
+      "sources": [
         "zzz"
       ],
       "entities": [
         "Sunna"
       ],
-      "last_updated": "2026-07-07T02:12:14.695Z"
+      "last_updated": "2026-07-14T03:36:34.825Z"
     },
     "t9iaej8v": {
       "image": "data/t9iaej8v.jpg",
       "hash": "31b4a137a9d5299f6ab8a07759df919b9f962bbbe77db557c0d95305181b2df1",
       "width": 768,
       "height": 1024,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Kafka"
       ],
-      "last_updated": "2026-07-07T02:12:14.695Z"
+      "last_updated": "2026-07-14T03:36:34.825Z"
     },
     "tbb68z9r": {
       "image": "data/tbb68z9r.jpg",
       "hash": "8e2315f2aafb7ab50663f06da48df253d87157ca88128680684d9829216383bc",
       "width": 1080,
       "height": 1080,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Ronova"
       ],
-      "last_updated": "2026-07-07T02:12:14.695Z"
+      "last_updated": "2026-07-14T03:36:34.825Z"
     },
     "te0jv9mi": {
       "image": "data/te0jv9mi.jpg",
       "hash": "b7e879c2725ae31a4f6b8fb83dee683803f6f3877f67a16a2c826c3ed004da9a",
       "width": 1080,
       "height": 1620,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Niko"
       ],
-      "last_updated": "2026-07-07T02:12:14.695Z"
+      "last_updated": "2026-07-14T03:36:34.825Z"
     },
     "tiyx1xb9": {
       "image": "data/tiyx1xb9.jpg",
       "hash": "99a0771c050256df3a444d6b2a4bef5efd4e85e44114b27d5fefbb43bcdcb1b0",
       "width": 1080,
       "height": 1459,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Niko"
       ],
-      "last_updated": "2026-07-07T02:12:14.695Z"
+      "last_updated": "2026-07-14T03:36:34.826Z"
     },
     "uaen5dif": {
       "image": "data/uaen5dif.jpg",
       "hash": "b3aad3c02b822254a1873efcdd4ea441834bc83a28974796e0a623cac4491692",
       "width": 1600,
       "height": 2507,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "eula"
       ],
-      "last_updated": "2026-07-07T02:12:14.696Z"
+      "last_updated": "2026-07-14T03:36:34.826Z"
     },
     "uesfd9rx": {
       "image": "data/uesfd9rx.jpg",
       "hash": "b64bb67638a84fc110a35423b5ae7acbe2d2eb79fdc490cc686e959ec42b760c",
       "width": 1086,
       "height": 1080,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Anna"
       ],
-      "last_updated": "2026-07-07T02:12:14.696Z"
+      "last_updated": "2026-07-14T03:36:34.826Z"
     },
     "ufwd27xi": {
       "image": "data/ufwd27xi.jpg",
       "hash": "201e06d82eae1e85c8381b52e4afca0d77426c29530b8d5ab57c48c271ef8e06",
       "width": 2789,
       "height": 1500,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Helia"
       ],
-      "last_updated": "2026-07-07T02:12:14.696Z"
+      "last_updated": "2026-07-14T03:36:34.826Z"
     },
     "uhm4cppl": {
       "image": "data/uhm4cppl.jpg",
       "hash": "6e05ac2cf2474443582552508836a800a5055fb92bce67401e939124ececcdba",
       "width": 1024,
       "height": 1536,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Topaz"
       ],
-      "last_updated": "2026-07-07T02:12:14.696Z"
+      "last_updated": "2026-07-14T03:36:34.826Z"
+    },
+    "ujw3jgwh": {
+      "image": "data/ujw3jgwh.jpg",
+      "hash": "d749f5c4443122274e6be6fb785ea5d1f354993eb8161c8dce63a1f598992510",
+      "width": 2000,
+      "height": 3000,
+      "sources": [
+        "bh3"
+      ],
+      "entities": [
+        "Elysia"
+      ],
+      "last_updated": "2026-07-14T03:36:34.827Z"
     },
     "uo0winvv": {
       "image": "data/uo0winvv.jpg",
       "hash": "decca11467a39e9d28279642f185ec95562a9410a19b6eee2be90ab3af3e5e69",
       "width": 1080,
       "height": 1922,
-      "games": [
+      "sources": [
         "zzz"
       ],
       "entities": [
         "Sunna"
       ],
-      "last_updated": "2026-07-07T02:12:14.696Z"
+      "last_updated": "2026-07-14T03:36:34.827Z"
     },
     "us7wpdrr": {
       "image": "data/us7wpdrr.jpg",
       "hash": "b74557dc5e4577d40a016be2bc777eab8059f964a313b8e7405085cc7f4aa818",
       "width": 1782,
       "height": 1304,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Columbina"
       ],
-      "last_updated": "2026-07-07T02:12:14.696Z"
+      "last_updated": "2026-07-14T03:36:34.827Z"
     },
     "uump4d1d": {
       "image": "data/uump4d1d.jpg",
       "hash": "060efd7bc98a537864a1da52811772fcd0a7752078f2d232371fae7c3ee6a667",
       "width": 1080,
       "height": 1619,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Cipher"
       ],
-      "last_updated": "2026-07-07T02:12:14.696Z"
+      "last_updated": "2026-07-14T03:36:34.827Z"
     },
     "uylnb0oz": {
       "image": "data/uylnb0oz.jpg",
       "hash": "5d18ce7726066af5c8aa9afade88f63637ec7fca97b3194213ed2d9b8976e276",
       "width": 1067,
       "height": 600,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Tribbie"
       ],
-      "last_updated": "2026-07-07T02:12:14.697Z"
+      "last_updated": "2026-07-14T03:36:34.828Z"
     },
     "v35zxd1u": {
       "image": "data/v35zxd1u.jpg",
       "hash": "be84ce3be544891a12866757450e08184d5191ff9d2f29646d4c8752d90eadd9",
       "width": 1600,
       "height": 2338,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Citlali"
       ],
-      "last_updated": "2026-07-07T02:12:14.697Z"
+      "last_updated": "2026-07-14T03:36:34.828Z"
     },
     "v575p2kw": {
       "image": "data/v575p2kw.jpg",
       "hash": "f76d40c33f9699fc5dc40104c82248f7f0ef0eb4a46094b9db4d99325e138627",
       "width": 1080,
       "height": 2160,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Sandrone"
       ],
-      "last_updated": "2026-07-07T02:12:14.697Z"
+      "last_updated": "2026-07-14T03:36:34.828Z"
     },
     "v6thio8e": {
       "image": "data/v6thio8e.jpg",
       "hash": "69c949cd54098c680779b8fa2228d28c57d89a0673eca5bcec194c5daa6f6c5f",
       "width": 1080,
       "height": 1520,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Columbina"
       ],
-      "last_updated": "2026-07-07T02:12:14.697Z"
+      "last_updated": "2026-07-14T03:36:34.828Z"
     },
     "v7g8ixxo": {
       "image": "data/v7g8ixxo.jpg",
       "hash": "902afe172452bfd98424c57e4fa2d0b7044e23239570f15c0b1294a78979f356",
       "width": 1080,
       "height": 1386,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Firefly"
       ],
-      "last_updated": "2026-07-07T02:12:14.697Z"
+      "last_updated": "2026-07-14T03:36:34.828Z"
     },
     "vaz7gg3g": {
       "image": "data/vaz7gg3g.jpg",
       "hash": "169e98b351f101d74184305109e58e9029702503fdd25b11bc593777a50b7e85",
       "width": 1080,
       "height": 2096,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Veliona"
       ],
-      "last_updated": "2026-07-07T02:12:14.697Z"
+      "last_updated": "2026-07-14T03:36:34.829Z"
     },
     "vutalxme": {
       "image": "data/vutalxme.jpg",
       "hash": "7b9628b197d55b345ea9c3c39e0052a2171797ca3a832494fcc4a892d95bb334",
       "width": 1080,
       "height": 1920,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "HuTao"
       ],
-      "last_updated": "2026-07-07T02:12:14.698Z"
+      "last_updated": "2026-07-14T03:36:34.829Z"
     },
     "vymoftk2": {
       "image": "data/vymoftk2.jpg",
       "hash": "0550f0825e6e2a26a45a8dc6a0c1ae63c648177013a1c94c390ec8924bd13fb5",
       "width": 1102,
       "height": 1920,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Columbina"
       ],
-      "last_updated": "2026-07-07T02:12:14.698Z"
+      "last_updated": "2026-07-14T03:36:34.829Z"
     },
     "w6d3j9q2": {
       "image": "data/w6d3j9q2.jpg",
       "hash": "516bac01dbca595492fa62ffc81843db97251c765f987428061c55fed9c301da",
       "width": 2019,
       "height": 1500,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Sandrone"
       ],
-      "last_updated": "2026-07-07T02:12:14.698Z"
+      "last_updated": "2026-07-14T03:36:34.830Z"
     },
     "wsagefl4": {
       "image": "data/wsagefl4.jpg",
       "hash": "f4bcfc1001897bde40dbcc8afca7d4989fffaebe3926bab1cf9e2272a9ab4b71",
       "width": 1080,
       "height": 2516,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "silver_wolf"
       ],
-      "last_updated": "2026-07-07T02:12:14.698Z"
+      "last_updated": "2026-07-14T03:36:34.830Z"
     },
     "wuovw3n7": {
       "image": "data/wuovw3n7.jpg",
       "hash": "411304f7ca005adc5c6a8c9b80236dc4ca5b820d27d00b5af9fdcc6f25ea7166",
       "width": 1170,
       "height": 1700,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Linnea"
       ],
-      "last_updated": "2026-07-07T02:12:14.698Z"
+      "last_updated": "2026-07-14T03:36:34.830Z"
     },
     "wvdc13vc": {
       "image": "data/wvdc13vc.jpg",
       "hash": "ca40d495491a64d72a1f75e020ec31c2b77cd5b0f0b9ab1f1ecce4e1e8c3cc84",
       "width": 2160,
       "height": 1080,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Aglaea"
       ],
-      "last_updated": "2026-07-07T02:12:14.698Z"
+      "last_updated": "2026-07-14T03:36:34.830Z"
     },
     "wzgzrx9k": {
       "image": "data/wzgzrx9k.jpg",
       "hash": "408a78edb05b70c3a39f7fcaa913366ae0e681cb79d72c3b9063111f61c696d9",
       "width": 876,
       "height": 1280,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Escoffier",
         "Varesa"
       ],
-      "last_updated": "2026-07-07T02:12:14.699Z"
+      "last_updated": "2026-07-14T03:36:34.830Z"
     },
     "xrbya98c": {
       "image": "data/xrbya98c.jpg",
       "hash": "4946cc93d68c1e5e3189481c24c811fe9b23e156b571f81ec4401c053f2771f7",
       "width": 1600,
       "height": 3134,
-      "games": [
+      "sources": [
         "bh3"
       ],
       "entities": [
         "Cyrene"
       ],
-      "last_updated": "2026-07-07T02:12:14.699Z"
+      "last_updated": "2026-07-14T03:36:34.831Z"
     },
     "xuzq6ey5": {
       "image": "data/xuzq6ey5.jpg",
       "hash": "bc52920b3b1565983be2c22e654ca9e3e0d787ff658815c5fedad44a40bb6606",
       "width": 1080,
       "height": 1578,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "collei"
       ],
-      "last_updated": "2026-07-07T02:12:14.699Z"
+      "last_updated": "2026-07-14T03:36:34.831Z"
     },
     "y9kftwtt": {
       "image": "data/y9kftwtt.jpg",
       "hash": "976bf44d3e0d689b1475bebbfb41d0e4f4ce2b43740fda55a8a0301c96964bf8",
       "width": 1500,
       "height": 2267,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Columbina"
       ],
-      "last_updated": "2026-07-07T02:12:14.699Z"
+      "last_updated": "2026-07-14T03:36:34.831Z"
     },
     "yarvgcxg": {
       "image": "data/yarvgcxg.jpg",
       "hash": "ef41729bde693d726cc346cd85f4156d4de24823917bb8e7b6a3f4afc7fe7389",
       "width": 1500,
       "height": 2292,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "Columbina"
       ],
-      "last_updated": "2026-07-07T02:12:14.699Z"
+      "last_updated": "2026-07-14T03:36:34.831Z"
     },
     "ygca7ij3": {
       "image": "data/ygca7ij3.jpg",
       "hash": "664961fbfa421ae794a63d0a3bc49c3a539d4364e263610db923e73c3dedb605",
       "width": 1242,
       "height": 1242,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Cipher"
       ],
-      "last_updated": "2026-07-07T02:12:14.699Z"
+      "last_updated": "2026-07-14T03:36:34.832Z"
     },
     "yge95cos": {
       "image": "data/yge95cos.jpg",
       "hash": "0198edbd8cd91ca8fe706bbb59d82a67e861c430736b7226e6f7778adef01978",
       "width": 832,
       "height": 1216,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Lingsha"
       ],
-      "last_updated": "2026-07-07T02:12:14.699Z"
+      "last_updated": "2026-07-14T03:36:34.832Z"
     },
     "ynevxaxl": {
       "image": "data/ynevxaxl.jpg",
       "hash": "2316c7bd8fee556a79d66b94f05e8173d13702403a762d54b35b21636dc6c847",
       "width": 1240,
       "height": 1852,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "March7th"
       ],
-      "last_updated": "2026-07-07T02:12:14.700Z"
+      "last_updated": "2026-07-14T03:36:34.832Z"
     },
     "ys1pb8x2": {
       "image": "data/ys1pb8x2.jpg",
       "hash": "71e4a2c90480f50c13259323b9dc301b26970e5a88dd4c5255d5ebf14e8e6833",
       "width": 1080,
       "height": 2090,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Cyrene"
       ],
-      "last_updated": "2026-07-07T02:12:14.700Z"
+      "last_updated": "2026-07-14T03:36:34.832Z"
     },
     "yzfyhcll": {
       "image": "data/yzfyhcll.jpg",
       "hash": "80103d89d26e47f34bb8be74d694c5f785e3806980fd2b0bc2bec24f62c25249",
       "width": 768,
       "height": 1280,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Firefly"
       ],
-      "last_updated": "2026-07-07T02:12:14.700Z"
+      "last_updated": "2026-07-14T03:36:34.832Z"
     },
     "z19uek1f": {
       "image": "data/z19uek1f.jpg",
       "hash": "e397c4d7ddf8442aa2033d8cd480e073f665993ffdfabc8649d2fc123386d352",
       "width": 1500,
       "height": 3021,
-      "games": [
+      "sources": [
         "zzz"
       ],
       "entities": [
         "Cissia"
       ],
-      "last_updated": "2026-07-07T02:12:14.700Z"
+      "last_updated": "2026-07-14T03:36:34.833Z"
     },
     "z7c5jmzk": {
       "image": "data/z7c5jmzk.jpg",
       "hash": "ea96d2a0842e9681d658d7830cb4d6a0512e82ada11dbbf6ac98e588e8bdfbdf",
       "width": 832,
       "height": 1216,
-      "games": [
+      "sources": [
         "genshin"
       ],
       "entities": [
         "lisa"
       ],
-      "last_updated": "2026-07-07T02:12:14.700Z"
+      "last_updated": "2026-07-14T03:36:34.833Z"
+    },
+    "zan01fgb": {
+      "image": "data/zan01fgb.jpg",
+      "hash": "2de21ef9715183418d531aaf7a3a0c3a9a1d4d9c0d6016c3cc9a0bb0bf5275e5",
+      "width": 2400,
+      "height": 1792,
+      "sources": [
+        "bh3"
+      ],
+      "entities": [
+        "Elysia"
+      ],
+      "last_updated": "2026-07-14T03:36:34.833Z"
     },
     "zbosqaj6": {
       "image": "data/zbosqaj6.jpg",
       "hash": "8d80d86a976de36aa938f881f0faa11284b16746b9e1a9215d317bb74ed2c10b",
       "width": 832,
       "height": 1216,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Rappa"
       ],
-      "last_updated": "2026-07-07T02:12:14.700Z"
+      "last_updated": "2026-07-14T03:36:34.833Z"
     },
     "zusggzwi": {
       "image": "data/zusggzwi.jpg",
       "hash": "1113b04e990fbbf33b4d437c5f8682dc71fd61a3cff3325fc86554f399f08275",
       "width": 1080,
       "height": 1620,
-      "games": [
+      "sources": [
         "hsr"
       ],
       "entities": [
         "Firefly"
       ],
-      "last_updated": "2026-07-07T02:12:14.701Z"
+      "last_updated": "2026-07-14T03:36:34.834Z"
     }
   },
-  "games": {
+  "sources": {
     "bh3": [
       "0dd6d465",
       "0ss2qkwb",
+      "0vpd5m1m",
+      "1n4wwzea",
+      "2hks3dbh",
       "2mtwzjyc",
       "2qknyax2",
       "2sd3m0v1",
+      "30xgolum",
       "31jjhohc",
       "31w4z7i0",
       "36i6cxhy",
@@ -2715,15 +2955,20 @@
       "58dahspl",
       "58gxk2vy",
       "5bvzev69",
+      "5kpvkh4s",
+      "7ge9p21r",
       "8h4odhww",
       "95c1d4gb",
+      "a3tcok7c",
       "b0e77tfl",
       "bqrk0cc6",
       "brvnud1m",
+      "d5u3ravi",
       "di2nfii0",
       "djp4iugq",
       "dpwmp6hb",
       "dujpicm1",
+      "dupnnput",
       "ewdk0zjz",
       "fff5bzjp",
       "ffv335nf",
@@ -2732,18 +2977,25 @@
       "gdh14kql",
       "gel4d9rx",
       "h59u90l4",
+      "ixpzpldg",
       "j93xswmx",
       "ks327qf6",
       "kvyvmlm9",
       "lbufhf7i",
+      "lo6ej4ai",
+      "m2ie3t7y",
+      "nx5138tn",
       "p435kjgm",
       "pqo16v9u",
+      "r7wnj7c7",
       "ran0v4e1",
       "rwbsmd3c",
       "uesfd9rx",
       "ufwd27xi",
+      "ujw3jgwh",
       "vaz7gg3g",
-      "xrbya98c"
+      "xrbya98c",
+      "zan01fgb"
     ],
     "hsr": [
       "0fz63o12",
@@ -2751,6 +3003,7 @@
       "0yvk6p0e",
       "1b8um5ry",
       "1dmj4djl",
+      "1n4wwzea",
       "2fssiy3q",
       "2mtwzjyc",
       "2w8fx8wn",
@@ -2838,6 +3091,7 @@
       "220pm8dc",
       "26e22jid",
       "3au2ield",
+      "3zct8g5u",
       "47lr6w4w",
       "4tqybu6v",
       "5imkm8vt",
@@ -2860,6 +3114,7 @@
       "em0omrux",
       "ewmn0pz5",
       "ewoyns5v",
+      "f650bqcs",
       "ilr9m0vj",
       "iwnpmyjv",
       "izofy17a",
@@ -2919,10 +3174,15 @@
   "entities": {
     "Kiana": [
       "0dd6d465",
+      "2hks3dbh",
+      "30xgolum",
       "31w4z7i0",
       "58gxk2vy",
       "dpwmp6hb",
-      "p435kjgm"
+      "m2ie3t7y",
+      "nx5138tn",
+      "p435kjgm",
+      "r7wnj7c7"
     ],
     "Mei": [
       "0dd6d465"
@@ -2937,9 +3197,11 @@
       "16zrwvf8",
       "26e22jid",
       "4tqybu6v",
+      "9j5oa5s1",
       "dhbkrura",
       "dhed7np3",
       "ewmn0pz5",
+      "f650bqcs",
       "kcuaoana",
       "us7wpdrr",
       "v6thio8e",
@@ -2967,11 +3229,25 @@
     "Skirk": [
       "0tp3wfvd",
       "20da1p3a",
+      "3zct8g5u",
       "75rq3os1",
       "92ppgkx2",
       "ck5jybvw",
       "je4vp5ak",
       "lw23eyuy"
+    ],
+    "Elysia": [
+      "0vpd5m1m",
+      "7ge9p21r",
+      "8h4odhww",
+      "d5u3ravi",
+      "dujpicm1",
+      "dupnnput",
+      "h59u90l4",
+      "ixpzpldg",
+      "ks327qf6",
+      "ujw3jgwh",
+      "zan01fgb"
     ],
     "Fugue": [
       "0yvk6p0e",
@@ -3001,6 +3277,10 @@
       "yzfyhcll",
       "zusggzwi"
     ],
+    "Bronya": [
+      "1n4wwzea",
+      "2mtwzjyc"
+    ],
     "Cissia": [
       "1yy0i36x",
       "z19uek1f"
@@ -3014,11 +3294,9 @@
       "6hqxlgvx",
       "lw7rmd8z"
     ],
-    "Bronya": [
-      "2mtwzjyc"
-    ],
     "seele_vollerei": [
       "2mtwzjyc",
+      "5kpvkh4s",
       "fiwdn4eu"
     ],
     "Nome": [
@@ -3058,11 +3336,14 @@
     "Griseo": [
       "36i6cxhy",
       "37eyduha",
-      "bqrk0cc6"
+      "a3tcok7c",
+      "bqrk0cc6",
+      "lo6ej4ai"
     ],
     "Sandrone": [
       "3au2ield",
       "67df1x22",
+      "9j5oa5s1",
       "v575p2kw",
       "w6d3j9q2"
     ],
@@ -3143,12 +3424,6 @@
       "ofgamgrf",
       "wuovw3n7"
     ],
-    "Elysia": [
-      "8h4odhww",
-      "dujpicm1",
-      "h59u90l4",
-      "ks327qf6"
-    ],
     "silver_wolf": [
       "8vire9nf",
       "dgezd894",
@@ -3161,9 +3436,6 @@
       "969b3b7z",
       "uump4d1d",
       "ygca7ij3"
-    ],
-    "FatuiTeaParty": [
-      "9j5oa5s1"
     ],
     "Yixuan": [
       "9k75cild",

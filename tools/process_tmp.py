@@ -40,6 +40,9 @@ if sys.platform == "win32":
 ID_ALPHABET = string.ascii_lowercase + string.digits
 ID_LENGTH = 8
 
+_TOOLS_DIR = Path(__file__).resolve().parent
+LOGS_DIR = _TOOLS_DIR / "logs"
+
 
 def load_entities(entities_dir: Path) -> Tuple[Dict[str, dict], Dict[str, str], Dict[str, str]]:
     """加载所有实体文件，返回 (id→entry, display_name→id, id_lower→id)。"""
@@ -58,7 +61,7 @@ def load_entities(entities_dir: Path) -> Tuple[Dict[str, dict], Dict[str, str], 
             continue
         entry = {
             "display_name": (data.get("display_name") or "").strip(),
-            "games": data.get("games", []),
+            "sources": data.get("sourceurces", []),
             "aliases": data.get("aliases", []),
         }
         entities[eid] = entry
@@ -176,7 +179,7 @@ def main():
     if args.repo is None:
         args.repo = Path(__file__).resolve().parent.parent
     if args.input is None:
-        args.input = args.repo / "tools" / "manual"
+        args.input = args.repo / "tools" / "workspace" / "manual"
 
     repo = args.repo
     input_dir = args.input
@@ -233,17 +236,17 @@ def main():
         # 生成 ID
         cid = generate_id(data_dir, meta_dir)
 
-        # 收集 games
-        games_set = set()
+        # 收集 sources
+        sources_set = set()
         for eid in entity_ids:
             if eid in entities:
-                games_set.update(entities[eid]["games"])
-        games = sorted(games_set) if games_set else ["unknown"]
+                sources_set.update(entities[eid]["sources"])
+        sources = sorted(sources_set) if sources_set else ["unknown"]
 
         dest_path = data_dir / f"{cid}.jpg"
 
         if args.dry_run:
-            print(f"  [DRY]  {img_path.name} → {cid}.jpg  entities={entity_ids}  games={games}")
+            print(f"  [DRY]  {img_path.name} → {cid}.jpg  entities={entity_ids}  sources={sources}")
             success += 1
             continue
 
@@ -261,7 +264,7 @@ def main():
             "hash": digest,
             "width": width,
             "height": height,
-            "games": games,
+            "sources": sources,
             "entities": sorted(entity_ids),
         }
         meta_path = meta_dir / f"{cid}.json"
@@ -278,6 +281,21 @@ def main():
     print(f"  跳过(重复): {skipped_dup}")
     print(f"  跳过(无法匹配): {skipped_nomatch}")
     print(f"  错误: {errors}")
+
+    # 将处理结果写入日志文件，方便事后查看。
+    LOGS_DIR.mkdir(parents=True, exist_ok=True)
+    log_path = LOGS_DIR / "process-tmp.txt"
+    from datetime import datetime, timezone
+    log_lines = [
+        f"=== process_tmp 处理完成 ===",
+        f"时间: {datetime.now(timezone.utc).isoformat()}",
+        f"输入目录: {input_dir}",
+        f"成功: {success}",
+        f"跳过(重复): {skipped_dup}",
+        f"跳过(无法匹配): {skipped_nomatch}",
+        f"错误: {errors}",
+    ]
+    log_path.write_text("\n".join(log_lines) + "\n", encoding="utf-8")
 
     # 构建验证
     if not args.dry_run and success > 0:

@@ -1,7 +1,7 @@
 {
   "id": "Furina",
   "display_name": "芙宁娜",
-  "games": [
+  "sources": [
     "genshin"
   ],
   "aliases": [
@@ -9,3 +9,4 @@
     "芙芙"
   ]
 }
+

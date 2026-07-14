@@ -17,7 +17,7 @@ permissions:
 jobs:
   import-images:
     # 只处理图片投稿 Issue
-    if: contains(github.event.issue.body, '### Game') && contains(github.event.issue.body, '### Entities') && contains(github.event.issue.body, '### Images')
+    if: contains(github.event.issue.body, '### Source') && contains(github.event.issue.body, '### Entities') && contains(github.event.issue.body, '### Images')
     runs-on: ubuntu-latest
 
     steps:

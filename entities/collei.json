@@ -1,7 +1,7 @@
 {
   "id": "collei",
   "display_name": "柯莱",
-  "games": [
+  "sources": [
     "genshin"
   ],
   "aliases": []

@@ -1,7 +1,7 @@
 {
     "id": "Columbina",
     "display_name": "哥伦比娅",
-    "games": [
+    "sources": [
         "genshin"
     ],
     "aliases": [

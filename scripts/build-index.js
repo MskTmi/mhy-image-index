@@ -10,6 +10,7 @@ const IMAGE_DIST_FILE = path.resolve(__dirname, '../dist/image-index.json');
 const ENTITY_DIST_FILE = path.resolve(__dirname, '../dist/entity-index.json');
 const ALIAS_MAP_DIST_FILE = path.resolve(__dirname, '../dist/alias-map.json');
 
+
 function isJsonFile(name) {
     return name.toLowerCase().endsWith('.json');
 }
@@ -69,13 +70,13 @@ async function readMetaFiles() {
         const hash = typeof raw.hash === 'string' ? raw.hash.trim() : '';
         const width = typeof raw.width === 'number' ? raw.width : 0;
         const height = typeof raw.height === 'number' ? raw.height : 0;
-        const games = ensureStringList(raw.games, 'games', fileName);
+        const sources = ensureStringList(raw.sources, 'sources', fileName);
         const entities = ensureStringList(raw.entities, 'entities', fileName);
         const lastUpdated = typeof raw.last_updated === 'string' && raw.last_updated.trim()
             ? raw.last_updated.trim()
             : new Date().toISOString();
 
-        items.push({ id, image, hash, width, height, games, entities, last_updated: lastUpdated });
+        items.push({ id, image, hash, width, height, sources, entities, last_updated: lastUpdated });
     }
 
     return items.sort((left, right) => compareText(left.id, right.id));
@@ -91,7 +92,7 @@ async function buildIndex() {
         schema_version: 1,
         generated_at: generatedAt,
         assets: {},
-        games: {},
+        sources: {},
         entities: {}
     };
     const knownEntityIds = new Set(Object.keys(entityIndex.entities));
@@ -108,18 +109,18 @@ async function buildIndex() {
             hash: item.hash,
             width: item.width,
             height: item.height,
-            games: item.games,
+            sources: item.sources,
             entities: item.entities,
             last_updated: item.last_updated
         };
 
-        // 一张图可能归属多个游戏，倒排索引中分别录入。
-        for (const g of item.games) {
-            if (!imageIndex.games[g]) {
-                imageIndex.games[g] = [];
+        // 一张图可能归属多个作品，倒排索引中分别录入。
+        for (const g of item.sources) {
+            if (!imageIndex.sources[g]) {
+                imageIndex.sources[g] = [];
             }
 
-            imageIndex.games[g].push(item.id);
+            imageIndex.sources[g].push(item.id);
         }
 
         for (const entity of item.entities) {

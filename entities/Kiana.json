@@ -1,7 +1,7 @@
 {
   "id": "Kiana",
   "display_name": "琪亚娜",
-  "games": [
+  "sources": [
     "bh3"
   ],
   "aliases": [
@@ -9,3 +9,4 @@
     "虫虫"
   ]
 }
+

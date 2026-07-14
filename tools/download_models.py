@@ -1,16 +1,6 @@
-"""把 WD14 Tagger 模型文件用 requests + 系统代理流式下载到 tools/.hf-cache 本地目录。
-
-为什么需要这个脚本：
-    huggingface_hub 1.22 通过 HTTP 代理做 HEAD 元数据请求时，代理会丢掉
-    `X-Repo-Commit` 响应头，导致 hf_hub_download 自始报 FileMetadataError。
-    imgutils 内部走的就是 hf_hub_download，所以本机环境里直接 `get_wd14_tags`
-    会因代理问题失败。这个脚本改用 requests 代理流式下载原始文件落地，配合
-    tag_image.py 启动时的 monkey-patch 完全绕开 hf_hub 网络层。
+"""下载 WD14 Tagger 模型文件到 tools/.hf-cache 本地缓存目录。
 
 用法:
-    # 设置代理后运行一次（首次几百 MB，请耐心）
-    $env:HTTP_PROXY="http://127.0.0.1:6789"
-    $env:HTTPS_PROXY="http://127.0.0.1:6789"
     .venv\Scripts\python.exe tools\download_models.py [--model SwinV2_v3]
 
 下载后会落地到：
@@ -55,10 +45,11 @@ DEFAULT_MODEL = "EVA02_Large"
 
 _TOOLS_DIR = Path(__file__).resolve().parent
 CACHE_ROOT = _TOOLS_DIR / ".hf-cache"
+LOGS_DIR = _TOOLS_DIR / "logs"
 
 
 def parse_args(argv=None) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="用代理流式下载 WD14 模型到本地缓存目录。")
+    parser = argparse.ArgumentParser(description="流式下载 WD14 模型到本地缓存目录。")
     parser.add_argument("--model", default=DEFAULT_MODEL, choices=sorted(SUPPORTED_MODELS),
                         help=f"WD14 模型名，默认 {DEFAULT_MODEL}")
     parser.add_argument("--cache-root", default=str(CACHE_ROOT),
@@ -68,25 +59,15 @@ def parse_args(argv=None) -> argparse.Namespace:
 
 
 def build_session() -> requests.Session:
-    """从环境变量创建带代理的 requests session，trust_env=True 让 requests 读 HTTP(S)_PROXY。"""
-    s = requests.Session()
-    s.trust_env = True
-    return s
-
-
-def build_session_direct() -> requests.Session:
-    """跳过系统代理直连（用于代理不稳定时）。"""
-    s = requests.Session()
-    s.trust_env = False
-    s.proxies = {"http": None, "https": None}
-    return s
+    """创建 requests session。"""
+    return requests.Session()
 
 
 def stream_download(session: requests.Session, url: str, dest: Path, force: bool,
                     max_retries: int = 8, chunk_size: int = 1024 * 512) -> None:
-    """支持断点续传的流式下载，代理中断会自动 retry 续传剩余字节。
+    """支持断点续传的流式下载，中断会自动 retry 续传剩余字节。
 
-    关键：HuggingFace CDN 对 Range 请求可能返回 200（忽略 Range，从头传完整文件）
+    HuggingFace CDN 对 Range 请求可能返回 200（忽略 Range，从头传完整文件）
     而不是 206。代码必须区分两种响应：返回 206 才追加，返回 200 必须丢掉旧 .part
     从 0 覆盖，否则两段拼接会得到损坏文件。
     """
@@ -149,11 +130,8 @@ def main(argv=None) -> int:
     cache_dir = cache_root / args.model.lower()
     cache_dir.mkdir(parents=True, exist_ok=True)
 
-    # SmilingWolf 原仓库根目录下的 model.onnx 与 selected_tags.csv 通过代理可逐字节稳定下载；
     # deepghs 聚合仓库 (deepghs/wd14_tagger_with_embeddings) 额外存了每个模型的 inv.npz
     # （imgutils 内部用作 embedding 去规范化的权重矩阵），路径在 {sub_repo}/inv.npz 下。
-    # v3 系模型在 imgutils 0.19 上未完整适配（get_wd14_tags 期望 2 输出，v3 只有 1 个），
-    # 所以默认用 v2 系的 SwinV2；v3 仍可下载备用，但运行时若 imgutils 报断言错误请改用 v2。
     sub_repo = SUPPORTED_MODELS[args.model]
     is_v3 = args.model.endswith("_v3")
     required_files = [
@@ -191,6 +169,21 @@ def main(argv=None) -> int:
     )
 
     print(f"\n完成。tag_image.py 启动时会自动从 {cache_dir} 读取这些文件。")
+
+    # 将下载结果写入日志文件，方便事后查看。
+    LOGS_DIR.mkdir(parents=True, exist_ok=True)
+    log_path = LOGS_DIR / "download-models.txt"
+    from datetime import datetime, timezone
+    log_lines = [
+        f"=== 模型下载完成 ===",
+        f"时间: {datetime.now(timezone.utc).isoformat()}",
+        f"模型: {args.model}",
+        f"源仓库: {sub_repo}",
+        f"缓存目录: {cache_dir}",
+        f"文件: {file_list}",
+    ]
+    log_path.write_text("\n".join(log_lines) + "\n", encoding="utf-8")
+
     return 0
 
 

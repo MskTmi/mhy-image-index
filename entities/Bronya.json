@@ -1,7 +1,7 @@
 {
   "id": "Bronya",
   "display_name": "布洛妮娅",
-  "games": [
+  "sources": [
     "bh3",
     "hsr"
   ],
@@ -9,3 +9,4 @@
     "板鸭"
   ]
 }
+

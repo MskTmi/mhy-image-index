@@ -1,7 +1,7 @@
 {
     "id": "Eden",
     "display_name": "伊甸",
-    "games": [
+    "sources": [
         "bh3"
     ],
     "aliases": []

@@ -1,7 +1,7 @@
 {
     "id": "Topaz",
     "display_name": "托帕",
-    "games": [
+    "sources": [
         "hsr"
     ],
     "aliases": []
