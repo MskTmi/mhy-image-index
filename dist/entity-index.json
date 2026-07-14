@@ -1795,13 +1795,11 @@
     ]
   },
   "WanzhouLoli": {
-    "display_name": "挽昼(萝莉)",
+    "display_name": "挽昼",
     "sources": [
       "zzz"
     ],
-    "aliases": [
-      "萝莉版挽昼"
-    ]
+    "aliases": []
   },
   "Welt": {
     "display_name": "瓦尔特",
