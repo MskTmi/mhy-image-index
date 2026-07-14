@@ -486,7 +486,9 @@ _NAME_SPLIT_RE = re.compile(r"[-_,.\s()（）]+")
 # 看起来像角色名的启发式规则：含中日韩字符 或 大驼峰英文单词
 _NAME_HINT_RE = re.compile(r"[\u4e00-\u9fff\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af]|[A-Z][a-z]+")
 # 明显不是角色名的常见词黑名单
-_NAME_BLACKLIST = {"ai", "ai生成", "png", "jpg", "jpeg", "webp", "美少女", "女の子", "女の子", "原创"}
+_NAME_BLACKLIST = {"ai", "ai生成", "png", "jpg", "jpeg", "webp", "美少女", "女の子", "女の子", "原创", "3rd"}
+# Pixiv "收藏数 users入り" 系列标记（5000users入り / 10000users入り 等），不是角色名
+_USERS_IRI_RE = re.compile(r"^\d+users入り$", re.IGNORECASE)
 
 
 def _extract_name_hints(filename: str, source_keywords: dict = None) -> list:
@@ -508,6 +510,8 @@ def _extract_name_hints(filename: str, source_keywords: dict = None) -> list:
             continue
         if low in _NAME_BLACKLIST:
             continue
+        if _USERS_IRI_RE.match(low):
+            continue  # 跳过 Pixiv "N users入り" 标记
         if low in source_terms:
             continue  # 跳过已知作品名
         if _NAME_HINT_RE.search(t):
