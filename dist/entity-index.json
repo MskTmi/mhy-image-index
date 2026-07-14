@@ -1548,7 +1548,8 @@
       "女王",
       "律化娜",
       "河豚",
-      "空之律者"
+      "空之律者",
+      "空律"
     ]
   },
   "Skirk": {
@@ -1767,11 +1768,13 @@
     "aliases": []
   },
   "VivianBanshee": {
-    "display_name": "薇薇安·班希",
+    "display_name": "薇薇安",
     "sources": [
       "zzz"
     ],
-    "aliases": []
+    "aliases": [
+      "薇薇安·班希"
+    ]
   },
   "Voyanisa": {
     "display_name": "沃雅妮莎",
