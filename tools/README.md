@@ -167,7 +167,7 @@ node scripts/build-index.js
 
 ### danbooru_tag_map — 作品后缀 / tag 覆盖表
 
-`tools/danbooru_tag_map.json`，只有两个字段：`source_suffixes`（作品后缀表，详见 [4.1](#41-source_suffixes--作品后缀表)）和 `tag_overrides`（特例覆盖表，详见 [4.2](#42-tag_overrides--边跑边补的特例表)）。默认全空，由用户自填。
+`tools/danbooru_tag_map.json`，三个字段：`source_suffixes`（作品后缀表）、`tag_overrides`（特例覆盖表）和 `source_keywords`（作品关键词，用于 `--auto-create` 自动推测 sources）。默认全空，由用户自填。
 
 ---
 
@@ -265,6 +265,22 @@ node scripts/build-index.js
 > [!WARNING]
 > `tag_overrides` 的 value **必须是已存在于 `entities/` 的 canonical id**，否则 `lookup.resolve` 命中后会把不存在的 id 写进 meta，下一步 `build-index.js` 校验会报 `must use canonical ids only`。
 
+### 4.3 `source_keywords` — 作品关键词表
+
+配合 `--auto-create` 使用，从文件名关键词自动推测新角色的 `sources` 字段。
+
+```json
+{
+  "source_keywords": {
+    "bh3": ["崩坏3", "崩坏3rd", "honkai", "honkai_impact"],
+    "genshin": ["原神", "genshin"],
+    "hsr": ["星穹铁道", "star_rail"]
+  }
+}
+```
+
+当 `--auto-create` 触发时，如果文件名包含这些关键词（如 `白鹿遊雲-崩坏3.png`），自动创建的 entity 会把 `sources` 设为 `["bh3"]` 而不是 `["unknown"]`。
+
 ---
 
 ## 候选 tag 生成原理
@@ -345,18 +361,19 @@ Mei   + ["bh3"]  →  mei, mei_(honkai_impact_3rd), mei_(honkai_impact)
 
 可选参数：
 
-| 参数                    | 默认                    | 说明                                                                |
-| ----------------------- | ----------------------- | ------------------------------------------------------------------- |
-| `--model`               | `EVA02_Large`           | WD14 模型名，见 [模型速查](#模型速查)                               |
-| `--character-threshold` | `0.7`                   | WD14 character tag 置信度阈值；图多但模型不熟时降到 0.5             |
-| `--general-threshold`   | `0.35`                  | 通用 tag 阈值，**不影响角色识别**，只影响模型内部裁剪               |
-| `--fusion-threshold`    | `0.30`                  | 多源融合后最低置信度，低于此值归档到 unrecognized 或 pending_review |
-| `--quality`             | `92`                    | 写入 `data/` 的 JPEG 质量 1-100                                     |
-| `--no-compress`         | —                       | 禁用智能压缩，保留原始颜色（文件更大）                              |
-| `--use-clip`            | —                       | 启用 CLIP 二次验证（需 `pip install open-clip-torch torch`）        |
-| `--input`               | `tools/workspace/inbox` | 自定义输入目录                                                      |
-| `--repo`                | 脚本上级目录            | 仓库根目录（`data/` `meta/` 写到该目录下）                          |
-| `--dump-tags`           | —                       | 诊断模式，见下                                                      |
+| 参数                    | 默认                    | 说明                                                                    |
+| ----------------------- | ----------------------- | ----------------------------------------------------------------------- |
+| `--model`               | `EVA02_Large`           | WD14 模型名，见 [模型速查](#模型速查)                                   |
+| `--character-threshold` | `0.7`                   | WD14 character tag 置信度阈值；图多但模型不熟时降到 0.5                 |
+| `--general-threshold`   | `0.35`                  | 通用 tag 阈值，**不影响角色识别**，只影响模型内部裁剪                   |
+| `--fusion-threshold`    | `0.30`                  | 多源融合后最低置信度，低于此值归档到 unrecognized 或 pending_review     |
+| `--quality`             | `92`                    | 写入 `data/` 的 JPEG 质量 1-100                                         |
+| `--no-compress`         | —                       | 禁用智能压缩，保留原始颜色（文件更大）                                  |
+| `--auto-create`         | —                       | 发现未登记角色时自动创建 entity 并重新识别（WD14 tag + 文件名均可触发） |
+| `--use-clip`            | —                       | 启用 CLIP 二次验证（需 `pip install open-clip-torch torch`）            |
+| `--input`               | `tools/workspace/inbox` | 自定义输入目录                                                          |
+| `--repo`                | 脚本上级目录            | 仓库根目录（`data/` `meta/` 写到该目录下）                              |
+| `--dump-tags`           | —                       | 诊断模式，见下                                                          |
 
 支持图片格式 `.jpg/.jpeg/.png/.webp/.bmp/.gif`，子目录递归扫描（结构镜像到 `workspace/processed/<category>/`）。
 

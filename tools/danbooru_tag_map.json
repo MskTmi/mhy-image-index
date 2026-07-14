@@ -14,6 +14,34 @@
             "zenless_zone_zero"
         ]
     },
+    "source_keywords": {
+        "genshin": [
+            "原神",
+            "genshin",
+            "genshin_impact"
+        ],
+        "bh3": [
+            "崩坏3",
+            "崩坏3rd",
+            "崩壊3rd",
+            "honkai",
+            "honkai_impact",
+            "崩坏",
+            "miHoYo"
+        ],
+        "hsr": [
+            "星穹铁道",
+            "崩坏星穹铁道",
+            "star_rail",
+            "honkai_star_rail"
+        ],
+        "zzz": [
+            "绝区零",
+            "zenless",
+            "zzz",
+            "zenless_zone_zero"
+        ]
+    },
     "tag_overrides": {
         "anby_demara": "Anby",
         "nicole_demara": "Nicole",

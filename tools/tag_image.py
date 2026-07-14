@@ -311,6 +311,13 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     )
     parser.set_defaults(compress=True)
     parser.add_argument(
+        "--auto-create",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="发现未登记角色时自动创建 entity 占位文件（WD14 未命中 tag 或文件名提示均可触发），"
+        "创建后自动重新识别。使用 --no-auto-create 禁用。",
+    )
+    parser.add_argument(
         "--dump-tags",
         action="store_true",
         help="仅输出每张图 WD14 识别到的所有 character tag 及置信度（按分数降序），"
@@ -377,25 +384,34 @@ def optimize_to_jpeg(source: Path, dest: Path, quality: int, compress: bool = Fa
         original_size = img.size
 
         if compress:
-            # 智能压缩：对二次元风格的图做调色板量化，大幅减小体积
-            # 先分析图片复杂度 —— 颜色数较少的图更适合量化
-            # 对于超大图（>2000px），先缩放到合理尺寸再做量化
             max_dim = max(img.size)
             if max_dim > 3000:
                 ratio = 3000 / max_dim
                 new_size = (int(img.size[0] * ratio), int(img.size[1] * ratio))
                 img = img.resize(new_size, Image.LANCZOS)
 
-            # 自适应调色板量化：用中位切法把颜色压缩到 256 色
-            # 然后转回 RGB 保存 JPEG，Huffman 表优化 + 无子采样
+            # 先保存一份不带量化/子采样的基准 JPEG，作为回退参照
+            from tempfile import NamedTemporaryFile
+            with NamedTemporaryFile(suffix=".jpg", delete=False) as tmp:
+                baseline_path = tmp.name
             try:
-                img = img.quantize(colors=256, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.FLOYDSTEINBERG)
-                img = img.convert("RGB")
-            except (ValueError, OSError):
-                pass  # 量化失败（极少见），直接保存原图
+                img.save(baseline_path, format="JPEG", quality=quality, optimize=True)
+                baseline_size = Path(baseline_path).stat().st_size
 
-            # 无子采样保留边缘/文字锐度；optimize 做 Huffman 表优化
-            img.save(dest, format="JPEG", quality=quality, optimize=True, subsampling="4:4:4")
+                # 自适应调色板量化：用中位切法把颜色压缩到 256 色
+                # 然后转回 RGB 保存 JPEG，Huffman 表优化 + 无子采样
+                try:
+                    quantized = img.quantize(colors=256, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.FLOYDSTEINBERG)
+                    quantized = quantized.convert("RGB")
+                except (ValueError, OSError):
+                    quantized = img  # 量化失败，回退原图
+
+                quantized.save(dest, format="JPEG", quality=quality, optimize=True, subsampling="4:4:4")
+                if dest.stat().st_size > baseline_size:
+                    # 压缩后反而变大，用基准 JPEG 覆盖
+                    shutil.copy2(baseline_path, str(dest))
+            finally:
+                Path(baseline_path).unlink(missing_ok=True)
         else:
             img.save(dest, format="JPEG", quality=quality, optimize=True)
 
@@ -404,8 +420,6 @@ def optimize_to_jpeg(source: Path, dest: Path, quality: int, compress: bool = Fa
 
     with open(dest, "rb") as fp:
         digest = hashlib.sha256(fp.read()).hexdigest()
-
-    return width, height, digest
 
     return width, height, digest
 
@@ -475,10 +489,18 @@ _NAME_HINT_RE = re.compile(r"[\u4e00-\u9fff\u3040-\u309f\u30a0-\u30ff\uac00-\ud7
 _NAME_BLACKLIST = {"ai", "ai生成", "png", "jpg", "jpeg", "webp", "美少女", "女の子", "女の子", "原创"}
 
 
-def _extract_name_hints(filename: str) -> list:
+def _extract_name_hints(filename: str, source_keywords: dict = None) -> list:
     """从文件名中提取可能的角色名，用于提示用户创建 entity。"""
     stem = Path(filename).stem
     tokens = [t.strip() for t in _NAME_SPLIT_RE.split(stem) if t.strip()]
+
+    # 收集已知作品名关键词
+    source_terms = set()
+    if source_keywords:
+        for keywords in source_keywords.values():
+            for kw in keywords:
+                source_terms.add(kw.lower())
+
     hints = []
     for t in tokens:
         low = t.lower()
@@ -486,6 +508,8 @@ def _extract_name_hints(filename: str) -> list:
             continue
         if low in _NAME_BLACKLIST:
             continue
+        if low in source_terms:
+            continue  # 跳过已知作品名
         if _NAME_HINT_RE.search(t):
             hints.append(t)
     # 优先：含中文的排前面（最像角色名），然后按长度降序
@@ -494,6 +518,76 @@ def _extract_name_hints(filename: str) -> list:
         return (-has_cjk, -len(s), s.lower())
     hints.sort(key=_sort_key)
     return hints
+
+
+def _create_entity_from_hint(hint: str, entities_dir: Path, source_keywords: dict = None) -> str:
+    """根据文件名提示创建一个最小的 entity JSON 文件。
+
+    返回 entity id，文件已写入 entities/。
+    如果 source_keywords 有匹配，自动填入 sources。
+    """
+    # 用中文名作 display_name，英文大驼峰作 id
+    has_cjk = any('\u4e00' <= c <= '\u9fff' for c in hint)
+    if has_cjk:
+        safe_id = re.sub(r'[^a-zA-Z0-9_]', '', hint)
+        if not safe_id:
+            safe_id = f"char_{hash(hint) & 0xFFFF:04x}"
+        entity = {
+            "id": safe_id,
+            "display_name": hint,
+            "sources": [],
+            "aliases": [],
+        }
+    else:
+        safe_id = hint[0].upper() + hint[1:].lower() if len(hint) > 1 else hint.upper()
+        entity = {
+            "id": safe_id,
+            "display_name": "",
+            "sources": [],
+            "aliases": [],
+        }
+
+    # 从 source_keywords 推测作品归属
+    if source_keywords:
+        # 检查 hint 本身是否匹配
+        hint_low = hint.lower()
+        for source_id, keywords in source_keywords.items():
+            for kw in keywords:
+                if kw.lower() in hint_low:
+                    if source_id not in entity["sources"]:
+                        entity["sources"].append(source_id)
+                    break
+    if not entity["sources"]:
+        entity["sources"] = ["unknown"]
+
+    file_path = entities_dir / f"{safe_id}.json"
+    file_path.write_text(json.dumps(entity, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return safe_id
+
+
+def _guess_sources_from_filename(filename: str, entity_path: Path, source_keywords: dict) -> None:
+    """从文件名关键词推测 sources，回写到 entity JSON 中。"""
+    if not source_keywords or not entity_path.exists():
+        return
+    try:
+        entity = json.loads(entity_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return
+
+    filename_low = filename.lower()
+    guessed = list(entity.get("sources", []))
+    if "unknown" in guessed:
+        guessed.remove("unknown")
+
+    for source_id, keywords in source_keywords.items():
+        for kw in keywords:
+            if kw.lower() in filename_low and source_id not in guessed:
+                guessed.append(source_id)
+                break
+
+    if guessed and guessed != entity.get("sources", []):
+        entity["sources"] = guessed
+        entity_path.write_text(json.dumps(entity, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def main(argv: Optional[List[str]] = None) -> int:
@@ -642,6 +736,15 @@ def _main_impl(args: argparse.Namespace, log_buffer: io.StringIO) -> int:
         use_clip=args.use_clip,
         fusion_threshold=args.fusion_threshold,
     )
+    # 加载 source_keywords 用于 auto-create 时推测作品
+    _tag_map_path = _TOOLS_DIR / "danbooru_tag_map.json"
+    source_keywords = {}
+    if _tag_map_path.is_file():
+        try:
+            _tag_config = json.loads(_tag_map_path.read_text(encoding="utf-8"))
+            source_keywords = _tag_config.get("source_keywords", {})
+        except (OSError, json.JSONDecodeError):
+            pass
     print(f"[info] 模型: {args.model} | 融合阈值: {args.fusion_threshold} | CLIP: {'启用' if args.use_clip else '未启用'} | 压缩: {'启用' if args.compress else '关闭'}")
     print(f"[info] 输入: {input_dir.relative_to(tools_dir)} ({len(images)} 张图)")
     print()
@@ -676,7 +779,7 @@ def _main_impl(args: argparse.Namespace, log_buffer: io.StringIO) -> int:
 
             if wd14_tags:
                 unmatched = [t for t in wd14_tags if not recognizer.alias.resolve_tag(t)]
-                if unmatched:
+                if unmatched and args.auto_create:
                     new_ids = auto_create_entities(unmatched, lookup, entities_dir)
                     for eid in new_ids:
                         auto_created_entities[eid] = eid
@@ -700,19 +803,44 @@ def _main_impl(args: argparse.Namespace, log_buffer: io.StringIO) -> int:
                     print(f"  ✓ archive   {dest.relative_to(tools_dir)}")
                     pending_review += 1
                 else:
-                    dest = archive_source(src, tools_dir, input_dir, PROCESSED_UNRECOGNIZED)
-                    print(f"[?] {src.name}\n")
-                    print(f"  reason  : 所有检测器均未识别到角色")
-
-                    # 从文件名提取可能的角色名，提示创建 entity
-                    name_hints = _extract_name_hints(src.name)
-                    if name_hints:
-                        hints_str = ", ".join(name_hints[:5])
-                        print(f"  suggest : 创建 entities/{{id}}.json  →  {hints_str}")
-
-                    print(f"\n  ✓ archive   {dest.relative_to(tools_dir)}")
-                    unrecognized += 1
-                continue
+                    # 从文件名提取可能的角色名
+                    name_hints = _extract_name_hints(src.name, source_keywords)
+                    if name_hints and args.auto_create:
+                        best_hint = name_hints[0]
+                        new_id = _create_entity_from_hint(best_hint, entities_dir, source_keywords)
+                        _guess_sources_from_filename(src.name, entities_dir / f"{new_id}.json", source_keywords)
+                        auto_created_entities[new_id] = best_hint
+                        recognizer.reload_entities()
+                        try:
+                            all_results = recognizer.recognize_with_alternatives(src, top_k=10)
+                        except Exception:
+                            all_results = []
+                        if all_results:
+                            print(f"[?] {src.name}\n")
+                            print(f"  → 自动创建 entities/{new_id}.json，重新识别\n")
+                            # fall through to 识别成功流程
+                        else:
+                            all_results = []
+                            # 自动创建后仍未识别，继续走 unrecognized
+                            dest = archive_source(src, tools_dir, input_dir, PROCESSED_UNRECOGNIZED)
+                            print(f"[?] {src.name}\n")
+                            print(f"  reason  : 所有检测器均未识别到角色")
+                            print(f"  → 已自动创建 entities/{new_id}.json（但仍未识别）")
+                            print(f"\n  ✓ archive   {dest.relative_to(tools_dir)}")
+                            unrecognized += 1
+                            continue
+                    else:
+                        dest = archive_source(src, tools_dir, input_dir, PROCESSED_UNRECOGNIZED)
+                        print(f"[?] {src.name}\n")
+                        print(f"  reason  : 所有检测器均未识别到角色")
+                        if name_hints:
+                            hints_str = ", ".join(name_hints[:5])
+                            print(f"  suggest : 创建 entities/{{id}}.json  →  {hints_str}")
+                        print(f"\n  ✓ archive   {dest.relative_to(tools_dir)}")
+                        unrecognized += 1
+                        continue
+                if not all_results:
+                    continue
 
         # ---- 筛选：主实体 + 次要实体 ----
         primary = [r for r in all_results if r.confidence >= args.fusion_threshold]
@@ -728,7 +856,7 @@ def _main_impl(args: argparse.Namespace, log_buffer: io.StringIO) -> int:
 
             if wd14_tags:
                 unmatched = [t for t in wd14_tags if not recognizer.alias.resolve_tag(t)]
-                if unmatched:
+                if unmatched and args.auto_create:
                     new_ids = auto_create_entities(unmatched, lookup, entities_dir)
                     for eid in new_ids:
                         auto_created_entities[eid] = eid
@@ -769,19 +897,55 @@ def _main_impl(args: argparse.Namespace, log_buffer: io.StringIO) -> int:
                     pending_review += 1
                     continue
                 else:
-                    dest = archive_source(src, tools_dir, input_dir, PROCESSED_UNRECOGNIZED)
-                    print(f"[?] {src.name}\n")
-                    print(f"  reason  : 所有检测器均未识别到角色")
-
-                    name_hints = _extract_name_hints(src.name)
-                    if name_hints:
-                        hints_str = ", ".join(name_hints[:5])
-                        print(f"  suggest : 创建 entities/{{id}}.json  →  {hints_str}")
-
-                    print(f"\n  ✓ archive   {dest.relative_to(tools_dir)}")
-                    print()
-                    unrecognized += 1
-                    continue
+                    # 从文件名提取可能的角色名
+                    name_hints = _extract_name_hints(src.name, source_keywords)
+                    if name_hints and args.auto_create:
+                        best_hint = name_hints[0]
+                        new_id = _create_entity_from_hint(best_hint, entities_dir, source_keywords)
+                        _guess_sources_from_filename(src.name, entities_dir / f"{new_id}.json", source_keywords)
+                        auto_created_entities[new_id] = best_hint
+                        recognizer.reload_entities()
+                        try:
+                            all_results = recognizer.recognize_with_alternatives(src, top_k=10)
+                        except Exception:
+                            all_results = []
+                        if all_results:
+                            primary = [r for r in all_results if r.confidence >= args.fusion_threshold]
+                            secondary = [r for r in all_results if secondary_threshold <= r.confidence < args.fusion_threshold]
+                            all_entities = primary + secondary
+                            if primary:
+                                print(f"[?] {src.name}\n")
+                                print(f"  → 自动创建 entities/{new_id}.json，重新识别\n")
+                                # fall through to 识别成功
+                            else:
+                                dest = archive_source(src, tools_dir, input_dir, PROCESSED_PENDING)
+                                print(f"[~] {src.name}\n")
+                                print(f"  → 已自动创建 entities/{new_id}.json")
+                                print(f"  reason  : 融合置信度不足\n")
+                                print(f"  ✓ archive   {dest.relative_to(tools_dir)}")
+                                print()
+                                pending_review += 1
+                                continue
+                        else:
+                            dest = archive_source(src, tools_dir, input_dir, PROCESSED_UNRECOGNIZED)
+                            print(f"[?] {src.name}\n")
+                            print(f"  reason  : 所有检测器均未识别到角色")
+                            print(f"  → 已自动创建 entities/{new_id}.json（但仍未识别）")
+                            print(f"\n  ✓ archive   {dest.relative_to(tools_dir)}")
+                            print()
+                            unrecognized += 1
+                            continue
+                    else:
+                        dest = archive_source(src, tools_dir, input_dir, PROCESSED_UNRECOGNIZED)
+                        print(f"[?] {src.name}\n")
+                        print(f"  reason  : 所有检测器均未识别到角色")
+                        if name_hints:
+                            hints_str = ", ".join(name_hints[:5])
+                            print(f"  suggest : 创建 entities/{{id}}.json  →  {hints_str}")
+                        print(f"\n  ✓ archive   {dest.relative_to(tools_dir)}")
+                        print()
+                        unrecognized += 1
+                        continue
 
         # ---- 识别成功：写入 data/meta ----
         uid = generate_id(data_dir, meta_dir)
