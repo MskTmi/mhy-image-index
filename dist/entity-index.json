@@ -1,4 +1,11 @@
 {
+  "3rd5000users": {
+    "display_name": "崩壊3rd5000users入り",
+    "sources": [
+      "bh3"
+    ],
+    "aliases": []
+  },
   "Acheron": {
     "display_name": "黄泉",
     "sources": [
@@ -432,7 +439,6 @@
       "bh3"
     ],
     "aliases": [
-      "Fervent Tempo Δ",
       "Δ",
       "狂热蓝调"
     ]
@@ -472,11 +478,9 @@
       "bh3"
     ],
     "aliases": [
-      "bianka_durandal_ataegina",
       "呆鹅",
       "幽兰戴尔",
-      "比安卡",
-      "比安卡·阿塔吉娜"
+      "比安卡"
     ]
   },
   "Eden": {
@@ -992,10 +996,7 @@
     "sources": [
       "bh3"
     ],
-    "aliases": [
-      "灯姐",
-      "灯笼"
-    ]
+    "aliases": []
   },
   "Layla": {
     "display_name": "莱依拉",
