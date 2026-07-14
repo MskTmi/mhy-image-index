@@ -1,0 +1,15 @@
+{
+  "id": "3qgm38t0",
+  "image": "data/3qgm38t0.jpg",
+  "hash": "ae3eca92fb6c3d33efa979a98319586fba94eb2647db2af08838c9ce9841fab3",
+  "width": 1528,
+  "height": 3000,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "silver_wolf",
+    "Bronya"
+  ]
+}

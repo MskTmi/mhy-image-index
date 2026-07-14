@@ -1,0 +1,14 @@
+{
+  "id": "wskg08dy",
+  "image": "data/wskg08dy.jpg",
+  "hash": "c7c621c6ed9664ca9c47794343ac86b421913488e88c901624ee4cbce1c5e73f",
+  "width": 2121,
+  "height": 3000,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "Bronya"
+  ]
+}

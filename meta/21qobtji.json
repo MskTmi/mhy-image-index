@@ -1,0 +1,15 @@
+{
+  "id": "21qobtji",
+  "image": "data/21qobtji.jpg",
+  "hash": "4429530d646d7e8e52a7552a8ed6f007f73dd8be6c0ad8b485d038cc10fa8dc3",
+  "width": 1000,
+  "height": 1296,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "homu",
+    "Bronya"
+  ]
+}

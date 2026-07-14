@@ -1,0 +1,15 @@
+{
+  "id": "ms8khgdj",
+  "image": "data/ms8khgdj.jpg",
+  "hash": "ba76d4dd4740abc794b7bfaf4c4f0ef20f854df89fd593a83e9c61103e983ce1",
+  "width": 3000,
+  "height": 1190,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "Bronya",
+    "seele_vollerei"
+  ]
+}

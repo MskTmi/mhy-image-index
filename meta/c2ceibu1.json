@@ -1,0 +1,20 @@
+{
+  "id": "c2ceibu1",
+  "image": "data/c2ceibu1.jpg",
+  "hash": "8fda57e0b64405e76c7d60f32725e17f6f1ea6ebcb4228ab0731679462a38404",
+  "width": 3000,
+  "height": 1867,
+  "sources": [
+    "bh3",
+    "genshin",
+    "hsr"
+  ],
+  "entities": [
+    "Columbina",
+    "Kiana",
+    "homu",
+    "Bronya",
+    "seele_vollerei",
+    "Mei"
+  ]
+}

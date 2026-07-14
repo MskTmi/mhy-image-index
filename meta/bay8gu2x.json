@@ -1,0 +1,14 @@
+{
+  "id": "bay8gu2x",
+  "image": "data/bay8gu2x.jpg",
+  "hash": "4230a1f914541ed011035dd940b6e5e6f2ce83e14cc273d469b33bb42de1b332",
+  "width": 2096,
+  "height": 1483,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "Himeko"
+  ]
+}

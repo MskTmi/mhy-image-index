@@ -1,0 +1,15 @@
+{
+  "id": "hcwban20",
+  "image": "data/hcwban20.jpg",
+  "hash": "3c0bfdf6f9e13c8b100098b1669cf14fb7a610784f20dcad3b2e5d492c531291",
+  "width": 3000,
+  "height": 1687,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "Bronya",
+    "seele_vollerei"
+  ]
+}

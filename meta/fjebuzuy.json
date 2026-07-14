@@ -1,0 +1,13 @@
+{
+  "id": "fjebuzuy",
+  "image": "data/fjebuzuy.jpg",
+  "hash": "36e3f5b2b6893b3283cbaa99f23c816986550f31f60d76534c9672631453dd27",
+  "width": 2000,
+  "height": 1136,
+  "sources": [
+    "bh3"
+  ],
+  "entities": [
+    "Lantern"
+  ]
+}

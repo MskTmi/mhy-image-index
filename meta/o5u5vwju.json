@@ -1,0 +1,15 @@
+{
+  "id": "o5u5vwju",
+  "image": "data/o5u5vwju.jpg",
+  "hash": "2dd75451e0ee2ddc98b82340bbab8e3ac1d28620ccebb69b5931edb1c9074344",
+  "width": 1185,
+  "height": 3000,
+  "sources": [
+    "bh3",
+    "genshin"
+  ],
+  "entities": [
+    "seele_vollerei",
+    "Columbina"
+  ]
+}

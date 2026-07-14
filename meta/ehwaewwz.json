@@ -1,0 +1,14 @@
+{
+  "id": "ehwaewwz",
+  "image": "data/ehwaewwz.jpg",
+  "hash": "c0f10823ed8186dc21ad8a9e3f3a49a0d0becb1cfae142470601924f7036a2c1",
+  "width": 900,
+  "height": 900,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "Bronya"
+  ]
+}

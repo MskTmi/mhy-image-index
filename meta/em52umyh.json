@@ -1,0 +1,13 @@
+{
+  "id": "em52umyh",
+  "image": "data/em52umyh.jpg",
+  "hash": "9c748d5dc6a742b75edc5f361ae56fbcc23a3ea5c7fdb9206325e22a2715cb65",
+  "width": 802,
+  "height": 1200,
+  "sources": [
+    "bh3"
+  ],
+  "entities": [
+    "Lantern"
+  ]
+}

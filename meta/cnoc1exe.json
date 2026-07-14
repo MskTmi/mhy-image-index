@@ -1,0 +1,13 @@
+{
+  "id": "cnoc1exe",
+  "image": "data/cnoc1exe.jpg",
+  "hash": "a74e15a40a8824376bc01a1e2dd20ba44686a1175bf8e841516427039e788cc9",
+  "width": 3000,
+  "height": 1687,
+  "sources": [
+    "bh3"
+  ],
+  "entities": [
+    "Rita"
+  ]
+}

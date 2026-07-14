@@ -241,6 +241,17 @@
     ],
     "aliases": []
   },
+  "Cecilia": {
+    "display_name": "塞西莉亚",
+    "sources": [
+      "bh3"
+    ],
+    "aliases": [
+      "塞西莉亚·沙尼亚特",
+      "塞西莉娅",
+      "琪亚娜妈妈"
+    ]
+  },
   "Cerydra": {
     "display_name": "刻律德菈",
     "sources": [
@@ -415,6 +426,17 @@
       "炽鬃之狮"
     ]
   },
+  "Delta": {
+    "display_name": "德尔塔",
+    "sources": [
+      "bh3"
+    ],
+    "aliases": [
+      "Fervent Tempo Δ",
+      "Δ",
+      "狂热蓝调"
+    ]
+  },
   "Diluc": {
     "display_name": "迪卢克",
     "sources": [
@@ -450,7 +472,9 @@
       "bh3"
     ],
     "aliases": [
-      "最强女武神",
+      "bianka_durandal_ataegina",
+      "呆鹅",
+      "幽兰戴尔",
       "比安卡",
       "比安卡·阿塔吉娜"
     ]
@@ -692,9 +716,7 @@
     "aliases": [
       "姬子阿姨",
       "无量塔",
-      "无量塔姬子",
-      "星穹列车姬子",
-      "梅姬女士"
+      "无量塔姬子"
     ]
   },
   "homu": {
@@ -916,6 +938,7 @@
       "bh3"
     ],
     "aliases": [
+      "K423",
       "草履虫",
       "虫虫"
     ]
@@ -1274,14 +1297,14 @@
     "aliases": []
   },
   "Pardofelis": {
-    "display_name": "帕朵菲莉斯",
+    "display_name": "帕朵菲莉丝",
     "sources": [
       "bh3"
     ],
     "aliases": [
       "帕朵",
-      "帕菲",
-      "贪财猫"
+      "猪咪",
+      "菲莉丝"
     ]
   },
   "Pela": {
@@ -1371,6 +1394,7 @@
       "bh3"
     ],
     "aliases": [
+      "rita_rossweisse",
       "丽塔·洛丝薇瑟",
       "塔子姐",
       "女仆"
@@ -1391,12 +1415,13 @@
     "aliases": []
   },
   "Rozaliya": {
-    "display_name": "罗莎丽娅",
+    "display_name": "萝莎莉娅",
     "sources": [
       "bh3"
     ],
     "aliases": [
-      "罗莎丽娅·奥列尼娃"
+      "罗莎莉亚",
+      "阿琳"
     ]
   },
   "RuanMei": {

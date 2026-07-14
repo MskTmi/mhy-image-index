@@ -1,0 +1,16 @@
+{
+  "id": "gkxmwda5",
+  "image": "data/gkxmwda5.jpg",
+  "hash": "1923992171a3256adfd3063e7844d52e254b422cbd0b4b2823dcc3a7f6743bc0",
+  "width": 1679,
+  "height": 3000,
+  "sources": [
+    "bh3",
+    "genshin"
+  ],
+  "entities": [
+    "Columbina",
+    "Thelema",
+    "Elysia"
+  ]
+}

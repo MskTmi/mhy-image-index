@@ -1,0 +1,15 @@
+{
+  "id": "99550yem",
+  "image": "data/99550yem.jpg",
+  "hash": "3bda50a23d5201d0da7be6015626bb389d0c9b0cbefb1f5803ccbca392740f86",
+  "width": 1815,
+  "height": 3000,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "silver_wolf",
+    "Bronya"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "kizupzhd",
+  "image": "data/kizupzhd.jpg",
+  "hash": "a9220736a38e61c171db6dd34dde0ebbe171111ad150f23f22c182665d84d48e",
+  "width": 1414,
+  "height": 2000,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "Bronya"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "cmrm3jkw",
+  "image": "data/cmrm3jkw.jpg",
+  "hash": "4cd87b16c009a8f7248359a506febfd04029c22bea8058b1e4328e4fb794835c",
+  "width": 2250,
+  "height": 3000,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "seele_vollerei",
+    "Bronya"
+  ]
+}

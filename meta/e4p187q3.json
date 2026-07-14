@@ -1,0 +1,15 @@
+{
+  "id": "e4p187q3",
+  "image": "data/e4p187q3.jpg",
+  "hash": "c9a5f0a2d72bfeae3032f0015371ea068a4b7653661709638ee5b75c88511dac",
+  "width": 3000,
+  "height": 1687,
+  "sources": [
+    "bh3",
+    "genshin"
+  ],
+  "entities": [
+    "Elysia",
+    "Columbina"
+  ]
+}

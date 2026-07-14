@@ -1,0 +1,14 @@
+{
+  "id": "wghda1wc",
+  "image": "data/wghda1wc.jpg",
+  "hash": "956a98671ece040f664707e7c00ab864f20b7a1f192d6ea249037e6e7ee6f23a",
+  "width": 3000,
+  "height": 1636,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "Himeko"
+  ]
+}

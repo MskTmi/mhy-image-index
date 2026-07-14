@@ -1,0 +1,13 @@
+{
+  "id": "msfck8m2",
+  "image": "data/msfck8m2.jpg",
+  "hash": "b53e8aae4f96d18fbbba7e6612426eda7ba0eade74306677f50c141e1fbb02d2",
+  "width": 3000,
+  "height": 1595,
+  "sources": [
+    "bh3"
+  ],
+  "entities": [
+    "seele_vollerei"
+  ]
+}

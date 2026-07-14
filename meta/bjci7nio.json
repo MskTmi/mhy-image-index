@@ -1,0 +1,18 @@
+{
+  "id": "bjci7nio",
+  "image": "data/bjci7nio.jpg",
+  "hash": "da1cfd579b029fe385eddcf7c302267ec696d47c228a378837b8dda7c7e59a9d",
+  "width": 1600,
+  "height": 900,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "Himeko",
+    "homu",
+    "Kiana",
+    "Mei",
+    "Theresa"
+  ]
+}
