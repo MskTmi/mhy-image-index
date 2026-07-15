@@ -90,6 +90,7 @@ _setup_cuda_dll_path()
 
 from entities_db import EntityLookup, load_entity_db
 from recognizer import Recognizer
+from recognizer.filename_detector import _is_generic_pixiv_tag
 
 # ---- 自动创建实体 ----
 
@@ -431,8 +432,10 @@ def archive_source(src: Path, tools_dir: Path, input_root: Path, category: str) 
 _NAME_SPLIT_RE = re.compile(r"[-_,.\s()（）]+")
 # 看起来像角色名的启发式规则：含中日韩字符 或 大驼峰英文单词
 _NAME_HINT_RE = re.compile(r"[\u4e00-\u9fff\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af]|[A-Z][a-z]+")
-# 明显不是角色名的常见词黑名单
-_NAME_BLACKLIST = {"ai", "ai生成", "png", "jpg", "jpeg", "webp", "美少女", "女の子", "女の子", "原创", "3rd"}
+# 明显不是角色名的常见词黑名单（文件扩展名 & 作品缩写）。
+# Pixiv 通用泛指标签（少女/女の子/美少女/原创等）由 _is_generic_pixiv_tag 统一过滤，
+# 不在本列表中维护。
+_NAME_BLACKLIST = {"png", "jpg", "jpeg", "webp", "3rd"}
 # Pixiv "收藏数 users入り" 系列标记（5000users入り / 10000users入り 等），不是角色名。
 # 作品名常与计数拼在同一 token，如「原神10000users入り」「崩壊3rd5000users入り」，
 # 故按后缀匹配，前缀（作品名）任意。
@@ -458,6 +461,8 @@ def _extract_name_hints(filename: str, source_keywords: dict = None) -> list:
             continue
         if low in _NAME_BLACKLIST:
             continue
+        if _is_generic_pixiv_tag(t):
+            continue  # 跳过 Pixiv 通用泛指标签（少女/女の子/美少女/原创等）
         if _USERS_IRI_RE.search(low):
             continue  # 跳过 Pixiv "N users入り" 标记（含作品名前缀的变体）
         if low in source_terms:

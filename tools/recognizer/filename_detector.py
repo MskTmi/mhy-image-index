@@ -31,6 +31,22 @@ _NUMERIC_RE = re.compile(r"^[pP]?\d+$")
 # 过短的 token（如 "2"、"ab"）容易误匹配，跳过
 _MIN_TOKEN_LEN = 2
 
+# Pixiv 通用泛指标签 —— 不是角色名，文件名中裸出现时跳过别名解析。
+# 这些词可能合法地存在于某个 entity 的 aliases 中（如 Damselette 的"少女"），
+# 但作为文件名 token 时是泛指而非角色名。遇到时宁可不识别，也不要误识别。
+# 比较用归一化形式（繁简归一 + lowercase），故「少女」「女の子」「美少女」等
+# 繁体/简体变体均能命中。
+_GENERIC_PIXIV_TAGS = {
+    "少女", "女の子", "美少女", "萝莉", "乙女", "ロリ",
+    "original", "原创", "ai", "ai生成",
+}
+
+
+def _is_generic_pixiv_tag(token: str) -> bool:
+    """token 是否属于 Pixiv 通用泛指标签（需归一化后比较以覆盖繁简变体）。"""
+    from .alias_detector import _normalize_cjk
+    return _normalize_cjk(token) in _GENERIC_PIXIV_TAGS
+
 
 class FilenameDetector:
     """文件名角色识别器。
@@ -64,6 +80,9 @@ class FilenameDetector:
                 continue
             # 跳过过短 token
             if len(token) < _MIN_TOKEN_LEN:
+                continue
+            # 跳过 Pixiv 通用泛指标签（如「少女」「女の子」），避免误识别
+            if _is_generic_pixiv_tag(token):
                 continue
 
             result = self._alias.resolve_alias(token)
