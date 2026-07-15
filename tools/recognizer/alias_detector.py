@@ -19,6 +19,8 @@ import re
 from pathlib import Path
 from typing import Dict, List, Optional
 
+from zhconv import convert as _zh_convert
+
 from .candidate import Candidate
 
 # 复用 entities_db 中的 danbooru tag 生成逻辑
@@ -28,6 +30,17 @@ from entities_db import (
     _generate_candidate_tags,
     _load_tag_config,
 )
+
+
+def _normalize_cjk(text: str) -> str:
+    """繁简归一化：转简体并 lowercase。
+
+    用于 alias 索引与查询，使繁体文本也能统一命中。
+    纯 ASCII / 假名 / 韩文文本原样返回（zhconv 对其无副作用），无开销顾虑。
+    """
+    if not text:
+        return ""
+    return _zh_convert(text, "zh-hans").lower()
 
 
 class AliasDetector:
@@ -88,9 +101,12 @@ class AliasDetector:
             self._id_to_display[entity_id] = display_name or entity_id
             self._id_to_aliases[entity_id] = aliases
 
-            # 索引 display_name（中文名）
+            # 索引 display_name（中文名）—— 同时索引繁简归一化形式
             if display_name:
                 self._alias_to_id[display_name.lower()] = entity_id
+                norm = _normalize_cjk(display_name)
+                if norm and norm != display_name.lower():
+                    self._alias_to_id.setdefault(norm, entity_id)
 
             # 索引 entity id 本身（英文名）
             self._alias_to_id[entity_id.lower()] = entity_id
@@ -100,11 +116,14 @@ class AliasDetector:
             if snake != entity_id.lower():
                 self._alias_to_id[snake] = entity_id
 
-            # 索引所有别名
+            # 索引所有别名 —— 同时索引繁简归一化形式
             for alias in aliases:
                 key = alias.lower()
                 if key not in self._alias_to_id:
                     self._alias_to_id[key] = entity_id
+                norm = _normalize_cjk(alias)
+                if norm and norm != key and norm not in self._alias_to_id:
+                    self._alias_to_id[norm] = entity_id
 
         # 叠加手动覆盖映射
         for tag, entity_id in tag_overrides.items():
@@ -168,31 +187,36 @@ class AliasDetector:
             return []
 
         key = text.lower()
+        # 繁简归一化键（zhconv → 简体 + lowercase）
+        norm_key = _normalize_cjk(text)
+        # 去重：归一化后若与原文小写相同，只查询一次
+        lookup_keys = dict.fromkeys([key, norm_key])
 
-        # 1. 精确匹配 danbooru tag
+        # 1. 精确匹配 danbooru tag（全 ASCII，与繁简无关）
         tag_candidates = self.resolve_tag(text)
         if tag_candidates:
             return tag_candidates
 
-        # 2. 精确匹配别名索引
-        if key in self._alias_to_id:
-            eid = self._alias_to_id[key]
-            display = self._id_to_display.get(eid, eid)
-            return [
-                Candidate(
-                    entity=eid,
-                    score=1.0,
-                    source="alias",
-                    evidence=f"{text} → {display}",
-                )
-            ]
+        # 2. 精确匹配别名索引（先原文小写，再归一化形式）
+        for k in lookup_keys:
+            if k in self._alias_to_id:
+                eid = self._alias_to_id[k]
+                display = self._id_to_display.get(eid, eid)
+                return [
+                    Candidate(
+                        entity=eid,
+                        score=1.0,
+                        source="alias",
+                        evidence=f"{text} → {display}",
+                    )
+                ]
 
-        # 3. 子串匹配（仅在 text 较长且 alias 足够长时尝试，避免短词误匹配）
+        # 3. 子串匹配（用归一化后键查询，命中繁简混合别名也能通配）
         #   - alias 长度必须 ≥ 3，避免 "少女" 误匹配 "美少女"
         #   - text 长度不能超过 alias 的 2.5 倍，避免长文本误匹配
-        if len(key) >= 2:
+        if len(norm_key) >= 2:
             for alias_key, eid in self._alias_to_id.items():
-                if len(alias_key) >= 3 and alias_key in key and len(key) <= len(alias_key) * 2.5:
+                if len(alias_key) >= 3 and alias_key in norm_key and len(norm_key) <= len(alias_key) * 2.5:
                     display = self._id_to_display.get(eid, eid)
                     return [
                         Candidate(

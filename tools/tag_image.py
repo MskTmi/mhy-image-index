@@ -30,7 +30,6 @@ VTuber / 舰船 都会被识别，作品归属直接取自 entity 自身的 sour
 from __future__ import annotations
 
 import argparse
-import hashlib
 import io
 import json
 import os
@@ -366,64 +365,9 @@ def load_existing_hashes(meta_dir: Path) -> Dict[str, str]:
     return hashes
 
 
-def optimize_to_jpeg(source: Path, dest: Path, quality: int, compress: bool = False) -> tuple[int, int, str]:
-    """把任意常见图片格式转 JPEG（按 EXIF 旋转，丢弃原始元数据）。
-
-    当 compress=True 时启用 TinyPNG 风格的智能压缩：
-      1. 对图片做自适应调色板量化（减少冗余颜色），尤其适合二次元图
-      2. 关闭色度子采样（subsampling="4:4:4"），保留线条/文字锐度
-      3. 量化可能轻微偏色，对写实照片会跳过量化保留原色
-
-    返回 (width, height, sha256)，元数据从输出文件重新读取以保证 meta 里写的是
-    压缩后文件的真实尺寸与哈希。
-    """
-    from PIL import Image  # 延迟导入，避免只是 --help 也要装 Pillow
-
-    dest.parent.mkdir(parents=True, exist_ok=True)
-
-    with Image.open(source) as img:
-        img = img.convert("RGB")
-        original_size = img.size
-
-        if compress:
-            max_dim = max(img.size)
-            if max_dim > 3000:
-                ratio = 3000 / max_dim
-                new_size = (int(img.size[0] * ratio), int(img.size[1] * ratio))
-                img = img.resize(new_size, Image.LANCZOS)
-
-            # 先保存一份不带量化/子采样的基准 JPEG，作为回退参照
-            from tempfile import NamedTemporaryFile
-            with NamedTemporaryFile(suffix=".jpg", delete=False) as tmp:
-                baseline_path = tmp.name
-            try:
-                img.save(baseline_path, format="JPEG", quality=quality, optimize=True)
-                baseline_size = Path(baseline_path).stat().st_size
-
-                # 自适应调色板量化：用中位切法把颜色压缩到 256 色
-                # 然后转回 RGB 保存 JPEG，Huffman 表优化 + 无子采样
-                try:
-                    quantized = img.quantize(colors=256, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.FLOYDSTEINBERG)
-                    quantized = quantized.convert("RGB")
-                except (ValueError, OSError):
-                    quantized = img  # 量化失败，回退原图
-
-                quantized.save(dest, format="JPEG", quality=quality, optimize=True, subsampling="4:4:4")
-                if dest.stat().st_size > baseline_size:
-                    # 压缩后反而变大，用基准 JPEG 覆盖
-                    shutil.copy2(baseline_path, str(dest))
-            finally:
-                Path(baseline_path).unlink(missing_ok=True)
-        else:
-            img.save(dest, format="JPEG", quality=quality, optimize=True)
-
-    with Image.open(dest) as out:
-        width, height = out.size
-
-    with open(dest, "rb") as fp:
-        digest = hashlib.sha256(fp.read()).hexdigest()
-
-    return width, height, digest
+# 全仓库统一压缩入口：本地 tag_image.py 与 GitHub Issue 导入共用同一份
+# optimize_to_jpeg，保证跨源字节级一致、hash 一致。详见 tools/optimize_image.py。
+from optimize_image import optimize_to_jpeg
 
 
 def tag_image(image_path: Path, model_name: str, general_threshold: float, character_threshold: float) -> Dict[str, float]:
@@ -489,8 +433,10 @@ _NAME_SPLIT_RE = re.compile(r"[-_,.\s()（）]+")
 _NAME_HINT_RE = re.compile(r"[\u4e00-\u9fff\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af]|[A-Z][a-z]+")
 # 明显不是角色名的常见词黑名单
 _NAME_BLACKLIST = {"ai", "ai生成", "png", "jpg", "jpeg", "webp", "美少女", "女の子", "女の子", "原创", "3rd"}
-# Pixiv "收藏数 users入り" 系列标记（5000users入り / 10000users入り 等），不是角色名
-_USERS_IRI_RE = re.compile(r"^\d+users入り$", re.IGNORECASE)
+# Pixiv "收藏数 users入り" 系列标记（5000users入り / 10000users入り 等），不是角色名。
+# 作品名常与计数拼在同一 token，如「原神10000users入り」「崩壊3rd5000users入り」，
+# 故按后缀匹配，前缀（作品名）任意。
+_USERS_IRI_RE = re.compile(r"\d+users入り$", re.IGNORECASE)
 
 
 def _extract_name_hints(filename: str, source_keywords: dict = None) -> list:
@@ -512,8 +458,8 @@ def _extract_name_hints(filename: str, source_keywords: dict = None) -> list:
             continue
         if low in _NAME_BLACKLIST:
             continue
-        if _USERS_IRI_RE.match(low):
-            continue  # 跳过 Pixiv "N users入り" 标记
+        if _USERS_IRI_RE.search(low):
+            continue  # 跳过 Pixiv "N users入り" 标记（含作品名前缀的变体）
         if low in source_terms:
             continue  # 跳过已知作品名
         if _NAME_HINT_RE.search(t):

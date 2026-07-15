@@ -1,8 +1,6 @@
-const crypto = require('node:crypto');
 const fs = require('node:fs/promises');
 const os = require('node:os');
 const path = require('node:path');
-const sharp = require('sharp');
 const { customAlphabet } = require('nanoid');
 const { ENTITY_DIR, loadAliasMap, loadEntityIndex, resolveEntities } = require('./entity-index.js');
 const { parseIssueBody } = require('./issue-parser.js');
@@ -58,7 +56,7 @@ async function createId() {
 }
 
 async function downloadImage(url, tempDir, fileName) {
-    // 先下载到临时目录，再交给 sharp 做统一编码，避免脏文件留在仓库目录。
+    // 先下载到临时目录，再交给 optimize_image.py 做统一编码，避免脏文件留在仓库目录。
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -74,11 +72,6 @@ async function downloadImage(url, tempDir, fileName) {
     const tempPath = path.join(tempDir, fileName);
     await fs.writeFile(tempPath, buffer);
     return tempPath;
-}
-
-async function computeHash(filePath) {
-    const buffer = await fs.readFile(filePath);
-    return crypto.createHash('sha256').update(buffer).digest('hex');
 }
 
 async function findDuplicateByHash(hash) {
@@ -173,13 +166,13 @@ async function processIssue(issue) {
             const finalImage = path.join(DATA_DIR, `${id}.jpg`);
 
             // 所有输入格式最终都统一输出为 JPEG，便于仓库存储和后续分发。
-            await optimizeImage({ inputPath: tempSource, outputPath: finalImage });
-
-            // 计算 hash 并获取尺寸。
-            const hash = await computeHash(finalImage);
-            const metadata = await sharp(finalImage).metadata();
-            const width = metadata.width;
-            const height = metadata.height;
+            // optimizeImage 通过 Python 子进程调 tools/optimize_image.py，
+            // 一次性返回 {width, height, sha256, bytes}，省去再读文件算 hash
+            // 和再取 metadata 两次 I/O。
+            const meta = await optimizeImage({ inputPath: tempSource, outputPath: finalImage });
+            const hash = meta.sha256;
+            const width = meta.width;
+            const height = meta.height;
 
             // 检查是否与已有图片重复。
             const duplicateImage = await findDuplicateByHash(hash);

@@ -33,6 +33,16 @@ jobs:
         with:
           node-version: 20
 
+      # 压缩通过 tools/optimize_image.py 跑（PIL 量化 + 4:4:4 + 兜底），
+      # 与本地 tag_image.py 共用同一份代码，保证字节级一致、跨源 hash 一致。
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Pillow
+        run: pip install 'Pillow>=10.0.0,<12'
+
       # 将 webhook 的 issue payload 落盘，供 Node 脚本按本地文件方式读取。
       - name: Persist issue payload
         uses: actions/github-script@v7
@@ -44,7 +54,7 @@ jobs:
 
       # 仓库不提交 package.json，因此在 runner 临时目录安装运行时依赖。
       - name: Install runtime dependencies in runner temp
-        run: npm install --prefix "$RUNNER_TEMP/image-index-runtime" sharp nanoid
+        run: npm install --prefix "$RUNNER_TEMP/image-index-runtime" nanoid
 
       # 执行导入主流程，输出本次新增条目列表供后续步骤复用。
       - name: Import images from issue

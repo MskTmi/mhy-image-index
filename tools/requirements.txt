@@ -1,11 +1,13 @@
 # 基础依赖
 dghs-imgutils>=0.19.0
-Pillow>=10.0.0
+Pillow>=10.0.0,<12
 huggingface_hub>=0.24,<2.0
 hf-xet>=1.0,<2.0
 requests>=2.28.0
 pandas>=2.0.0
 numpy>=1.24.0
+# 繁简归一化（识别文件名中的繁体角色名）
+zhconv>=1.4.0
 
 # === GPU 推理（推荐）===
 # 有 NVIDIA 显卡时装这套，自动利用 GPU 加速
