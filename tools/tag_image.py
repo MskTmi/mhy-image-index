@@ -73,8 +73,10 @@ def _setup_cuda_dll_path() -> None:
     try:
         import nvidia  # noqa: F401
         _nv_base = Path(_sys.prefix) / "Lib" / "site-packages" / "nvidia"
+        # rglob("bin") 找到的 p 就是 bin 目录本身，要加进 PATH 的是 bin 目录，
+        # 不是它的父目录（否则 cublasLt64_12.dll 在 nvidia\cublas\bin\ 下找不到）。
         _bin_dirs = sorted(set(
-            str(p.parent) for p in _nv_base.rglob("bin") if p.is_dir()
+            str(p) for p in _nv_base.rglob("bin") if p.is_dir()
         ))
         if _bin_dirs:
             _path_sep = os.pathsep

@@ -12,9 +12,15 @@ numpy>=1.24.0
 onnxruntime-gpu>=1.17.0
 # CUDA 12 运行时（pip 版，无需装 CUDA Toolkit）
 # tag_image.py 启动时会自动发现这些 DLL
+# onnxruntime-gpu 的 CUDAExecutionProvider 在 Windows 上需要以下全部库：
 nvidia-cublas-cu12
 nvidia-cudnn-cu12
 nvidia-cuda-runtime-cu12
+nvidia-cuda-nvrtc-cu12
+nvidia-cufft-cu12
+nvidia-curand-cu12
+nvidia-cusolver-cu12
+nvidia-cusparse-cu12
 
 # === CPU 推理（备选）===
 # 无 NVIDIA 显卡时，把上面 onnxruntime-gpu 与 nvidia-* 注释掉，改用：
