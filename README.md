@@ -175,17 +175,21 @@ tools/       本地离线工具集（批量入库、AI 识图）
 
 ## 脚本速查
 
-| 脚本                   | 职责                                                                                              |
-| ---------------------- | ------------------------------------------------------------------------------------------------- |
-| `build-index.js`       | 扫描 `meta/` + `entities/` 生成 `dist/` 聚合索引                                                  |
-| `check-consistency.js` | 校验 `data` ↔ `meta` ↔ `entities` 三方一致性                                                      |
-| `check-duplicates.js`  | 扫描 `entities/` 检测重复 id、重复 display_name、文件名与 id 不一致、大小写重名、多实体共享 alias |
-| `entity-index.js`      | 加载 `entities/` 构建角色词典（build-index 子模块）                                               |
-| `character-index.js`   | 聚合角色维度的图片倒排（build-index 子模块）                                                      |
-| `optimize-image.js`    | sharp(mozjpeg) 压缩转 JPEG（Actions 自动流程用）                                                  |
-| `issue-parser.js`      | 解析 Issue Form 提交的图片与角色信息                                                              |
-| `process-issue.js`     | Issue 投稿主流程：下载 → 压缩 → 写 meta → 发起 PR                                                 |
-| `process-alias.js`     | 别名投稿流程：合并 aliases 到 `entities/`                                                         |
+| 脚本                          | 职责                                                                                              |
+| ----------------------------- | ------------------------------------------------------------------------------------------------- |
+| `build-index.js`              | 扫描 `meta/` + `entities/` 生成 `dist/` 聚合索引                                                  |
+| `check-consistency.js`        | 校验 `data` ↔ `meta` ↔ `entities` 三方一致性                                                      |
+| `check-duplicates.js`         | 扫描 `entities/` 检测重复 id、重复 display_name、文件名与 id 不一致、大小写重名、多实体共享 alias |
+| `check-source-consistency.js` | 校验 `meta.sources` 与所引用 `entity.sources` 至少有交集，避免图片与角色作品来源不一致            |
+| `check-all.js`                | 依次执行所有 `check-*.js`，默认把完整输出写入 `logs/check-<时间戳>.log`，任一失败则退出码非 0     |
+| `entity-index.js`             | 加载 `entities/` 构建角色词典（build-index 子模块）                                               |
+| `character-index.js`          | 聚合角色维度的图片倒排（build-index 子模块）                                                      |
+| `optimize-image.js`           | sharp(mozjpeg) 压缩转 JPEG（Actions 自动流程用）                                                  |
+| `issue-parser.js`             | 解析 Issue Form 提交的图片与角色信息                                                              |
+| `process-issue.js`            | Issue 投稿主流程：下载 → 压缩 → 写 meta → 发起 PR                                                 |
+| `process-alias.js`            | 别名投稿流程：合并 aliases 到 `entities/`                                                         |
+
+> 一键自检：`node scripts/check-all.js`（加 `--no-log` 仅打印不写日志）
 
 ## 使用案例
 > 推荐将仓库 Clone 到本地，或直接读取 `dist/` 下生成的 JSON 文件，即可完成图片查询、索引构建等功能，无需自建数据库或后端

@@ -11,5 +11,7 @@ tools/.venv/
 tools/.hf-cache/
 # 运行日志不入库
 tools/logs/
+# 自检脚本的归档日志
+logs/
 
 __pycache__/
