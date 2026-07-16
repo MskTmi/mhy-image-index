@@ -1,0 +1,13 @@
+{
+  "id": "foo7kyf8",
+  "image": "data/foo7kyf8.jpg",
+  "hash": "5de7ca21221cab20a4c1b74f73a6ed4956c365ff9bc597ac7245ae10c1da8f6a",
+  "width": 2099,
+  "height": 3000,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Nilou"
+  ]
+}

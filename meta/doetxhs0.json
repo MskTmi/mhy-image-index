@@ -1,0 +1,14 @@
+{
+  "id": "doetxhs0",
+  "image": "data/doetxhs0.jpg",
+  "hash": "08056bde26a048c86e3da5fdb66353cada17cdd5d6fbff106d8c1d00d66c0483",
+  "width": 2000,
+  "height": 1230,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "yae_miko",
+    "RaidenShogun"
+  ]
+}

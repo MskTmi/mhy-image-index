@@ -1,0 +1,13 @@
+{
+  "id": "dep094ps",
+  "image": "data/dep094ps.jpg",
+  "hash": "b8113858c07aa9e9bc69a44cda85454659cd38272f3dcb41fb4ea714c3fe7734",
+  "width": 700,
+  "height": 1310,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Nilou"
+  ]
+}

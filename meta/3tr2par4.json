@@ -1,0 +1,13 @@
+{
+  "id": "3tr2par4",
+  "image": "data/3tr2par4.jpg",
+  "hash": "a2e1b0d595596565a6f661b475cfbf6b64ecf9c38fb04539cda5f04596abdcdb",
+  "width": 724,
+  "height": 1200,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Ganyu"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "zqvmtdop",
+  "image": "data/zqvmtdop.jpg",
+  "hash": "ddbdbfcbc8be37160746fc3c7c4ca7bf988934911887607b6991ad9f4739a625",
+  "width": 2292,
+  "height": 3000,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "RaidenShogun"
+  ]
+}

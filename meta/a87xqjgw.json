@@ -1,0 +1,15 @@
+{
+  "id": "a87xqjgw",
+  "image": "data/a87xqjgw.jpg",
+  "hash": "8046fc4976f85d9ab7b3b983267b1ee7fcf81706d75c00b8852420b22234ba78",
+  "width": 1816,
+  "height": 2400,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Navia",
+    "Clorinde",
+    "Arlecchino"
+  ]
+}

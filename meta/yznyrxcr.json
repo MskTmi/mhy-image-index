@@ -1,0 +1,14 @@
+{
+  "id": "yznyrxcr",
+  "image": "data/yznyrxcr.jpg",
+  "hash": "09a5bdd7a3aeb599f04c6ac8fa27046db709af95ddbd7bf33b2d213ecec5eeb0",
+  "width": 1500,
+  "height": 2253,
+  "sources": [
+    "bh3",
+    "genshin"
+  ],
+  "entities": [
+    "Fischl"
+  ]
+}

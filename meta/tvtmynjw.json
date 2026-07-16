@@ -1,0 +1,13 @@
+{
+  "id": "tvtmynjw",
+  "image": "data/tvtmynjw.jpg",
+  "hash": "6ec012755d1ffbb776911b335fd7bc468952943ef3e7e9aa957233b1b80a6700",
+  "width": 1440,
+  "height": 2400,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "HuTao"
+  ]
+}

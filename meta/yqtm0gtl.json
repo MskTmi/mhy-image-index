@@ -1,0 +1,17 @@
+{
+  "id": "yqtm0gtl",
+  "image": "data/yqtm0gtl.jpg",
+  "hash": "74c7eecd4e38724f53807f7710d36284e2d074fc14e34b9a38f255b7107df5fc",
+  "width": 2120,
+  "height": 3000,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Xiangling",
+    "keqing",
+    "Ganyu",
+    "Zhongli",
+    "Tartaglia"
+  ]
+}

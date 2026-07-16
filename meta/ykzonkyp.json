@@ -1,0 +1,13 @@
+{
+  "id": "ykzonkyp",
+  "image": "data/ykzonkyp.jpg",
+  "hash": "a714499b69041ccb4cfb7ec8f3fc7b1d206395837a8f36f9f00c1cad86b99194",
+  "width": 1320,
+  "height": 1980,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Mona"
+  ]
+}

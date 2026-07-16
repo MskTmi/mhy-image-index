@@ -1,0 +1,17 @@
+{
+  "id": "vp65r1pa",
+  "image": "data/vp65r1pa.jpg",
+  "hash": "e3b0f275004ef7cfb2c35f3c9dc8650f5eddb7b600d421c9e9502de13e19cfb4",
+  "width": 2148,
+  "height": 1129,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "RaidenShogun",
+    "Zhongli",
+    "Nahida",
+    "Venti",
+    "lumine"
+  ]
+}

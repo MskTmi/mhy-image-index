@@ -1,0 +1,13 @@
+{
+  "id": "jnayku1o",
+  "image": "data/jnayku1o.jpg",
+  "hash": "f921fb0bf6af17caba273eaba6f92b1890adffb9b4488ccd819c413a4c87a96b",
+  "width": 1999,
+  "height": 3000,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "lumine"
+  ]
+}

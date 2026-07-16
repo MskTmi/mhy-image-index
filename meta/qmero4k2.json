@@ -1,0 +1,13 @@
+{
+  "id": "qmero4k2",
+  "image": "data/qmero4k2.jpg",
+  "hash": "3822f2703b880d31d34e7ba423f4826cdca6ea4d785d80a4be8ad95463a5fd5d",
+  "width": 1796,
+  "height": 3000,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "keqing"
+  ]
+}

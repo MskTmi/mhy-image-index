@@ -1,0 +1,13 @@
+{
+  "id": "rcrnbb0r",
+  "image": "data/rcrnbb0r.jpg",
+  "hash": "3a001ab0e42a1b8ec0f0776dfd199cda8247853bb83f4c6fd1cc91c10067a559",
+  "width": 1980,
+  "height": 1320,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "RaidenShogun"
+  ]
+}

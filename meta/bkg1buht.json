@@ -1,0 +1,13 @@
+{
+  "id": "bkg1buht",
+  "image": "data/bkg1buht.jpg",
+  "hash": "ec3788a3c911510a024607863266e53224146b8db94ef199d75778c56c869767",
+  "width": 2012,
+  "height": 3000,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Furina"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "41a0bnde",
+  "image": "data/41a0bnde.jpg",
+  "hash": "321c900f4f774ac90abb863452d87ba85f4bbe41d50c3aadba87e3ab0b06ac37",
+  "width": 1200,
+  "height": 1939,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "lumine",
+    "keqing",
+    "Ganyu",
+    "Mona",
+    "Yelan"
+  ]
+}

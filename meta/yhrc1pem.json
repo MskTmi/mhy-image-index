@@ -1,0 +1,13 @@
+{
+  "id": "yhrc1pem",
+  "image": "data/yhrc1pem.jpg",
+  "hash": "36d4b99dfe8317a61089cf75bc7e30c3aa343ee41056920d8bbf600bd0bce456",
+  "width": 3000,
+  "height": 2275,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Ganyu"
+  ]
+}

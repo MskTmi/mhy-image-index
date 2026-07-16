@@ -1,0 +1,16 @@
+{
+  "id": "84xe5sep",
+  "image": "data/84xe5sep.jpg",
+  "hash": "fecc79cfb37ddefab197f757074c029056338b6d71a5b3f3e3f37faa9e586615",
+  "width": 1685,
+  "height": 2542,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Tighnari",
+    "Kaveh",
+    "Alhaitham",
+    "Cyno"
+  ]
+}

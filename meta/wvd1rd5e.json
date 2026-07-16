@@ -1,0 +1,13 @@
+{
+  "id": "wvd1rd5e",
+  "image": "data/wvd1rd5e.jpg",
+  "hash": "22d18d3175d39de836e5a0bf7dfaf407617e1dbd38031eafe79a97cd760c9c3b",
+  "width": 680,
+  "height": 1200,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "RaidenShogun"
+  ]
+}

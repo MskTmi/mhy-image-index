@@ -1,0 +1,13 @@
+{
+  "id": "hqvazshh",
+  "image": "data/hqvazshh.jpg",
+  "hash": "52b4c58fd93f3930ebd10ba313f1600f9f93d1efd3f3efeecae1a4958245cd16",
+  "width": 1000,
+  "height": 1414,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "HuTao"
+  ]
+}

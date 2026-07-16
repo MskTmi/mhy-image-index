@@ -1,0 +1,13 @@
+{
+  "id": "jb12momp",
+  "image": "data/jb12momp.jpg",
+  "hash": "d85ea9a0fb20344e43da41c93dc1faa16558303e9b279b8356ae7fd3259bc673",
+  "width": 1369,
+  "height": 3000,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Barbara"
+  ]
+}

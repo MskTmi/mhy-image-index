@@ -1,0 +1,17 @@
+{
+  "id": "kjeqrjcy",
+  "image": "data/kjeqrjcy.jpg",
+  "hash": "000ed71662f7cfe8cb72c40b03dc71beb5eae46725caf813c5766d8041e6f062",
+  "width": 3000,
+  "height": 1394,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Furina",
+    "Neuvillette",
+    "Wriothesley",
+    "Lyney",
+    "Lynette"
+  ]
+}

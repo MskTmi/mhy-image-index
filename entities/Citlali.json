@@ -1,8 +1,10 @@
 {
     "id": "Citlali",
-    "display_name": "茜特拉莉",
+    "display_name": "茜特菈莉",
     "sources": [
         "genshin"
     ],
-    "aliases": []
+    "aliases": [
+        "茜特拉莉"
+    ]
 }

@@ -1,0 +1,13 @@
+{
+  "id": "uichazpe",
+  "image": "data/uichazpe.jpg",
+  "hash": "de1969bb7a3482c3300f7f53e00635e42c2eef479f7530b40305d35b5dd7f0a9",
+  "width": 3000,
+  "height": 1719,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Dehya"
+  ]
+}

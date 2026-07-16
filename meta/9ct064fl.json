@@ -1,0 +1,13 @@
+{
+  "id": "9ct064fl",
+  "image": "data/9ct064fl.jpg",
+  "hash": "f3dff88bd0ca5bc45e0544a27d604a1577181c1c5a552878d347d2dbb2e654fa",
+  "width": 1600,
+  "height": 3000,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Ganyu"
+  ]
+}

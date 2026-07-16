@@ -1,0 +1,13 @@
+{
+  "id": "rgosucvr",
+  "image": "data/rgosucvr.jpg",
+  "hash": "83c0f0c31e64cf81ebdbde6ce058f5836bbe9effc3e88a598b27cb222caa6014",
+  "width": 1277,
+  "height": 2000,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "HuTao"
+  ]
+}

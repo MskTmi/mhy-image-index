@@ -1,0 +1,13 @@
+{
+  "id": "r3lyasoh",
+  "image": "data/r3lyasoh.jpg",
+  "hash": "96115ce0a151eac5d00751396c3072dfd96552c25758c9c657e2b4303cea494e",
+  "width": 1870,
+  "height": 2720,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "RaidenShogun"
+  ]
+}

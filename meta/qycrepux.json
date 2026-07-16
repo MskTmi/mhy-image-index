@@ -1,0 +1,13 @@
+{
+  "id": "qycrepux",
+  "image": "data/qycrepux.jpg",
+  "hash": "3a76b7332b28c9c4a4e72475fb3b2cd933897fd5ffe0f0f090fe872a60b1f116",
+  "width": 1200,
+  "height": 2054,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "HuTao"
+  ]
+}

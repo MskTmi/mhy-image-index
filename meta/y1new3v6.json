@@ -1,0 +1,14 @@
+{
+  "id": "y1new3v6",
+  "image": "data/y1new3v6.jpg",
+  "hash": "85f801724ae3e36de73cea2cffdc99f3a653978babd29d81644d7f45ba42614a",
+  "width": 2005,
+  "height": 2500,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "yae_miko",
+    "RaidenShogun"
+  ]
+}

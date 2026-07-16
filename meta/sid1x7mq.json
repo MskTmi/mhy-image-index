@@ -1,0 +1,14 @@
+{
+  "id": "sid1x7mq",
+  "image": "data/sid1x7mq.jpg",
+  "hash": "69476f7f8600e424936c87fab938372e4b4447c36ef445fb7d93c393c937c149",
+  "width": 1925,
+  "height": 1183,
+  "sources": [
+    "bh3",
+    "genshin"
+  ],
+  "entities": [
+    "Fischl"
+  ]
+}

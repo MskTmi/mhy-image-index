@@ -1,0 +1,15 @@
+{
+  "id": "0kcr2qtf",
+  "image": "data/0kcr2qtf.jpg",
+  "hash": "a7c2569845432c9293d6f2255de3ee3c5d97a96f9603bebcf7f05eedb614bffe",
+  "width": 3000,
+  "height": 2996,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Ganyu",
+    "Zhongli",
+    "keqing"
+  ]
+}

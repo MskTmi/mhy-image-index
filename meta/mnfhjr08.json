@@ -1,0 +1,13 @@
+{
+  "id": "mnfhjr08",
+  "image": "data/mnfhjr08.jpg",
+  "hash": "cfea0415754548e5dcb3a060dc18304f7ad948bff71094eadd41bb65c6b3f30d",
+  "width": 1780,
+  "height": 3000,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Nilou"
+  ]
+}

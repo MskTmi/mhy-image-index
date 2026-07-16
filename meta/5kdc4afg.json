@@ -1,0 +1,14 @@
+{
+  "id": "5kdc4afg",
+  "image": "data/5kdc4afg.jpg",
+  "hash": "c799e2bcf67417e97491f4a223816452dd6cbcd317bcffb64e051fc69f30e8dc",
+  "width": 1065,
+  "height": 1500,
+  "sources": [
+    "bh3",
+    "genshin"
+  ],
+  "entities": [
+    "Fischl"
+  ]
+}

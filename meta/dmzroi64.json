@@ -1,0 +1,13 @@
+{
+  "id": "dmzroi64",
+  "image": "data/dmzroi64.jpg",
+  "hash": "96d484c11a023fc42ac8874e47baf3a9f36294d9fb3fd2dd8935dd8ecd34453d",
+  "width": 1640,
+  "height": 3000,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Mavuika"
+  ]
+}

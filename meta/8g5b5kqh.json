@@ -1,0 +1,15 @@
+{
+  "id": "8g5b5kqh",
+  "image": "data/8g5b5kqh.jpg",
+  "hash": "db2d15fbf0519089cad20f7e70072b45317c9563729cdc9610423628bff17d68",
+  "width": 2134,
+  "height": 1200,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "eula",
+    "Amber",
+    "lumine"
+  ]
+}

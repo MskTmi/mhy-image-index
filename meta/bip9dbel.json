@@ -1,0 +1,15 @@
+{
+  "id": "bip9dbel",
+  "image": "data/bip9dbel.jpg",
+  "hash": "386e3574ab3f346c6a80d13c5dc774145b5216072d2eebd7decdf5623f39c555",
+  "width": 2264,
+  "height": 2730,
+  "sources": [
+    "bh3",
+    "genshin"
+  ],
+  "entities": [
+    "eula",
+    "Rita"
+  ]
+}

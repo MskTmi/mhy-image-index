@@ -1,0 +1,15 @@
+{
+  "id": "grbh8tou",
+  "image": "data/grbh8tou.jpg",
+  "hash": "379fd9d876b4135a946e9cdfd3fc6f790dd7f44fdaa05a363182c69fe33a568a",
+  "width": 3000,
+  "height": 1700,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Ningguang",
+    "keqing",
+    "Ganyu"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "irs39s80",
+  "image": "data/irs39s80.jpg",
+  "hash": "64e1ecb20809fa6d1a150ad792472ba958a34cd6c059b7d48356806bfb675ff0",
+  "width": 2099,
+  "height": 3000,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "keqing",
+    "Ganyu"
+  ]
+}

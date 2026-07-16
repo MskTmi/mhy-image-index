@@ -1,0 +1,13 @@
+{
+  "id": "yu1spiar",
+  "image": "data/yu1spiar.jpg",
+  "hash": "5e44e90274361e2b043d37a12eafc235823bc6bf6202c8f5a139aa3a56ce33d9",
+  "width": 1000,
+  "height": 1500,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Skirk"
+  ]
+}

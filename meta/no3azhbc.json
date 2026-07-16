@@ -1,0 +1,22 @@
+{
+  "id": "no3azhbc",
+  "image": "data/no3azhbc.jpg",
+  "hash": "a9990c9893cfc8d85a84f19122e7b67662946f97749e3090e04bc0bba70c383f",
+  "width": 3000,
+  "height": 1690,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "YunJin",
+    "shenhe",
+    "Ningguang",
+    "keqing",
+    "Ganyu",
+    "lumine",
+    "eula",
+    "Qiqi",
+    "Beidou",
+    "HuTao"
+  ]
+}

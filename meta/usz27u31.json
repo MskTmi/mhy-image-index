@@ -1,0 +1,16 @@
+{
+  "id": "usz27u31",
+  "image": "data/usz27u31.jpg",
+  "hash": "3ed529eda173bcc1ab4bbc82caa637cd13ba27d9e6f6e15560124734a7dbbe84",
+  "width": 3000,
+  "height": 1990,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Yelan",
+    "HuTao",
+    "Ganyu",
+    "yae_miko"
+  ]
+}

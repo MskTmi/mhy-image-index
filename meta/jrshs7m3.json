@@ -1,0 +1,14 @@
+{
+  "id": "jrshs7m3",
+  "image": "data/jrshs7m3.jpg",
+  "hash": "3525db133f21969bd9fa4de6402f77b90e0d1216fb50bfe0a539df41c873dfbd",
+  "width": 1626,
+  "height": 2300,
+  "sources": [
+    "bh3",
+    "genshin"
+  ],
+  "entities": [
+    "Fischl"
+  ]
+}

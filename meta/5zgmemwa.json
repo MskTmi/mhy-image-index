@@ -1,0 +1,16 @@
+{
+  "id": "5zgmemwa",
+  "image": "data/5zgmemwa.jpg",
+  "hash": "21f599e72c889d127b78848663d78a2bcf65683ced730db57cc46b9240f78ca3",
+  "width": 2478,
+  "height": 1469,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "RaidenShogun",
+    "Zhongli",
+    "Venti",
+    "Nahida"
+  ]
+}

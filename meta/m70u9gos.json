@@ -1,0 +1,13 @@
+{
+  "id": "m70u9gos",
+  "image": "data/m70u9gos.jpg",
+  "hash": "83e0112625877d2001b3f7c749d7b62fdb258bab4be5b97e8d2ceaf968f07051",
+  "width": 1250,
+  "height": 1500,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Ganyu"
+  ]
+}

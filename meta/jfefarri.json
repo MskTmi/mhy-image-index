@@ -1,0 +1,13 @@
+{
+  "id": "jfefarri",
+  "image": "data/jfefarri.jpg",
+  "hash": "94a1d721a83b730597cda9a2e34a63b5915df10466f4e15f33043b9cad00050b",
+  "width": 2700,
+  "height": 1480,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Mona"
+  ]
+}

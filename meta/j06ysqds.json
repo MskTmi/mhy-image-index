@@ -1,0 +1,16 @@
+{
+  "id": "j06ysqds",
+  "image": "data/j06ysqds.jpg",
+  "hash": "7085f02bff8e5745ac44388a44223e3c62dd9ae57d494b6f475267911858c612",
+  "width": 3000,
+  "height": 2285,
+  "sources": [
+    "genshin",
+    "hsr"
+  ],
+  "entities": [
+    "yoimiya",
+    "Klee",
+    "Sparkle"
+  ]
+}

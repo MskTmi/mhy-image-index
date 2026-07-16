@@ -1,0 +1,16 @@
+{
+  "id": "cj7i97nm",
+  "image": "data/cj7i97nm.jpg",
+  "hash": "5af5c89f8509788f0ee085ab2c2cb11639d1d3c8a7bb7b96a9cc83290ac477c9",
+  "width": 1500,
+  "height": 844,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Ganyu",
+    "Zhongli",
+    "Xiao",
+    "lumine"
+  ]
+}

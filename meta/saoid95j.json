@@ -1,0 +1,16 @@
+{
+  "id": "saoid95j",
+  "image": "data/saoid95j.jpg",
+  "hash": "6b0a4ed5b30066f29d1014d27811f86c881a0c8b44f6d175403263aa36564d0a",
+  "width": 2456,
+  "height": 1736,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Venti",
+    "RaidenShogun",
+    "Nahida",
+    "Zhongli"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2ushyg4g",
+  "image": "data/2ushyg4g.jpg",
+  "hash": "872fd83c0b7df892c09771404c98517765de0cfd4a8fd202d3d20607360b1d3d",
+  "width": 1104,
+  "height": 2048,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "RaidenShogun"
+  ]
+}

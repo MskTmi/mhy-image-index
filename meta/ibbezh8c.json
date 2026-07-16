@@ -1,0 +1,15 @@
+{
+  "id": "ibbezh8c",
+  "image": "data/ibbezh8c.jpg",
+  "hash": "cb7578aa62dd0b0bc6e63996bd7bf38092985c7795c1888cf43abeec32381f00",
+  "width": 2888,
+  "height": 1860,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Ningguang",
+    "Ganyu",
+    "keqing"
+  ]
+}

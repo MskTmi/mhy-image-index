@@ -1,0 +1,21 @@
+{
+  "id": "hcm9nl7b",
+  "image": "data/hcm9nl7b.jpg",
+  "hash": "703aa7950e4670fc247a8ee74f9ed901a909b315065ed415c0945bec9bbf05f3",
+  "width": 3000,
+  "height": 1515,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "KamisatoAyato",
+    "Tartaglia",
+    "Diluc",
+    "Kaveh",
+    "Zhongli",
+    "Wriothesley",
+    "Neuvillette",
+    "Kaeya",
+    "Alhaitham"
+  ]
+}

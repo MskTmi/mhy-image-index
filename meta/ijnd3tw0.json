@@ -1,0 +1,16 @@
+{
+  "id": "ijnd3tw0",
+  "image": "data/ijnd3tw0.jpg",
+  "hash": "fa0c541a493b92ba92e3c3f533fdbf4cdbc0d1be245ae79c45f95586548091c6",
+  "width": 1365,
+  "height": 702,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Zhongli",
+    "RaidenShogun",
+    "Venti",
+    "Nahida"
+  ]
+}

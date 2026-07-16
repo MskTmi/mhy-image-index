@@ -1,0 +1,13 @@
+{
+  "id": "vcbodmeb",
+  "image": "data/vcbodmeb.jpg",
+  "hash": "6ae8365ea7d2f857f17a5860711597d530a5fa318480770f90c0e66244e9d7fc",
+  "width": 960,
+  "height": 1440,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Chiori"
+  ]
+}

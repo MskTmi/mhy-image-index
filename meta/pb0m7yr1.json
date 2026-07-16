@@ -1,0 +1,13 @@
+{
+  "id": "pb0m7yr1",
+  "image": "data/pb0m7yr1.jpg",
+  "hash": "9390b4c1dca47f25935192be569fbfcc7b5e830c888ec319b3c4d6bcecb9a58e",
+  "width": 2000,
+  "height": 2000,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "sangonomiya_kokomi"
+  ]
+}

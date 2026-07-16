@@ -1,0 +1,16 @@
+{
+  "id": "0nr63quu",
+  "image": "data/0nr63quu.jpg",
+  "hash": "81a1d6a23005dc15d1d54d05c524c37def62d6072581f69639285439170102de",
+  "width": 1300,
+  "height": 2000,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "yae_miko",
+    "RaidenShogun",
+    "Beidou",
+    "lisa"
+  ]
+}

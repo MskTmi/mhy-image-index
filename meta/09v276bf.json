@@ -1,0 +1,14 @@
+{
+  "id": "09v276bf",
+  "image": "data/09v276bf.jpg",
+  "hash": "43993e0a6110621e03c52738a1582969ad80e3023fb6e9d0a943ae26091587ea",
+  "width": 1008,
+  "height": 1300,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "RaidenShogun",
+    "yae_miko"
+  ]
+}

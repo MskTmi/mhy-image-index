@@ -1,0 +1,17 @@
+{
+  "id": "f5399kzd",
+  "image": "data/f5399kzd.jpg",
+  "hash": "51b59328bc79db06d821dc1cc0242423fd3cf12c31655f1095b3fced3f02ea4e",
+  "width": 1099,
+  "height": 2104,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "KaedeharaKazuha",
+    "ShikanoinHeizou",
+    "Wanderer",
+    "Venti",
+    "Xiao"
+  ]
+}

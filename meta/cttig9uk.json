@@ -1,0 +1,14 @@
+{
+  "id": "cttig9uk",
+  "image": "data/cttig9uk.jpg",
+  "hash": "e785f62d566c2960ab955f49a62c8c54b0c1c4c82456332c9ddc5bfbda6004de",
+  "width": 2270,
+  "height": 2467,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Arlecchino",
+    "Furina"
+  ]
+}

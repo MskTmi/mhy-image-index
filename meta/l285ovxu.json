@@ -1,0 +1,14 @@
+{
+  "id": "l285ovxu",
+  "image": "data/l285ovxu.jpg",
+  "hash": "cb905859aacbc631ff69bd2236a9d7d188ae41440ca2ab6a4c57270b23a85a39",
+  "width": 1788,
+  "height": 3000,
+  "sources": [
+    "bh3",
+    "genshin"
+  ],
+  "entities": [
+    "Fischl"
+  ]
+}

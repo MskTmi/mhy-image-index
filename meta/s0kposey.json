@@ -1,0 +1,13 @@
+{
+  "id": "s0kposey",
+  "image": "data/s0kposey.jpg",
+  "hash": "6adfe5ebbca238a8fc4f8a155f51eada19bf1128cf15a88cbc9a16807fa5c94c",
+  "width": 1392,
+  "height": 2048,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Citlali"
+  ]
+}

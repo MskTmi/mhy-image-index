@@ -1,0 +1,16 @@
+{
+  "id": "gtxup8mr",
+  "image": "data/gtxup8mr.jpg",
+  "hash": "567abc7c8ac03e3eeb14c55fc15524ba1e2d653cbe155307ce5d62922fbce2b1",
+  "width": 3000,
+  "height": 2137,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Zhongli",
+    "Furina",
+    "Arlecchino",
+    "lumine"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ca37lfnx",
+  "image": "data/ca37lfnx.jpg",
+  "hash": "46005826d5e389d9b4da53bf4bbab477e56d4da8cb5dfb0f2cd63eda903d7ca8",
+  "width": 1200,
+  "height": 1860,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Wanderer"
+  ]
+}

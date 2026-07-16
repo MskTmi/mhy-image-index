@@ -1,0 +1,13 @@
+{
+  "id": "8wmmlosm",
+  "image": "data/8wmmlosm.jpg",
+  "hash": "a01aeb16151465016c9074289942dab41cb823af3b8e5f4119a54a695c283093",
+  "width": 1183,
+  "height": 1800,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "RaidenShogun"
+  ]
+}

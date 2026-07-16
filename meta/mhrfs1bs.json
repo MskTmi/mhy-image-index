@@ -1,0 +1,13 @@
+{
+  "id": "mhrfs1bs",
+  "image": "data/mhrfs1bs.jpg",
+  "hash": "1a4ca7f9985e42cc25dbe3ec5909223cf578e92b41f2cbe470dd89acc659dfe1",
+  "width": 1500,
+  "height": 2148,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Ganyu"
+  ]
+}

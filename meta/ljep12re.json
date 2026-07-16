@@ -1,0 +1,16 @@
+{
+  "id": "ljep12re",
+  "image": "data/ljep12re.jpg",
+  "hash": "82863067b2fb5c106d0f269013879bb6dce184065b773b0957b3fa1721180150",
+  "width": 3000,
+  "height": 1508,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "Beidou",
+    "Ningguang",
+    "Dehya",
+    "lumine"
+  ]
+}

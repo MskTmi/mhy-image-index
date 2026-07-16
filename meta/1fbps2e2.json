@@ -1,0 +1,13 @@
+{
+  "id": "1fbps2e2",
+  "image": "data/1fbps2e2.jpg",
+  "hash": "68ac6d378d8f74753faa693b2c87c5a3e5dd032d2885e59db113b59f929f9f6f",
+  "width": 1294,
+  "height": 2048,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "RaidenShogun"
+  ]
+}

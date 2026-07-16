@@ -1,0 +1,13 @@
+{
+  "id": "xgvdcfpp",
+  "image": "data/xgvdcfpp.jpg",
+  "hash": "da25dfce90b689d2e47862b80bdc6212bb9c2679ca907230eed2087757f028b8",
+  "width": 1806,
+  "height": 3000,
+  "sources": [
+    "genshin"
+  ],
+  "entities": [
+    "lumine"
+  ]
+}
