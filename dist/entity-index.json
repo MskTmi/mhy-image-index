@@ -227,6 +227,15 @@
       "板鸭"
     ]
   },
+  "Caelus": {
+    "display_name": "穹",
+    "sources": [
+      "hsr"
+    ],
+    "aliases": [
+      "男开拓者"
+    ]
+  },
   "Candace": {
     "display_name": "坎蒂丝",
     "sources": [
@@ -257,7 +266,10 @@
     "sources": [
       "hsr"
     ],
-    "aliases": []
+    "aliases": [
+      "刻律",
+      "高人"
+    ]
   },
   "Charlotte": {
     "display_name": "夏洛蒂",
@@ -315,11 +327,13 @@
     "aliases": []
   },
   "Citlali": {
-    "display_name": "茜特拉莉",
+    "display_name": "茜特菈莉",
     "sources": [
       "genshin"
     ],
-    "aliases": []
+    "aliases": [
+      "茜特拉莉"
+    ]
   },
   "Clara": {
     "display_name": "克拉拉",
@@ -713,7 +727,6 @@
     "aliases": [
       "姬子阿姨",
       "无量塔",
-      "姫子",
       "无量塔姬子"
     ]
   },
@@ -758,6 +771,13 @@
     "aliases": [
       "堂主"
     ]
+  },
+  "Hyacine": {
+    "display_name": "风堇",
+    "sources": [
+      "hsr"
+    ],
+    "aliases": []
   },
   "Hyacinth": {
     "display_name": "海瑟音",
@@ -863,6 +883,7 @@
       "hsr"
     ],
     "aliases": [
+      "カフカ",
       "妈妈"
     ]
   },
@@ -1087,6 +1108,13 @@
       "魔法师"
     ]
   },
+  "LynxLandau": {
+    "display_name": "玲可",
+    "sources": [
+      "hsr"
+    ],
+    "aliases": []
+  },
   "March7th": {
     "display_name": "三月七",
     "sources": [
@@ -1094,7 +1122,7 @@
     ],
     "aliases": [
       "三月",
-      "开黑户"
+      "长夜月"
     ]
   },
   "Mavuika": {
@@ -1139,6 +1167,17 @@
     ],
     "aliases": [
       "迷迭尔·沙莉雅"
+    ]
+  },
+  "Mizuki": {
+    "display_name": "梦见月瑞希",
+    "sources": [
+      "genshin"
+    ],
+    "aliases": [
+      "梦见月老板",
+      "瑞希",
+      "瑞希姐姐"
     ]
   },
   "Mobius": {
@@ -1237,13 +1276,13 @@
       "龙尊"
     ]
   },
-  "Niko": {
-    "display_name": "尼可",
+  "NicoleReeyn": {
+    "display_name": "尼可·莱恩",
     "sources": [
       "genshin"
     ],
     "aliases": [
-      "Nicole Reeyn",
+      "尼可",
       "魔女N"
     ]
   },
@@ -1291,6 +1330,15 @@
     ],
     "aliases": []
   },
+  "Pom-Pom": {
+    "display_name": "帕姆",
+    "sources": [
+      "hsr"
+    ],
+    "aliases": [
+      "列车长"
+    ]
+  },
   "Pardofelis": {
     "display_name": "帕朵菲莉丝",
     "sources": [
@@ -1331,6 +1379,13 @@
     "display_name": "布伦尼",
     "sources": [
       "genshin"
+    ],
+    "aliases": []
+  },
+  "Qingque": {
+    "display_name": "青雀",
+    "sources": [
+      "hsr"
     ],
     "aliases": []
   },
@@ -1433,6 +1488,20 @@
     ],
     "aliases": []
   },
+  "ArtoriaPendragon": {
+    "display_name": "Saber",
+    "sources": [
+      "hsr"
+    ],
+    "aliases": [
+      "Artoria",
+      "Artoria Pendragon",
+      "呆毛王",
+      "棉被王",
+      "阿尔托莉雅",
+      "阿尔托莉雅·潘德拉贡"
+    ]
+  },
   "Sampo": {
     "display_name": "桑博",
     "sources": [
@@ -1447,7 +1516,9 @@
     "sources": [
       "genshin"
     ],
-    "aliases": []
+    "aliases": [
+      "木偶"
+    ]
   },
   "sangonomiya_kokomi": {
     "display_name": "珊瑚宫心海",
@@ -1457,11 +1528,13 @@
     "aliases": []
   },
   "seele_vollerei": {
-    "display_name": "希儿",
+    "display_name": "希儿·芙乐艾",
     "sources": [
       "bh3"
     ],
-    "aliases": []
+    "aliases": [
+      "希儿"
+    ]
   },
   "Senadina": {
     "display_name": "瑟拉蒂娜",
@@ -1575,8 +1648,8 @@
       "hsr"
     ],
     "aliases": [
-      "女主",
-      "开拓者"
+      "スターレイル",
+      "女开拓者"
     ]
   },
   "Su": {
@@ -1819,6 +1892,13 @@
     "aliases": [
       "万民堂新任大厨"
     ]
+  },
+  "xianyun": {
+    "display_name": "闲云",
+    "sources": [
+      "genshin"
+    ],
+    "aliases": []
   },
   "Xiao": {
     "display_name": "魈",
