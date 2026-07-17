@@ -320,6 +320,12 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
         "创建后自动重新识别。使用 --no-auto-create 禁用。",
     )
     parser.add_argument(
+        "--lang",
+        default="zh,en",
+        help="允许识别的语言，逗号分隔。支持 zh（中文）、ja（日文）、en（英文）。"
+        "默认 zh,en（中日英中仅启用中英）。设为空字符串不过滤。",
+    )
+    parser.add_argument(
         "--dump-tags",
         action="store_true",
         help="仅输出每张图 WD14 识别到的所有 character tag 及置信度（按分数降序），"
@@ -369,6 +375,7 @@ def load_existing_hashes(meta_dir: Path) -> Dict[str, str]:
 # 全仓库统一压缩入口：本地 tag_image.py 与 GitHub Issue 导入共用同一份
 # optimize_to_jpeg，保证跨源字节级一致、hash 一致。详见 tools/optimize_image.py。
 from optimize_image import optimize_to_jpeg
+from lang_utils import detect_entity_lang
 
 
 def tag_image(image_path: Path, model_name: str, general_threshold: float, character_threshold: float) -> Dict[str, float]:
@@ -442,7 +449,7 @@ _NAME_BLACKLIST = {"png", "jpg", "jpeg", "webp", "3rd"}
 _USERS_IRI_RE = re.compile(r"\d+users入り$", re.IGNORECASE)
 
 
-def _extract_name_hints(filename: str, source_keywords: dict = None) -> list:
+def _extract_name_hints(filename: str, source_keywords: dict = None, *, allowed_langs: Optional[List[str]] = None) -> list:
     """从文件名中提取可能的角色名，用于提示用户创建 entity。"""
     stem = Path(filename).stem
     tokens = [t.strip() for t in _NAME_SPLIT_RE.split(stem) if t.strip()]
@@ -468,6 +475,11 @@ def _extract_name_hints(filename: str, source_keywords: dict = None) -> list:
         if low in source_terms:
             continue  # 跳过已知作品名
         if _NAME_HINT_RE.search(t):
+            # 语言过滤：跳过不在 allowed_langs 中的 token
+            if allowed_langs is not None:
+                lang = detect_entity_lang(t, "")
+                if lang is not None and lang not in allowed_langs:
+                    continue
             hints.append(t)
     # 优先：含中文的排前面（最像角色名），然后按长度降序
     def _sort_key(s: str) -> tuple:
@@ -477,12 +489,18 @@ def _extract_name_hints(filename: str, source_keywords: dict = None) -> list:
     return hints
 
 
-def _create_entity_from_hint(hint: str, entities_dir: Path, source_keywords: dict = None) -> str:
+def _create_entity_from_hint(hint: str, entities_dir: Path, source_keywords: dict = None, *, allowed_langs: Optional[List[str]] = None) -> str:
     """根据文件名提示创建一个最小的 entity JSON 文件。
 
-    返回 entity id，文件已写入 entities/。
+    返回 entity id，文件已写入 entities/。如果失败返回空字符串。
     如果 source_keywords 有匹配，自动填入 sources。
     """
+    # 语言过滤：不创建非目标语言的 entity
+    if allowed_langs is not None:
+        lang = detect_entity_lang(hint, "")
+        if lang is not None and lang not in allowed_langs:
+            return ""
+
     # 用中文名作 display_name，英文大驼峰作 id
     has_cjk = any('\u4e00' <= c <= '\u9fff' for c in hint)
     if has_cjk:
@@ -625,7 +643,14 @@ def _main_impl(args: argparse.Namespace, log_buffer: io.StringIO) -> int:
     for d in processed_dirs.values():
         d.mkdir(parents=True, exist_ok=True)
 
-    lookup = load_entity_db(entities_dir)
+    # 解析 --lang 参数
+    raw_lang = (args.lang or "").strip()
+    allowed_langs: Optional[List[str]] = None
+    if raw_lang:
+        allowed_langs = [lang.strip().lower() for lang in raw_lang.split(",") if lang.strip()]
+    print(f"[info] 语言过滤: {allowed_langs or '不过滤'}")
+
+    lookup = load_entity_db(entities_dir, allowed_langs=allowed_langs)
     if lookup.is_empty:
         print(
             "警告：entities/ 中没有任何已登记角色，所有图都会归档到 processed/unrecognized/。",
@@ -692,6 +717,7 @@ def _main_impl(args: argparse.Namespace, log_buffer: io.StringIO) -> int:
         wd14_general_threshold=args.general_threshold,
         use_clip=args.use_clip,
         fusion_threshold=args.fusion_threshold,
+        allowed_langs=allowed_langs,
     )
     # 加载 source_keywords 用于 auto-create 时推测作品
     _tag_map_path = _TOOLS_DIR / "danbooru_tag_map.json"
@@ -761,10 +787,20 @@ def _main_impl(args: argparse.Namespace, log_buffer: io.StringIO) -> int:
                     pending_review += 1
                 else:
                     # 从文件名提取可能的角色名
-                    name_hints = _extract_name_hints(src.name, source_keywords)
+                    name_hints = _extract_name_hints(src.name, source_keywords, allowed_langs=allowed_langs)
                     if name_hints and args.auto_create:
                         best_hint = name_hints[0]
-                        new_id = _create_entity_from_hint(best_hint, entities_dir, source_keywords)
+                        new_id = _create_entity_from_hint(best_hint, entities_dir, source_keywords, allowed_langs=allowed_langs)
+                        if not new_id:
+                            # 被语言过滤跳过了，归档到 pending
+                            tags_str = ", ".join([f"{t}={s:.4f}" for t, s in sorted(chars.items(), key=lambda x: x[1], reverse=True)[:5]])
+                            dest = archive_source(src, tools_dir, input_dir, PROCESSED_PENDING)
+                            print(f"[~] {src.name}\n")
+                            print(f"  reason  : 文件名提示被语言过滤跳过")
+                            print(f"  hint    : {best_hint}\n")
+                            print(f"  ✓ archive   {dest.relative_to(tools_dir)}")
+                            pending_review += 1
+                            continue
                         _guess_sources_from_filename(src.name, entities_dir / f"{new_id}.json", source_keywords)
                         auto_created_entities[new_id] = best_hint
                         recognizer.reload_entities()
@@ -855,10 +891,18 @@ def _main_impl(args: argparse.Namespace, log_buffer: io.StringIO) -> int:
                     continue
                 else:
                     # 从文件名提取可能的角色名
-                    name_hints = _extract_name_hints(src.name, source_keywords)
+                    name_hints = _extract_name_hints(src.name, source_keywords, allowed_langs=allowed_langs)
                     if name_hints and args.auto_create:
                         best_hint = name_hints[0]
-                        new_id = _create_entity_from_hint(best_hint, entities_dir, source_keywords)
+                        new_id = _create_entity_from_hint(best_hint, entities_dir, source_keywords, allowed_langs=allowed_langs)
+                        if not new_id:
+                            # 被语言过滤跳过了
+                            dest = archive_source(src, tools_dir, input_dir, PROCESSED_UNRECOGNIZED)
+                            print(f"[X] {src.name}\n")
+                            print(f"  reason  : 文件名提示被语言过滤跳过\n")
+                            print(f"  ✓ archive   {dest.relative_to(tools_dir)}")
+                            unrecognized += 1
+                            continue
                         _guess_sources_from_filename(src.name, entities_dir / f"{new_id}.json", source_keywords)
                         auto_created_entities[new_id] = best_hint
                         recognizer.reload_entities()

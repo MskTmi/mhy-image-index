@@ -18,7 +18,7 @@ function ensureOptionalStringList(value, fieldName, canonicalId) {
     }
 
     if (!Array.isArray(value)) {
-        throw new Error(`entities/${canonicalId}.json: ${fieldName} must be an array of strings.`);
+        throw new Error(`./entities/${canonicalId}.json: ${fieldName} must be an array of strings.`);
     }
 
     const list = value
@@ -121,7 +121,7 @@ async function loadEntityIndex() {
         for (const fileName of files) {
             const filePath = path.join(ENTITY_DIR, fileName);
             const parsed = JSON.parse(await fs.readFile(filePath, 'utf8'));
-            const normalized = normalizeEntityEntry(parsed, fileName);
+            const normalized = normalizeEntityEntry(parsed, `./entities/${fileName}`);
 
             rawEntries.push(normalized);
         }

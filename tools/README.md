@@ -361,19 +361,19 @@ Mei   + ["bh3"]  →  mei, mei_(honkai_impact_3rd), mei_(honkai_impact)
 
 可选参数：
 
-| 参数                    | 默认                    | 说明                                                                    |
-| ----------------------- | ----------------------- | ----------------------------------------------------------------------- |
-| `--model`               | `EVA02_Large`           | WD14 模型名，见 [模型速查](#模型速查)                                   |
-| `--character-threshold` | `0.7`                   | WD14 character tag 置信度阈值；图多但模型不熟时降到 0.5                 |
-| `--general-threshold`   | `0.35`                  | 通用 tag 阈值，**不影响角色识别**，只影响模型内部裁剪                   |
-| `--fusion-threshold`    | `0.30`                  | 多源融合后最低置信度，低于此值归档到 unrecognized 或 pending_review     |
-| `--quality`             | `92`                    | 写入 `data/` 的 JPEG 质量 1-100                                         |
-| `--no-compress`         | —                       | 禁用智能压缩，保留原始颜色（文件更大）                                  |
+| 参数                    | 默认                    | 说明                                                                |
+| ----------------------- | ----------------------- | ------------------------------------------------------------------- |
+| `--model`               | `EVA02_Large`           | WD14 模型名，见 [模型速查](#模型速查)                               |
+| `--character-threshold` | `0.7`                   | WD14 character tag 置信度阈值；图多但模型不熟时降到 0.5             |
+| `--general-threshold`   | `0.35`                  | 通用 tag 阈值，**不影响角色识别**，只影响模型内部裁剪               |
+| `--fusion-threshold`    | `0.30`                  | 多源融合后最低置信度，低于此值归档到 unrecognized 或 pending_review |
+| `--quality`             | `92`                    | 写入 `data/` 的 JPEG 质量 1-100                                     |
+| `--no-compress`         | —                       | 禁用智能压缩，保留原始颜色（文件更大）                              |
 | `--auto-create`         | —                       | 发现未登记角色时自动创建 entity 并重新识别（WD14 tag + 文件名均可触发） |
-| `--use-clip`            | —                       | 启用 CLIP 二次验证（需 `pip install open-clip-torch torch`）            |
-| `--input`               | `tools/workspace/inbox` | 自定义输入目录                                                          |
-| `--repo`                | 脚本上级目录            | 仓库根目录（`data/` `meta/` 写到该目录下）                              |
-| `--dump-tags`           | —                       | 诊断模式，见下                                                          |
+| `--use-clip`            | —                       | 启用 CLIP 二次验证（需 `pip install open-clip-torch torch`）        |
+| `--input`               | `tools/workspace/inbox` | 自定义输入目录                                                      |
+| `--repo`                | 脚本上级目录            | 仓库根目录（`data/` `meta/` 写到该目录下）                          |
+| `--dump-tags`           | —                       | 诊断模式，见下                                                      |
 
 支持图片格式 `.jpg/.jpeg/.png/.webp/.bmp/.gif`，子目录递归扫描（结构镜像到 `workspace/processed/<category>/`）。
 
@@ -406,6 +406,7 @@ Mei   + ["bh3"]  →  mei, mei_(honkai_impact_3rd), mei_(honkai_impact)
 - **文件名**：解析 Pixiv/Danbooru 风格文件名中的角色名（如 `爱莉希雅`、`Elysia`），是 WD14 失败时的兜底
 - **别名统一**：`display_name`、`aliases`、`entity id`、danbooru tag 全部映射到同一个 canonical id
 - **CLIP**（可选）：图文语义匹配，即使 WD14 只打出 `girl, pink_hair` 也能认出角色
+- **CLIP 冲突消解**（可选，CLIP 的子功能）：当 WD14+文件名同时命中外观高度相似但分属不同作品的角色（如同名 BH3/HSR 角色），自动用 CLIP 做二选一。冲突对来源：不同 source 下 display_name 相同的 entity 自动检测；额外对可通过代码注入
 - **融合**：多条证据互相印证时置信度更高，单源也能独立过关
 
 主循环决策：

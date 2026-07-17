@@ -65,13 +65,13 @@ async function readMetaFiles() {
     for (const fileName of files) {
         const filePath = path.join(META_DIR, fileName);
         const raw = JSON.parse(await fs.readFile(filePath, 'utf8'));
-        const id = ensureString(raw.id, 'id', fileName);
-        const image = ensureString(raw.image, 'image', fileName);
+        const id = ensureString(raw.id, 'id', `./meta/${fileName}`);
+        const image = ensureString(raw.image, 'image', `./meta/${fileName}`);
         const hash = typeof raw.hash === 'string' ? raw.hash.trim() : '';
         const width = typeof raw.width === 'number' ? raw.width : 0;
         const height = typeof raw.height === 'number' ? raw.height : 0;
-        const sources = ensureStringList(raw.sources, 'sources', fileName);
-        const entities = ensureStringList(raw.entities, 'entities', fileName);
+        const sources = ensureStringList(raw.sources, 'sources', `./meta/${fileName}`);
+        const entities = ensureStringList(raw.entities, 'entities', `./meta/${fileName}`);
         const lastUpdated = typeof raw.last_updated === 'string' && raw.last_updated.trim()
             ? raw.last_updated.trim()
             : new Date().toISOString();
@@ -100,7 +100,7 @@ async function buildIndex() {
     for (const item of items) {
         for (const entity of item.entities) {
             if (knownEntityIds.size > 0 && !knownEntityIds.has(entity)) {
-                throw new Error(`meta/${item.id}.json: entities must use canonical ids only. Unknown entity id "${entity}".`);
+                throw new Error(`./meta/${item.id}.json: entities must use canonical ids only. Unknown entity id "${entity}".`);
             }
         }
 

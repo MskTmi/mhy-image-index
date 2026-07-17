@@ -21,7 +21,7 @@ for (const f of files) {
     try {
         raw = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
     } catch (e) {
-        dups.push(`JSON 解析失败: ${f} - ${e.message}`);
+        dups.push(`JSON 解析失败: ./entities/${f} - ${e.message}`);
         continue;
     }
     const id = raw.id;
@@ -29,7 +29,7 @@ for (const f of files) {
 
     // 1. 重复 id
     if (idToFile.has(id)) {
-        dups.push(`重复 id: "${id}" 出现在 ${f} 与 ${idToFile.get(id)}`);
+        dups.push(`重复 id: "${id}" 出现在 ./entities/${f} 与 ./entities/${idToFile.get(id)}`);
     } else {
         idToFile.set(id, f);
     }
@@ -45,7 +45,7 @@ for (const f of files) {
     // 3. 文件名与 id 不一致
     const stem = f.replace(/\.json$/, '');
     if (stem !== id) {
-        dups.push(`文件名与 id 不一致: ${f} (id=${id})`);
+        dups.push(`文件名与 id 不一致: ./entities/${f} (id=${id})`);
     }
 
     // 4. 仅大小写不同的 id

@@ -55,6 +55,7 @@ class Recognizer:
         clip_device: str = "cpu",
         fusion_threshold: float = 0.30,
         source_weights: Optional[Dict[str, float]] = None,
+        allowed_langs: Optional[List[str]] = None,
     ) -> None:
         """
         Args:
@@ -65,9 +66,11 @@ class Recognizer:
             clip_model: CLIP 模型名
             fusion_threshold: 融合后最低置信度
             source_weights: 自定义来源权重（None 使用默认）
+            allowed_langs: 允许的语言列表，如 ['zh','en']。None 表示不过滤。
         """
+        self.allowed_langs = allowed_langs
         # 别名检测器（所有检测器的底座）
-        self.alias = AliasDetector(entities_dir)
+        self.alias = AliasDetector(entities_dir, allowed_langs=allowed_langs)
         _log.info("别名检测器已加载，共 %d 个 entity", self.alias.entity_count)
 
         # WD14 检测器
@@ -88,8 +91,13 @@ class Recognizer:
         self._clip_pretrained = clip_pretrained
         self._clip_device = clip_device
 
-        # 融合器
-        self.merger = Merger(source_weights=source_weights)
+        # 融合器（注入 CLIP 消歧能力）
+        self._confusable_pairs = self.alias.get_confusable_pairs()
+        self.merger = Merger(
+            source_weights=source_weights,
+            confusable_pairs=self._confusable_pairs,
+            clip_detector=None,  # 延迟注入，等 CLIP 加载后
+        )
         self.fusion_threshold = fusion_threshold
 
     @property
@@ -175,6 +183,13 @@ class Recognizer:
                 except Exception as exc:
                     _log.warning("CLIP 全库扫描失败 %s: %s", image_path.name, exc)
 
+        # CLIP 冲突消解（在融合前，对 WD14+文件名同时命中的易混淆对做二选一）
+        if self._use_clip and self.clip is not None and self.clip.is_available:
+            if self.merger._clip is None:
+                self.merger._clip = self.clip
+            if self._confusable_pairs:
+                all_candidates = self.merger.disambiguate(image_path, all_candidates)
+
         # 融合
         result = self.merger.merge(all_candidates, wd14_tags=wd14_tags, threshold=self.fusion_threshold)
         return result
@@ -218,11 +233,18 @@ class Recognizer:
             except Exception:
                 pass
 
+        # CLIP 冲突消解
+        if self._use_clip and self.clip is not None and self.clip.is_available:
+            if self.merger._clip is None:
+                self.merger._clip = self.clip
+            if self._confusable_pairs:
+                all_candidates = self.merger.disambiguate(image_path, all_candidates)
+
         return self.merger.merge_all(all_candidates, wd14_tags=wd14_tags, top_k=top_k)
 
     # ---- 便捷方法 ----
 
     def reload_entities(self) -> None:
         """重新加载 entities/ 目录（新增或修改 entity 文件后调用）。"""
-        self.alias = AliasDetector(self.alias.entities_dir)
+        self.alias = AliasDetector(self.alias.entities_dir, allowed_langs=self.allowed_langs)
         _log.info("entity 数据库已重新加载，共 %d 个", self.alias.entity_count)

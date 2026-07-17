@@ -18,7 +18,7 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List, Optional, Tuple
 
 _TOOLS_DIR = Path(__file__).resolve().parent
 _CONFIG_PATH = _TOOLS_DIR / "danbooru_tag_map.json"
@@ -220,13 +220,19 @@ class EntityLookup:
         return sorted(collected)
 
 
-def load_entity_db(entities_dir: Path) -> EntityLookup:
+def load_entity_db(entities_dir: Path, *, allowed_langs: Optional[List[str]] = None) -> EntityLookup:
     """读取 entities/*.json 并构建 EntityLookup。
 
     danbooru tag 映射来源（优先级从高到低）：
       1. danbooru_tag_map.json 中的 tag_overrides（手动覆盖）
       2. 从 entity 的 id + sources 自动生成的候选 tag（基于 source_suffixes）
+
+    Args:
+        entities_dir: entities/*.json 所在目录
+        allowed_langs: 允许的语言列表，如 ['zh','en']。None 表示不过滤。
     """
+
+    from lang_utils import detect_entity_lang
 
     config = _load_tag_config()
     source_suffixes: Dict[str, List[str]] = config.get("source_suffixes", {})
@@ -255,6 +261,12 @@ def load_entity_db(entities_dir: Path) -> EntityLookup:
             raise ValueError(f"{file_path.name}: sources 必须是数组")
 
         sources = [str(s).strip() for s in sources_raw if str(s).strip()]
+
+        # 语言过滤：跳过不在 allowed_langs 中的 entity
+        if allowed_langs is not None:
+            lang = detect_entity_lang(display_name, entity_id)
+            if lang is not None and lang not in allowed_langs:
+                continue
 
         # 从 id + sources 自动生成 danbooru tag 候选
         tags = _generate_candidate_tags(entity_id, sources, source_suffixes)

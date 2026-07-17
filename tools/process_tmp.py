@@ -1,6 +1,6 @@
 """将人工分类的图片批量导入 data/ + meta/。
 
-默认扫描 tools/manual/ 目录，也支持 --input 指定其他目录。
+默认扫描 tools/workspace/manual/ 目录，也支持 --input 指定其他目录。
 
 用法:
     python tools/process_tmp.py [--input <分类图片目录>] [--repo <仓库根目录>]
@@ -14,18 +14,21 @@
 
 文件夹名按实体 display_name 或 id 匹配，支持多角色（× 或空格分隔）。
 图片优化为 JPEG 写入 data/，meta 写入 meta/。
+来源（sources）直接取自实体的 sources 字段，不会回退为 unknown。
 """
 
 from __future__ import annotations
 
 import argparse
 import hashlib
+import io
 import json
 import os
 import random
 import shutil
 import string
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
@@ -61,7 +64,7 @@ def load_entities(entities_dir: Path) -> Tuple[Dict[str, dict], Dict[str, str], 
             continue
         entry = {
             "display_name": (data.get("display_name") or "").strip(),
-            "sources": data.get("sourceurces", []),
+            "sources": data.get("sources", []),
             "aliases": data.get("aliases", []),
         }
         entities[eid] = entry
@@ -122,7 +125,6 @@ def resolve_folder_name(folder: str, dn_to_id: Dict[str, str], id_lower: Dict[st
             print(f"  [WARN] 无法匹配: {folder!r} 中的 {parts[i]!r}")
             i += 1
     return ids
-    return ids
 
 
 def load_existing_hashes(meta_dir: Path) -> Dict[str, str]:
@@ -147,27 +149,51 @@ def generate_id(data_dir: Path, meta_dir: Path) -> str:
             return cid
 
 
-def optimize_to_jpeg(source: Path, dest: Path, quality: int) -> Tuple[int, int, str]:
-    from PIL import Image
+# 全仓库统一压缩入口：本地 process_tmp.py 与 tag_image.py 共用同一份
+# optimize_to_jpeg，保证跨源字节级一致、hash 一致。详见 tools/optimize_image.py。
+from optimize_image import optimize_to_jpeg
 
+PROCESSED_DIR_NAME = "workspace/processed"
+PROCESSED_RECOGNIZED = "recognized"
+PROCESSED_DUPLICATE = "duplicate"
+
+
+def archive_source(src: Path, tools_dir: Path, input_root: Path, category: str) -> Path:
+    """把处理完的源图移动到 tools/workspace/processed/<category>/ 下归档。
+
+    同目录内若已有同名文件，自动追加 _1、_2 后缀避免覆盖。
+    """
+    dest_root = tools_dir / PROCESSED_DIR_NAME / category
+    rel = src.relative_to(input_root)
+    dest = dest_root / rel
+    if dest.exists():
+        stem, suffix, counter = dest.stem, dest.suffix, 1
+        while dest.exists():
+            dest = dest.with_name(f"{stem}_{counter}{suffix}")
+            counter += 1
     dest.parent.mkdir(parents=True, exist_ok=True)
-    with Image.open(source) as img:
-        img = img.convert("RGB")
-        img.save(dest, format="JPEG", quality=quality, optimize=True)
+    shutil.move(str(src), str(dest))
+    return dest
 
-    with Image.open(dest) as out:
-        width, height = out.size
 
-    with open(dest, "rb") as f:
-        digest = hashlib.sha256(f.read()).hexdigest()
-
-    return width, height, digest
+def write_meta(meta_path: Path, *, uid: str, sources: List[str], entities: List[str], sha: str, width: int, height: int) -> None:
+    """写入 meta JSON 文件。"""
+    meta = {
+        "id": uid,
+        "image": f"data/{uid}.jpg",
+        "hash": sha,
+        "width": width,
+        "height": height,
+        "sources": sources,
+        "entities": entities,
+    }
+    meta_path.write_text(json.dumps(meta, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def main():
-    parser = argparse.ArgumentParser(description="导入 tmp 下人工分类的图片")
+    parser = argparse.ArgumentParser(description="导入 manual 下人工分类的图片")
     parser.add_argument("--input", type=Path, default=None,
-                        help="分类图片目录（默认 manual/）")
+                        help="分类图片目录（默认 workspace/manual/）")
     parser.add_argument("--repo", type=Path, default=None,
                         help="仓库根目录（默认脚本所在目录的上级）")
     parser.add_argument("--quality", type=int, default=92,
@@ -186,17 +212,51 @@ def main():
     data_dir = repo / "data"
     meta_dir = repo / "meta"
     entities_dir = repo / "entities"
+    repo_root = repo
 
     input_dir.mkdir(parents=True, exist_ok=True)
     meta_dir.mkdir(parents=True, exist_ok=True)
 
     # 加载实体
     entities, dn_to_id, id_lower = load_entities(entities_dir)
-    print(f"已加载 {len(entities)} 个实体")
+
+    # ---- 日志：捕获 stdout 全部输出到日志文件 ----
+    log_buffer = io.StringIO()
+
+    class _TeeWriter:
+        """同时写入原始 stdout 和日志缓冲区。"""
+        def __init__(self, original, buffer):
+            self.original = original
+            self.buffer = buffer
+
+        def write(self, s: str) -> int:
+            self.original.write(s)
+            self.buffer.write(s)
+            return len(s)
+
+        def flush(self) -> None:
+            self.original.flush()
+
+        def isatty(self) -> bool:
+            return hasattr(self.original, "isatty") and self.original.isatty()
+
+    _orig_stdout = sys.stdout
+    sys.stdout = _TeeWriter(_orig_stdout, log_buffer)  # type: ignore[assignment]
+
+    try:
+        return _main_impl(args, data_dir, meta_dir, entities_dir, entities, dn_to_id, id_lower, input_dir, repo_root, _TOOLS_DIR, log_buffer)
+    finally:
+        sys.stdout = _orig_stdout
+
+
+def _main_impl(args, data_dir, meta_dir, entities_dir, entities, dn_to_id, id_lower, input_dir, repo_root, tools_dir, log_buffer):
+    """主逻辑（在 _TeeWriter 上下文中运行）。"""
 
     # 加载已有哈希
     existing_hashes = load_existing_hashes(meta_dir)
-    print(f"已加载 {len(existing_hashes)} 条已有图片哈希")
+    print(f"[info] 已加载 {len(entities)} 个实体, {len(existing_hashes)} 条已有图片哈希")
+    print(f"[info] 输入: {input_dir.relative_to(repo_root)}")
+    print()
 
     # 扫描 input 下所有图片
     image_files = []
@@ -220,7 +280,10 @@ def main():
         # 解析实体
         entity_ids = resolve_folder_name(folder_name, dn_to_id, id_lower)
         if not entity_ids:
-            print(f"  [SKIP] {img_path.name} ← 文件夹 {folder_name!r} 无法匹配实体")
+            lines = [f"[?] {img_path.name}", ""]
+            lines.append(f"  reason  : 文件夹 {folder_name!r} 无法匹配任何实体")
+            print("\n".join(lines))
+            print()
             skipped_nomatch += 1
             continue
 
@@ -229,14 +292,20 @@ def main():
             file_hash = hashlib.sha256(f.read()).hexdigest()
 
         if file_hash in existing_hashes:
-            print(f"  [DUP]  {img_path.name} ← 与 {existing_hashes[file_hash]} 重复")
+            dest = archive_source(img_path, tools_dir, input_dir, PROCESSED_DUPLICATE) if not args.dry_run else None
+            lines = [f"[D] {img_path.name}", ""]
+            lines.append(f"  duplicate : {existing_hashes[file_hash]}")
+            if dest:
+                lines.append(f"  ✓ archive   {dest.relative_to(tools_dir)}")
+            print("\n".join(lines))
+            print()
             skipped_dup += 1
             continue
 
         # 生成 ID
         cid = generate_id(data_dir, meta_dir)
 
-        # 收集 sources
+        # 收集 sources —— 直接取自实体的 sources 字段
         sources_set = set()
         for eid in entity_ids:
             if eid in entities:
@@ -246,35 +315,75 @@ def main():
         dest_path = data_dir / f"{cid}.jpg"
 
         if args.dry_run:
-            print(f"  [DRY]  {img_path.name} → {cid}.jpg  entities={entity_ids}  sources={sources}")
+            entity_items = []
+            for eid in entity_ids:
+                if eid in entities:
+                    dn = entities[eid]["display_name"] or eid
+                    entity_items.append(f"{eid} ({dn})")
+                else:
+                    entity_items.append(eid)
+            lines = [f"[O] {img_path.name}", ""]
+            lines.append(f"  entities : {entity_items[0]}")
+            for item in entity_items[1:]:
+                lines.append(f"             {item}")
+            lines.append(f"  sources  : {', '.join(sources)}")
+            lines.append("")
+            lines.append(f"  → {cid}.jpg  (dry-run)")
+            print("\n".join(lines))
+            print()
             success += 1
             continue
 
         try:
-            width, height, digest = optimize_to_jpeg(img_path, dest_path, args.quality)
+            src_size = img_path.stat().st_size
+            width, height, digest = optimize_to_jpeg(img_path, dest_path, args.quality, compress=True)
+            dst_size = dest_path.stat().st_size
         except Exception as e:
-            print(f"  [ERR]  {img_path.name}: 图片处理失败 - {e}")
+            lines = [f"[!] {img_path.name}", ""]
+            lines.append(f"  error    : {e}")
+            print("\n".join(lines))
+            print()
             errors += 1
             continue
 
         # 写入 meta
-        meta = {
-            "id": cid,
-            "image": f"data/{cid}.jpg",
-            "hash": digest,
-            "width": width,
-            "height": height,
-            "sources": sources,
-            "entities": sorted(entity_ids),
-        }
-        meta_path = meta_dir / f"{cid}.json"
-        meta_path.write_text(json.dumps(meta, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        entity_ids_sorted = sorted(entity_ids)
+        write_meta(meta_dir / f"{cid}.json", uid=cid, sources=sources, entities=entity_ids_sorted, sha=digest, width=width, height=height)
 
         # 记录哈希防止后续重复
         existing_hashes[digest] = f"data/{cid}.jpg"
 
-        print(f"  [OK]   {img_path.name} → {cid}.jpg  entities={entity_ids}")
+        # ---- 格式化输出（对齐 tag_image.py 风格）----
+        entity_items = []
+        for eid in entity_ids_sorted:
+            if eid in entities:
+                dn = entities[eid]["display_name"] or eid
+                entity_items.append(f"{eid} ({dn})")
+            else:
+                entity_items.append(eid)
+
+        lines = [f"[O] {img_path.name}", ""]
+        if entity_items:
+            lines.append(f"  entities : {entity_items[0]}")
+            for item in entity_items[1:]:
+                lines.append(f"             {item}")
+        lines.append(f"  sources  : {', '.join(sources)}")
+
+        if src_size > 0:
+            pct = (1 - dst_size / src_size) * 100
+            sign = "+" if dst_size > src_size else "-"
+            lines.append(f"  compress : {src_size / 1024:.0f}KB → {dst_size / 1024:.0f}KB ({sign}{abs(pct):.0f}%)")
+
+        lines.append("")
+        lines.append(f"  ✓ meta      meta/{cid}.json")
+
+        dest = archive_source(img_path, tools_dir, input_dir, PROCESSED_RECOGNIZED) if not args.dry_run else None
+        if dest:
+            lines.append(f"  ✓ archive   {dest.relative_to(tools_dir)}")
+
+        print("\n".join(lines))
         success += 1
+        print()
 
     print(f"\n--- 处理完成 ---")
     print(f"  成功: {success}")
@@ -282,35 +391,14 @@ def main():
     print(f"  跳过(无法匹配): {skipped_nomatch}")
     print(f"  错误: {errors}")
 
-    # 将处理结果写入日志文件，方便事后查看。
+    # 将完整运行日志写入文件
     LOGS_DIR.mkdir(parents=True, exist_ok=True)
-    log_path = LOGS_DIR / "process-tmp.txt"
-    from datetime import datetime, timezone
-    log_lines = [
-        f"=== process_tmp 处理完成 ===",
-        f"时间: {datetime.now(timezone.utc).isoformat()}",
-        f"输入目录: {input_dir}",
-        f"成功: {success}",
-        f"跳过(重复): {skipped_dup}",
-        f"跳过(无法匹配): {skipped_nomatch}",
-        f"错误: {errors}",
-    ]
-    log_path.write_text("\n".join(log_lines) + "\n", encoding="utf-8")
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    log_path = LOGS_DIR / f"process-tmp-{timestamp}.txt"
+    log_path.write_text(log_buffer.getvalue(), encoding="utf-8")
+    print(f"日志已保存到 {log_path.relative_to(Path(__file__).resolve().parent)}", file=sys.stderr)
 
-    # 构建验证
-    if not args.dry_run and success > 0:
-        import subprocess
-        print("\n正在运行 build-index.js ...")
-        result = subprocess.run(
-            ["node", "scripts/build-index.js"],
-            cwd=str(repo),
-            capture_output=True,
-            text=True,
-        )
-        if result.returncode == 0:
-            print("构建验证通过 ✅")
-        else:
-            print(f"构建失败:\n{result.stderr}")
+    return 0
 
 
 if __name__ == "__main__":

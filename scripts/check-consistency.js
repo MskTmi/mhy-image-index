@@ -45,28 +45,29 @@ for (const fileName of metaFiles) {
     try {
         raw = JSON.parse(fs.readFileSync(filePath, 'utf8'));
     } catch {
-        err(`meta/${fileName}: JSON 解析失败`);
+        err(`./meta/${fileName}: JSON 解析失败`);
         continue;
     }
 
     if (!raw.image) {
-        err(`meta/${fileName}: 缺少 image 字段`);
+        err(`./meta/${fileName}: 缺少 image 字段`);
         continue;
     }
 
     const imagePath = path.join(ROOT, raw.image);
-    referencedImages.add(raw.image);
-    metaImageMap.set(raw.image, fileName);
+    const imageRel = `./${raw.image}`;
+    referencedImages.add(imageRel);
+    metaImageMap.set(imageRel, fileName);
 
     if (!fs.existsSync(imagePath)) {
-        err(`meta/${fileName}: 引用 ${raw.image} 但文件不存在`);
+        err(`./meta/${fileName}: 引用 ${raw.image} 但文件不存在`);
     }
 
     // 检查 entities 字段
     if (raw.entities && Array.isArray(raw.entities)) {
         for (const eid of raw.entities) {
             if (entityIds.size > 0 && !entityIds.has(eid)) {
-                err(`meta/${fileName}: entities 引用未知 id "${eid}"（不在 entities/ 中）`);
+                err(`./meta/${fileName}: entities 引用未知 id "${eid}"（不在 entities/ 中）`);
             }
         }
     }
@@ -78,7 +79,7 @@ const imageFiles = fs.readdirSync(DATA_DIR).filter(f => /\.(jpg|jpeg|png|webp|gi
 const orphanImages = [];
 
 for (const imgFile of imageFiles) {
-    const relPath = `data/${imgFile}`;
+    const relPath = `./data/${imgFile}`;
     if (!referencedImages.has(relPath)) {
         orphanImages.push(relPath);
     }

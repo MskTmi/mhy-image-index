@@ -35,11 +35,11 @@ for (const fileName of entityFiles) {
     try {
         const raw = JSON.parse(fs.readFileSync(path.join(ENTITIES_DIR, fileName), 'utf8'));
         if (!raw.id) {
-            warn(`entities/${fileName}: 缺少 id 字段，跳过`);
+            warn(`./entities/${fileName}: 缺少 id 字段，跳过`);
             continue;
         }
         if (!Array.isArray(raw.sources)) {
-            warn(`entities/${fileName}: sources 不是数组，按空集处理`);
+            warn(`./entities/${fileName}: sources 不是数组，按空集处理`);
             raw.sources = [];
         }
         entityMap.set(raw.id, {
@@ -47,7 +47,7 @@ for (const fileName of entityFiles) {
             sources: new Set(raw.sources),
         });
     } catch (e) {
-        warn(`entities/${fileName}: JSON 解析失败 (${e.message})`);
+        warn(`./entities/${fileName}: JSON 解析失败 (${e.message})`);
     }
 }
 console.log(`  共加载 ${entityMap.size} 个实体`);
@@ -61,12 +61,12 @@ for (const fileName of metaFiles) {
     try {
         raw = JSON.parse(fs.readFileSync(path.join(META_DIR, fileName), 'utf8'));
     } catch (e) {
-        warn(`meta/${fileName}: JSON 解析失败，跳过`);
+        warn(`./meta/${fileName}: JSON 解析失败，跳过`);
         continue;
     }
 
     if (!Array.isArray(raw.sources) || raw.sources.length === 0) {
-        warn(`meta/${fileName}: sources 缺失或为空`);
+        warn(`./meta/${fileName}: sources 缺失或为空`);
     }
 
     if (!Array.isArray(raw.entities) || raw.entities.length === 0) {
@@ -99,7 +99,7 @@ for (const fileName of metaFiles) {
 
         if (!hasIntersection) {
             err(
-                `meta/${fileName}: 图片 sources [${[...imageSources].join(', ')}] ` +
+                `./meta/${fileName}: 图片 sources [${[...imageSources].join(', ')}] ` +
                 `与实体 ${eid}(${entity.display_name}) 的 sources [${[...entity.sources].join(', ')}] 无交集`
             );
         }

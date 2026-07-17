@@ -21,6 +21,7 @@ from typing import Dict, List, Optional
 
 from zhconv import convert as _zh_convert
 
+from lang_utils import detect_entity_lang
 from .candidate import Candidate
 
 # 复用 entities_db 中的 danbooru tag 生成逻辑
@@ -46,8 +47,9 @@ def _normalize_cjk(text: str) -> str:
 class AliasDetector:
     """别名解析器：把任何文本形式（中文名、英文名、日文名、昵称、danbooru tag）映射到 entity id。"""
 
-    def __init__(self, entities_dir: Path) -> None:
+    def __init__(self, entities_dir: Path, *, allowed_langs: Optional[List[str]] = None) -> None:
         self.entities_dir = entities_dir
+        self.allowed_langs = allowed_langs  # None 表示不过滤
         # 底层 danbooru tag 查找表（复用现有 EntityLookup）
         self._tag_lookup = EntityLookup()
         # 别名 → entity id（优先级低于 tag_lookup，用于模糊匹配）
@@ -56,6 +58,10 @@ class AliasDetector:
         self._id_to_display: Dict[str, str] = {}
         # entity id → aliases（反向查询用）
         self._id_to_aliases: Dict[str, List[str]] = {}
+        # entity id → sources（易混淆对检测用）
+        self._id_to_sources: Dict[str, List[str]] = {}
+        # entity id → raw config dict（confusable_with 等扩展字段）
+        self._entity_raw: Dict[str, dict] = {}
 
         self._load_entities()
 
@@ -93,6 +99,12 @@ class AliasDetector:
                 aliases_raw = []
             aliases = [str(a).strip() for a in aliases_raw if str(a).strip()]
 
+            # 语言过滤：跳过不在 allowed_langs 中的 entity
+            if self.allowed_langs is not None:
+                lang = detect_entity_lang(display_name, entity_id)
+                if lang is not None and lang not in self.allowed_langs:
+                    continue
+
             # 注册 danbooru tag → entity
             tags = _generate_candidate_tags(entity_id, sources, source_suffixes)
             self._tag_lookup.add(entity_id, display_name, sources, tags)
@@ -100,6 +112,8 @@ class AliasDetector:
             # 注册别名 → entity
             self._id_to_display[entity_id] = display_name or entity_id
             self._id_to_aliases[entity_id] = aliases
+            self._id_to_sources[entity_id] = sources
+            self._entity_raw[entity_id] = raw
 
             # 索引 display_name（中文名）—— 同时索引繁简归一化形式
             if display_name:
@@ -240,3 +254,39 @@ class AliasDetector:
 
     def get_entity_ids(self) -> List[str]:
         return sorted(self._id_to_display.keys())
+
+    def get_entity_sources(self, entity_id: str) -> List[str]:
+        """返回 entity 的 sources 列表（如 ['bh3']），不存在则返回空列表。"""
+        return self._id_to_sources.get(entity_id, [])
+
+    def get_confusable_pairs(self) -> List[tuple]:
+        """返回易混淆角色对列表，用于 CLIP 消歧。
+
+        自动检测：不同 source 下 display_name 相同的 entity（如同名 BH3/HSR 角色）。
+        对于不同名称的易混淆对（如 Elysia↔Cyrene），需通过外部配置文件指定。
+
+        返回 [(entity_a, entity_b), ...]，每个 tuple 已排序保证确定性顺序。
+        """
+        pairs: List[tuple] = []
+        seen: set = set()
+
+        # 按 display_name（小写）分组，找出同名但不同 source 的 entity
+        name_to_ids: Dict[str, List[str]] = {}
+        for eid, display in self._id_to_display.items():
+            key = display.lower()
+            name_to_ids.setdefault(key, []).append(eid)
+
+        for eids in name_to_ids.values():
+            if len(eids) < 2:
+                continue
+            for i in range(len(eids)):
+                for j in range(i + 1, len(eids)):
+                    si = set(self._id_to_sources.get(eids[i], []))
+                    sj = set(self._id_to_sources.get(eids[j], []))
+                    if not si.intersection(sj) and si and sj:
+                        pair = tuple(sorted([eids[i], eids[j]]))
+                        if pair not in seen:
+                            seen.add(pair)
+                            pairs.append(pair)
+
+        return pairs

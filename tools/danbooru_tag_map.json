@@ -8,6 +8,7 @@
             "honkai_impact"
         ],
         "hsr": [
+            "honkai:_star_rail",
             "honkai_star_rail"
         ],
         "zzz": [
@@ -52,6 +53,8 @@
         "bronya_rand": "Bronya",
         "raiden_mei": "Mei",
         "march_7th": "March7th",
+        "march_7th_(honkai:_star_rail)": "March7th",
+        "trailblazer_(honkai:_star_rail)": "stelle",
         "ei_(genshin_impact)": "RaidenShogun",
         "elysia_(honkai_impact)": "Elysia"
     }

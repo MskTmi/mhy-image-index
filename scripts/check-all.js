@@ -50,7 +50,7 @@ function logErr(line) {
 
 if (writeLog) {
     logLine(`# check-all 日志: ${new Date().toISOString()}`);
-    logLine(`# 日志文件: ${path.relative(ROOT, logFilePath)}`);
+    logLine(`# 日志文件: ./${path.relative(ROOT, logFilePath)}`);
     logLine('');
 }
 
@@ -120,7 +120,7 @@ if (logStream) {
     // createWriteStream 是异步的，必须等 'finish' 回调触发（缓冲已刷盘）
     // 之后才能 process.exit，否则进程提前退出会导致日志文件为空或缺失
     logStream.end(() => {
-        console.log(`\n日志已写入: ${path.relative(ROOT, logFilePath)}`);
+        console.log(`\n日志已写入: ./${path.relative(ROOT, logFilePath)}`);
         process.exit(exitCode);
     });
 } else {
