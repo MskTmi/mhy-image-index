@@ -5,11 +5,9 @@
   "width": 3000,
   "height": 1687,
   "sources": [
-    "bh3",
-    "genshin"
+    "bh3"
   ],
   "entities": [
-    "Elysia",
-    "Columbina"
+    "Elysia"
   ]
 }

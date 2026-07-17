@@ -1,0 +1,15 @@
+{
+  "id": "7q774znc",
+  "image": "data/7q774znc.jpg",
+  "hash": "43f5b7359b8276ecb7dbe4a43ff2aab3b96ff530cfbdae4a6d013476b5234ff1",
+  "width": 3000,
+  "height": 1687,
+  "sources": [
+    "genshin",
+    "hsr"
+  ],
+  "entities": [
+    "Aglaea",
+    "lumine"
+  ]
+}

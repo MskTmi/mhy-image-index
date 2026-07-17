@@ -1,0 +1,13 @@
+{
+  "id": "coc8s5nk",
+  "image": "data/coc8s5nk.jpg",
+  "hash": "a2960cd8abd1ae5d8b9531874018fb3327719396b3e963f086a8dadb93bf357f",
+  "width": 1000,
+  "height": 1500,
+  "sources": [
+    "hsr"
+  ],
+  "entities": [
+    "Blade"
+  ]
+}

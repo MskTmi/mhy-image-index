@@ -1,0 +1,14 @@
+{
+  "id": "68slwolt",
+  "image": "data/68slwolt.jpg",
+  "hash": "4be4992817c17e9e6f5f77cf40a2632b49f90e5256a8cacbae7099ff99d2b013",
+  "width": 3000,
+  "height": 1681,
+  "sources": [
+    "hsr"
+  ],
+  "entities": [
+    "Kafka",
+    "stelle"
+  ]
+}

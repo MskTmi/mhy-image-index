@@ -1,0 +1,16 @@
+{
+  "id": "5w35qmcj",
+  "image": "data/5w35qmcj.jpg",
+  "hash": "55c05613f7a17cd9766ed92bc39fa303a8f55f4620ba6c2375ba4bfd12056da8",
+  "width": 1668,
+  "height": 2500,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "Kafka",
+    "stelle",
+    "Himeko"
+  ]
+}

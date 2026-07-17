@@ -1,0 +1,14 @@
+{
+  "id": "fovspeb0",
+  "image": "data/fovspeb0.jpg",
+  "hash": "40b11f17dad7e719fdf8bcc5e2dd5275bf8eb6e46966123ed6aee7fb6d0f5f42",
+  "width": 2480,
+  "height": 1632,
+  "sources": [
+    "hsr"
+  ],
+  "entities": [
+    "Topaz",
+    "stelle"
+  ]
+}

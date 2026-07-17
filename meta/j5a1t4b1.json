@@ -5,11 +5,9 @@
   "width": 3000,
   "height": 1902,
   "sources": [
-    "bh3",
-    "genshin"
+    "bh3"
   ],
   "entities": [
-    "Columbina",
     "Griseo"
   ]
 }

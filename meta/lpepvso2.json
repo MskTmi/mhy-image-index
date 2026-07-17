@@ -1,0 +1,15 @@
+{
+  "id": "lpepvso2",
+  "image": "data/lpepvso2.jpg",
+  "hash": "c899dcacc16ab7e7a8347bee972a1622469b71ba65cee30cadba336a9c722372",
+  "width": 2000,
+  "height": 3000,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "Castorice",
+    "Elysia"
+  ]
+}

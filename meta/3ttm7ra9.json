@@ -1,0 +1,15 @@
+{
+  "id": "3ttm7ra9",
+  "image": "data/3ttm7ra9.jpg",
+  "hash": "8c00cfdf17b8470ae625cc51729786e4b049716aa4d157129ee48ee41217f43f",
+  "width": 1757,
+  "height": 2700,
+  "sources": [
+    "genshin",
+    "hsr"
+  ],
+  "entities": [
+    "Acheron",
+    "RaidenShogun"
+  ]
+}

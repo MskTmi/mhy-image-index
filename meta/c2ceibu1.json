@@ -5,12 +5,9 @@
   "width": 3000,
   "height": 1867,
   "sources": [
-    "bh3",
-    "genshin",
-    "hsr"
+    "bh3"
   ],
   "entities": [
-    "Columbina",
     "Kiana",
     "homu",
     "Bronya",

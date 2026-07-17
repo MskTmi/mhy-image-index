@@ -1,0 +1,15 @@
+{
+  "id": "e4cvvrji",
+  "image": "data/e4cvvrji.jpg",
+  "hash": "1b7311e8fb5312f080744d6908415056ba52810d109fb7af50c6e658578f39ff",
+  "width": 1200,
+  "height": 1697,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "silver_wolf",
+    "Bronya"
+  ]
+}

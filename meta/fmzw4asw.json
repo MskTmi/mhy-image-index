@@ -1,0 +1,21 @@
+{
+  "id": "fmzw4asw",
+  "image": "data/fmzw4asw.jpg",
+  "hash": "a9e5fb8ae4635550fb8f26b6c95f04e4be96ce8b63f0982b081f5d326c52d960",
+  "width": 2999,
+  "height": 1208,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "Himeko",
+    "FuHua",
+    "Mei",
+    "Kiana",
+    "seele_vollerei",
+    "Elysia",
+    "YaeSakura",
+    "Bronya"
+  ]
+}

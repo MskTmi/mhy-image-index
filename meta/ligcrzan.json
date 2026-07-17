@@ -1,0 +1,13 @@
+{
+  "id": "ligcrzan",
+  "image": "data/ligcrzan.jpg",
+  "hash": "e1891240250df10f3162ccc07852affe005cfd6ddceafef9217200317ac733ad",
+  "width": 3000,
+  "height": 2383,
+  "sources": [
+    "hsr"
+  ],
+  "entities": [
+    "Kafka"
+  ]
+}

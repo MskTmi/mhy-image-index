@@ -1,0 +1,13 @@
+{
+  "id": "mysr5nau",
+  "image": "data/mysr5nau.jpg",
+  "hash": "f4c780265cb95042a4fc205e9136ec7c4331f8bf0bb36832c316e0fcacc2a259",
+  "width": 1202,
+  "height": 1700,
+  "sources": [
+    "hsr"
+  ],
+  "entities": [
+    "Kafka"
+  ]
+}

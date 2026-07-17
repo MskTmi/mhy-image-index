@@ -1,0 +1,15 @@
+{
+  "id": "2qnib9af",
+  "image": "data/2qnib9af.jpg",
+  "hash": "432b29333fd3f0ce2302a1ed9d676f791ac92704fb5d66b4a3d9654b69ce6150",
+  "width": 1677,
+  "height": 3000,
+  "sources": [
+    "genshin",
+    "hsr"
+  ],
+  "entities": [
+    "Cyrene",
+    "sangonomiya_kokomi"
+  ]
+}

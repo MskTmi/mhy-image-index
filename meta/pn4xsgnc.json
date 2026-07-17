@@ -1,0 +1,14 @@
+{
+  "id": "pn4xsgnc",
+  "image": "data/pn4xsgnc.jpg",
+  "hash": "1f8785193f0fc1f553432da782ceb7714b434e1fa0268480f791232264cb3878",
+  "width": 1706,
+  "height": 3000,
+  "sources": [
+    "hsr"
+  ],
+  "entities": [
+    "Kafka",
+    "stelle"
+  ]
+}

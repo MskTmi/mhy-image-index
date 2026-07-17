@@ -1,0 +1,15 @@
+{
+  "id": "fyqkqgcu",
+  "image": "data/fyqkqgcu.jpg",
+  "hash": "c0ce46efad87fd5c1773b4931e72cc28465728d4207fa81d3f9147007177c314",
+  "width": 2048,
+  "height": 1314,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "silver_wolf",
+    "Bronya"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "420f2qms",
+  "image": "data/420f2qms.jpg",
+  "hash": "a03bb17d097e065b3bb0a508eacc00fbc2f4c94c9671bc78572d5302f9eae2e9",
+  "width": 3000,
+  "height": 1925,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "Bronya",
+    "silver_wolf"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "wseb40pd",
+  "image": "data/wseb40pd.jpg",
+  "hash": "6de3db35233d8833126348dc7e7606e7984e99e724a718dd1cb961d00835e3e0",
+  "width": 3000,
+  "height": 1687,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "Bronya",
+    "seele_vollerei"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "2a26xry3",
+  "image": "data/2a26xry3.jpg",
+  "hash": "8c433b7184253def8f396a68363a143ece0721b2b72abd8fb76a16d11e902b5e",
+  "width": 1719,
+  "height": 3000,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "silver_wolf",
+    "Bronya"
+  ]
+}

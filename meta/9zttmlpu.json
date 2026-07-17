@@ -1,0 +1,15 @@
+{
+  "id": "9zttmlpu",
+  "image": "data/9zttmlpu.jpg",
+  "hash": "e65a1486cbadbfb59b3647b2ef4760a3b31a3e3fb5e630e895e9bd8401ff27c0",
+  "width": 1941,
+  "height": 3000,
+  "sources": [
+    "genshin",
+    "hsr"
+  ],
+  "entities": [
+    "Ganyu",
+    "Firefly"
+  ]
+}

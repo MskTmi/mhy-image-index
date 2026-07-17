@@ -1,0 +1,14 @@
+{
+  "id": "inmzlxme",
+  "image": "data/inmzlxme.jpg",
+  "hash": "f202fa41c773359f60e10cd4bc744b4cb40c81e567bf1811a4b709c34e470c34",
+  "width": 2200,
+  "height": 1326,
+  "sources": [
+    "hsr"
+  ],
+  "entities": [
+    "Kafka",
+    "stelle"
+  ]
+}

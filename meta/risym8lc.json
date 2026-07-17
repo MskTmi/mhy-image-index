@@ -1,0 +1,14 @@
+{
+  "id": "risym8lc",
+  "image": "data/risym8lc.jpg",
+  "hash": "4c9791e5b28ba16480abb50651f7eca52375c6481a791536217de0977c03c5cb",
+  "width": 1976,
+  "height": 3000,
+  "sources": [
+    "hsr"
+  ],
+  "entities": [
+    "Kafka",
+    "stelle"
+  ]
+}

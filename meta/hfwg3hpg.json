@@ -1,0 +1,13 @@
+{
+  "id": "hfwg3hpg",
+  "image": "data/hfwg3hpg.jpg",
+  "hash": "6cee31ef7bbc554e91c0e7778490018a918f951e959506e8ff7845ad8ec626aa",
+  "width": 1080,
+  "height": 1478,
+  "sources": [
+    "hsr"
+  ],
+  "entities": [
+    "Kafka"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "6xx0ount",
+  "image": "data/6xx0ount.jpg",
+  "hash": "22815d17eb5b10cef65794bbadc86962bda13bba26db8699dfa2484360427a1f",
+  "width": 2806,
+  "height": 3000,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "Bronya"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "lixedkaz",
+  "image": "data/lixedkaz.jpg",
+  "hash": "78b18d7fc2c2a27a7953f5e75329368a73941a15663cd520a739d6f1d95bd0e6",
+  "width": 1860,
+  "height": 2631,
+  "sources": [
+    "hsr"
+  ],
+  "entities": [
+    "Robin"
+  ]
+}

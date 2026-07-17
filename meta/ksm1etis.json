@@ -1,0 +1,14 @@
+{
+  "id": "ksm1etis",
+  "image": "data/ksm1etis.jpg",
+  "hash": "c87edfc07eec4ee8155d6fe1c9913f73bd1fe179036ab49fe27d8f8a9f5848b5",
+  "width": 1920,
+  "height": 1081,
+  "sources": [
+    "bh3",
+    "hsr"
+  ],
+  "entities": [
+    "Bronya"
+  ]
+}

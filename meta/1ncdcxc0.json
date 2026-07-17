@@ -5,12 +5,10 @@
   "width": 1948,
   "height": 3000,
   "sources": [
-    "bh3",
-    "genshin"
+    "bh3"
   ],
   "entities": [
     "Theresa",
-    "Columbina",
     "homu"
   ]
 }

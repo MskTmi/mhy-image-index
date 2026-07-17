@@ -5,11 +5,9 @@
   "width": 1351,
   "height": 3000,
   "sources": [
-    "bh3",
-    "genshin"
+    "bh3"
   ],
   "entities": [
-    "seele_vollerei",
-    "Columbina"
+    "seele_vollerei"
   ]
 }

@@ -1,0 +1,15 @@
+{
+  "id": "utki8l88",
+  "image": "data/utki8l88.jpg",
+  "hash": "2ed5d74e97896b498bee22db7cdbf71ec43685c39e6471fc6fbe66d987033c21",
+  "width": 1571,
+  "height": 3000,
+  "sources": [
+    "genshin",
+    "hsr"
+  ],
+  "entities": [
+    "Ganyu",
+    "Firefly"
+  ]
+}
