@@ -1528,12 +1528,12 @@
     "aliases": []
   },
   "seele_vollerei": {
-    "display_name": "希儿·芙乐艾",
+    "display_name": "希儿",
     "sources": [
       "bh3"
     ],
     "aliases": [
-      "希儿"
+      "黑希"
     ]
   },
   "Senadina": {
@@ -1801,11 +1801,9 @@
   "Veliona": {
     "display_name": "维琳娜",
     "sources": [
-      "bh3"
+      "genshin"
     ],
-    "aliases": [
-      "黑希"
-    ]
+    "aliases": []
   },
   "Venti": {
     "display_name": "温迪",

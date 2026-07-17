@@ -389,7 +389,6 @@
   "布伦尼": "Prune",
   "布洛妮娅": "Bronya",
   "希儿": "seele_vollerei",
-  "希儿·芙乐艾": "seele_vollerei",
   "希希芙": "Cissia",
   "希格雯": "Sigewinne",
   "希诺宁": "Xilonen",
@@ -721,7 +720,7 @@
   "黑塔": "Herta",
   "黑塔女士": "Herta",
   "黑天鹅": "BlackSwan",
-  "黑希": "Veliona",
+  "黑希": "seele_vollerei",
   "鼹鼠党老大": "Hook",
   "龙尊": "Neuvillette"
 }

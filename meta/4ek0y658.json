@@ -5,11 +5,9 @@
   "width": 1620,
   "height": 2880,
   "sources": [
-    "bh3",
     "hsr"
   ],
   "entities": [
-    "Evanescia",
-    "YaeSakura"
+    "Evanescia"
   ]
 }

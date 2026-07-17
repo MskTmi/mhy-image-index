@@ -2,9 +2,7 @@
     "id": "Veliona",
     "display_name": "维琳娜",
     "sources": [
-        "bh3"
+        "genshin"
     ],
-    "aliases": [
-        "黑希"
-    ]
+    "aliases": []
 }
